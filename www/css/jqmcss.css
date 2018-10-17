@@ -22,6 +22,9 @@ img { width: 100% }
     margin-left: 10%;
     
 }
+#menuopcoes {
+	min-width:300px!important;
+}
 .ui-mobile [data-role=popup] .ui-li-divider 
 {
     background-color: #ddd!important;
