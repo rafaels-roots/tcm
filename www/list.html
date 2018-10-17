@@ -64,117 +64,65 @@
 </head>
 
 <body>
-    <div data-role="page" id="index">
+    <div data-role="page" id="list">
         <header data-role="header">
-            <h3>Tribunal de Contas</h3>
+            <h3>Receitas</h3>
+            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right">home</a>
         </header>
 
         <div data-role="main" class="ui-content">
-            <p class="sumary">Login</p>
-         
-            <form id="form_login">
-                <div data-role="fieldcontain" class="ui-hide-label">
-                    <label for="textUser">Usuário: </label>
-                    <input type="text" name="textUser" id="textUser" placeholder="Username"/>
-                </div>
-                <div data-role="fieldcontain" class="ui-hide-label">
-                    <label for="textPassword">Senha: </label>
-                    <input type="password" name="textPassword" id="textPassword" placeholder="Password"/>
-                </div>
-                
-                <a href="#" class="ui-btn ui-btn-a ui-icon-home ui-btn-icon-left ui-corner-all" id="entrar">Entrar</a>
-                <a href="#" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all" id="entrar-face">Entrar com facebook</a>
+            
+            <div>
+                <p class="filter">Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.</p>
+            </div>
+            
+            <!--<ul data-icon="false" data-role="listview" id="list_List" data-count-theme="b">
+              <li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
+              <li><a href="#">Cota-Parte do ICMS - Principal<span class="ui-li-count">2.979.832,17</span></a></li>
+              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 40<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Piso de Atenção Básica - PAB Fixo<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">PAB Variável - Programa Saúde da Família<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Transferências de Recursos da Complementação da União ao FUNDEB - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do ICMS - Principal<span class="ui-li-count">877.354,64</span></a></li>
+              <li><a href="#">Transferências de Recursos do Sistema Único de Saúde SUS - Principal<span class="ui-li-count">877.354,64</span></a></li>
 
-            </form>
+            </ul>-->
         </div>
-    
+      
+
+        <div data-role="popup" id="menuopcoes" style="min-width:300px!important;" >
+            <ul data-role="listview" data-inset="true" data-divider-theme="a">
+                <li data-role="list-divider">Login</li>
+                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
+                <li data-role="list-divider">Configurações</li>
+                <li id="config" data-icon="gear"><a href="config.html" >Configurações</a></li>
+            </ul>
+        </div>
 
         <div data-role="footer" data-position="fixed">
-            <h1></h1>
+            <h1>Tribunal de Contas</h1>
         </div>
 
         <!--<script type="text/javascript" src="cordova.js"></script>-->
         <!--<script type="text/javascript" src="js/index.js"></script>-->
+        
+        <!-- isso era o que tava ocasionando o refluxo
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
+        -->
+
         <script type="text/javascript">
-               /* window.fbAsyncInit = function() 
-                    {
-                        FB.init(
-                            {
-                              appId            : '281753945770795',
-                              cookie           : true,
-                              xfbml            : true,
-                              version          : 'v3.1'
-                            });
-                    };
-
-                function login()
-                    {  
-                      FB.login(function(response)
-                          { //FB.login é chamado depois do popup
-                              callBackMudancasStatus(response);
-                          },{scope : "email,user_birthday"});
-                    }      
-                    
-                 function callBackMudancasStatus(response)
-                      {
-                        if(response.status === "connected") 
-                          {
-                            listardados();
-                          }
-                        else if(response.status ==="not_authorized")
-                          {
-                            alert("faça login no facebook");
-                          }
-                         else 
-                          {
-                            alert("faça o login;");
-                          } 
-                      }
-                 function loginOut()
-                      {
-                        FB.logout(function(response){
-                            alert("logout");
-                            $.mobile.changePage("index.html");
-                          console.log(response);
-                        })
-                      }     
-
-                 function listardados()
-                      {
-                        FB.api('/me', {fields: "id,name,gender,birthday,email,location,hometown"}, function(response) {
-                            
-                            sessionStorage.setItem("response-login", JSON.stringify(response));
-                            $.mobile.changePage("search.html");
-
-                        });
-                      } 
-
-                  (function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.1&appId=281753945770795&autoLogAppEvents=1';
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-    
-
-
-*/
-
-
-
-            $("#index").on("pageshow", function()
+            $("#list").on("pageshow", function()
                 {
-                    $("#entrar").on("click", function()
+                    $.post("data.php", { action : "f_despesas", param1 : sessionStorage.getItem("key-option") },  function(data)
                         {
-                            //$.mobile.allowCrossDomainPages = true;
-                            $.mobile.changePage("menu_principal.html");
-
-                        });
-
-                });                   
+                            console.log(data);
+                            
+                        },"json") ;   
+                });
         </script>
 
    </div> 

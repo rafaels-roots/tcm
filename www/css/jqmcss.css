@@ -22,7 +22,10 @@ img { width: 100% }
     margin-left: 10%;
     
 }
-
+.ui-mobile [data-role=popup] .ui-li-divider 
+{
+    background-color: #ddd!important;
+}
 /*.ui-mobile [data-role=popup] .ui-li-divider 
 {
     text-align: center;
@@ -63,7 +66,7 @@ img { width: 100% }
 }
 label 
 {
-	font-weight:bold!important; 
+	font-weight:500!important; 
 }
 
 /*estilos personalizados á página*/
@@ -82,7 +85,12 @@ label
 	font-size:0.95em!important;
 	
 }
-#entrar-face 
+#back-config {
+text-shadow:none!important;
+	font-weight:500!important;
+	font-size:0.95em!important;
+}
+#entrar-face, #check-config 
 {
 	background-color: #4887cc!important;
 	color:#fff!important;
@@ -123,3 +131,38 @@ label
 	padding-top:0.6em!important;
 	padding-bottom:0!important;
 }
+#list_MenuPrincipal {
+	margin-top:7px!important;
+}
+#list_List {
+	margin-top: 5px!important;
+}
+#menu_principal .ui-content, #list .ui-content {
+	padding-top:0.4em;
+	
+}
+
+#list #list_List .ui-btn {
+	text-overflow:clip!important;
+	overflow:initial!important;
+	white-space:normal!important;
+	padding-right: 6em!important;
+	padding-left: 0.3em!important;
+	padding-top: 0.3em!important;
+	padding-bottom: 0.3em!important;
+	
+	font-weight: 500!important;
+	
+
+}
+.filter {
+	font-family:Tahoma!important;
+	font-weight: 500!important;
+	font-size:0.8em!important;
+	padding-left:0!important;
+	border:1px solid #ddd;
+	background-color: #faffbd;
+	padding:0.6em 0.3em;
+	border-radius:3px;
+}
+

@@ -51,6 +51,11 @@
 
     <!-- default-src :  default-srcé a política padrão para carregar conteúdo, como JavaScript, Imagens, CSS, Fontes, solicitações AJAX, Quadros, Mídia HTML5. -->
 
+
+
+
+
+    
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
     
 
@@ -61,35 +66,46 @@
 <body>
     <div data-role="page" id="menu_principal">
         <header data-role="header">
-            <h3>Menu</h3>
+            <h3>Menu Principal</h3>
+            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right">home</a>
         </header>
 
         <div data-role="main" class="ui-content">
-            <ul data-role="listview" data-inset="true">
-              <li>
-                  <a href="#">
-                      <img src="img/receitas.png" />  
-                      <h2>Receitas</h2>
-                      <p>...</p>    
-                  </a>               
-              </li>
-              <li>
-                  <a href="#">
-                      <img src="img/receitas.png" />  
-                      <h2>Despesas</h2>
-                      <p>...</p>    
-                  </a> 
-              </li>
-              <li>
-                  <a href="#">
-                      <img src="img/receitas.png" />  
-                      <h2>Fornecedores</h2>
-                      <p>...</p>    
-                  </a> 
-              </li>
-            </ul>            
+             <form id="form_login">
+                <fieldset data-role="controlgroup">
+                    <legend>Referente á : </legend>
+                     <input type="radio" name="escolha" id="prefeitura" value="prefeitura" checked>
+                    <label for="prefeitura">Prefeitura</label>  
+                    <input type="radio" name="escolha" id="vereadores" value="vereadores">
+                    <label for="vereadores">Câmara de Vereadores</label>
+                </fieldset>
+            </form>
+
+            <ul data-role="listview" id="list_MenuPrincipal">
+              <li data-icon="carat-u"><a href="list.html">Receitas</a></li>
+              <li data-icon="carat-d"><a href="#">Despesas</a></li>
+              <li data-icon="user"><a href="#">Fornecedores</a></li>
+              <li data-icon="edit"><a href="#">Prestação de Contas</a></li>
+              <li data-icon="home"><a href="#">Estrutura Administrativa</a></li>
+              <li data-icon="user"><a href="#">Agentes Públicos</a></li>
+              <li data-icon="grid"><a href="#">Licitações Informadas</a></li>
+              <li data-icon="grid"><a href="#">Licitações Publicadas</a></li>
+              <li data-icon="bars"><a href="#">Relatório de Acompanhamento Gerencial</a></li>
+              <li data-icon="info"><a href="#">Ordenadores de Despesas</a></li>
+
+            </ul>
         </div>
-    
+      
+
+        <div data-role="popup" id="menuopcoes" style="min-width:300px!important;" >
+            <ul data-role="listview" data-inset="true" data-divider-theme="a">
+                <li data-role="list-divider">Login</li>
+                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
+                <li data-role="list-divider">Configurações</li>
+                <li id="config" data-icon="gear"><a href="config.html" >Configurações</a></li>
+            </ul>
+        </div>
 
         <div data-role="footer" data-position="fixed">
             <h1>Tribunal de Contas</h1>
@@ -97,19 +113,13 @@
 
         <!--<script type="text/javascript" src="cordova.js"></script>-->
         <!--<script type="text/javascript" src="js/index.js"></script>-->
+        
+        <!-- isso era o que tava ocasionando o refluxo
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
-        <script type="text/javascript">
-              
-            $("#menu_principal").on("pageshow", function()
-                {
-                    $("#entrar").on("click", function()
-                        {
-                            $.mobile.changePage("menu_principal.html");
-                        });
+        -->
 
-                });                   
-        </script>
+        
 
    </div> 
 </body>
