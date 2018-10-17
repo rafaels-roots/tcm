@@ -38,7 +38,8 @@ function f_bancoqueryrows($wcon)
 
 function f_despesas() 
 {
-	echo file_get_contents("http://api.tcm.ce.gov.br/sim/1_0/municipios.json");
+echo "estou aqui";
+//	echo file_get_contents("http://api.tcm.ce.gov.br/sim/1_0/municipios.json");
 	
 }
 
