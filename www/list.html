@@ -117,11 +117,10 @@
         <script type="text/javascript">
             $("#list").on("pageshow", function()
                 {
-                    $.post("data.php", { action : "f_despesas", param1 : sessionStorage.getItem("key-option") },  function(data)
-                        {
-                            console.log(data);
-
-                        },"json") ;   
+                    $.getJSON('http://192.168.100.7/data.php?callback=?', {action: "f_select", param1 : sessionStorage.getItem("key-option")}, function(data) 
+                        { 
+                            alert(data);
+                        });      
                 });
         </script>
 
