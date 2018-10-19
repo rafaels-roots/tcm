@@ -76,8 +76,8 @@
                 <p class="filter">Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.</p>
             </div>
             
-            <!--<ul data-icon="false" data-role="listview" id="list_List" data-count-theme="b">
-              <li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
+            <ul data-icon="false" data-role="listview" id="list_List" data-count-theme="b">
+              <!--<li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
               <li><a href="#">Cota-Parte do ICMS - Principal<span class="ui-li-count">2.979.832,17</span></a></li>
               <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
               <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">877.354,64</span></a></li>
@@ -87,8 +87,8 @@
               <li><a href="#">Transferências de Recursos da Complementação da União ao FUNDEB - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
               <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do ICMS - Principal<span class="ui-li-count">877.354,64</span></a></li>
               <li><a href="#">Transferências de Recursos do Sistema Único de Saúde SUS - Principal<span class="ui-li-count">877.354,64</span></a></li>
-
-            </ul>-->
+                -->
+            </ul>
         </div>
       
 
@@ -117,14 +117,29 @@
         <script type="text/javascript">
             $("#list").on("pageshow", function()
                 {
-                    $.getJSON('http://192.168.100.7/data.php?callback=?', {action: "f_select", param1 : sessionStorage.getItem("key-option")}, function(data) 
+                    $.getJSON('http://192.168.100.7/data.php?callback=?', {action: "f_select"}, function(data) 
                         { 
-                            alert(data);
+                            var j = data.rsp._content;
+                            var html = "";
+                            var ul = $("#list_List");
+                            for(var i = 0; i < j.length; i++) 
+                                {
+                                    html += "<li>" +
+                                                "<a href='#'>" + data[i]["nome_municipio"] + 
+                                                    "<p>"+data[i]["geoibgeId"]+"</p>" + 
+                                                "</a>" +
+                                            "</li>";
+                                }
+                            alert(html);   
+                            ul.html(html);
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
+    
                         });      
                 });
         </script>
 
    </div> 
 </body>
-
+ 
 </html>
