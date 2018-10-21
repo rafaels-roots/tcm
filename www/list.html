@@ -117,21 +117,26 @@
         <script type="text/javascript">
             $("#list").on("pageshow", function()
                 {
-                    $.getJSON('http://192.168.100.7/data.php?callback=?', {action: "f_select"}, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/data.php?callback=?', {action: "f_select"}, function(data) 
                         { 
-                            var j = data.rsp._content;
+                            /*var j = data.rsp._content;
                             var html = "";
-                            var ul = $("#list_List");
+                            
                             for(var i = 0; i < j.length; i++) 
                                 {
                                     html += "<li>" +
-                                                "<a href='#'>" + data[i]["nome_municipio"] + 
-                                                    "<p>"+data[i]["geoibgeId"]+"</p>" + 
+                                                "<a href='#'>" + j[i]["nome_municipio"] + 
+                                                    "<p>"+j[i]["geoibgeId"]+"</p>" + 
                                                 "</a>" +
                                             "</li>";
                                 }
                             alert(html);   
                             ul.html(html);
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");*/
+
+                            var ul = $("#list_List"); 
+                            ul.html(data);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
     
