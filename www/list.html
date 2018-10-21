@@ -73,7 +73,7 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter">Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.</p>
+                <p class="filter"><!--Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.--></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_List" data-count-theme="b">
@@ -135,8 +135,12 @@
                             ul.listview("refresh");
                             ul.trigger("updatelayout");*/
 
+
+                            $(".filter").html('Apuiarés >> Prefeitura >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
+
+
                             var ul = $("#list_List"); 
-                            ul.html(data);
+                            ul.html(data[0]["dados"]);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
     
