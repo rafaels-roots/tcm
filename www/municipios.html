@@ -51,10 +51,6 @@
 
     <!-- default-src :  default-srcé a política padrão para carregar conteúdo, como JavaScript, Imagens, CSS, Fontes, solicitações AJAX, Quadros, Mídia HTML5. -->
 
-
-
-
-
     
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
     
@@ -64,19 +60,15 @@
 </head>
 
 <body>
-    <div data-role="page" id="list">
+    <div data-role="page" id="municipios">
         <header data-role="header">
-            <h3>Receitas</h3>
+            <h3>Escolha o município?</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right">home</a>
         </header>
 
         <div data-role="main" class="ui-content">
             
-            <div>
-                <p class="filter"><!--Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.--></p>
-            </div>
-            
-            <ul data-icon="false" data-role="listview" id="list_List" data-count-theme="b">
+            <ul data-icon="false" data-role="listview" id="list_Municipios" data-count-theme="b">
               <!--<li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
               <li><a href="#">Cota-Parte do ICMS - Principal<span class="ui-li-count">2.979.832,17</span></a></li>
               <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
@@ -115,35 +107,23 @@
         -->
 
         <script type="text/javascript">
-            $("#list").on("pageshow", function()
+            $("#municipios").on("pageshow", function()
                 {
-                    $.getJSON('http://192.168.100.7/tcm/data.php?callback=?', {action: "f_select"}, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/municipios.php?callback=?', {action: "f_select_municipios"}, function(data) 
                         { 
-                            /*var j = data.rsp._content;
+                            var j = data.rsp._content;
                             var html = "";
-                            
+                            var ul = $("#list_Municipios"); 
                             for(var i = 0; i < j.length; i++) 
                                 {
                                     html += "<li>" +
-                                                "<a href='#'>" + j[i]["nome_municipio"] + 
-                                                    "<p>"+j[i]["geoibgeId"]+"</p>" + 
-                                                "</a>" +
+                                                "<a href='#'>" + j[i]["nome_municipio"] + "</a>" +
                                             "</li>";
                                 }
-                            alert(html);   
                             ul.html(html);
                             ul.listview("refresh");
-                            ul.trigger("updatelayout");*/
-
-
-                            $(".filter").html('Apuiarés >> Prefeitura >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
-
-
-                            var ul = $("#list_List"); 
-                            ul.html(data[0]["dados"]);
-                            ul.listview("refresh");
                             ul.trigger("updatelayout");
-    
+
                         });      
                 });
         </script>
