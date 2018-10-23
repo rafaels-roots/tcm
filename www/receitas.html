@@ -126,7 +126,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio") }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
                             /*var j = data.rsp._content;
                             var html = "";
@@ -145,9 +145,9 @@
                             ul.trigger("updatelayout");*/
                             $.mobile.loading("hide"); 
 
-                            $(".filter").html('Apuiarés >> Prefeitura >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
+                            $(".filter").html(data[0]["municipio"]+' >> '+data[0]["selecionado"]+' >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
 
-                            var ul = $("#list_List"); 
+                            var ul = $("#list_Receitas"); 
                             ul.html(data[0]["dados"]);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");

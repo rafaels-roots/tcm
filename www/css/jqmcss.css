@@ -139,12 +139,12 @@ text-shadow:none!important;
 #list_Receitas {
 	margin-top: 5px!important;
 }
-#menu_principal .ui-content, #list .ui-content {
+#menu_principal .ui-content, #receitas .ui-content {
 	padding-top:0.4em;
 	
 }
 
-#list #list_Receitas .ui-btn {
+#receitas #list_Receitas .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;

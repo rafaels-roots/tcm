@@ -86,11 +86,17 @@
                             <option value="2015">2015</option>
                             <option value="2014">2014</option>
                             <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
                         </select>
                     </div>    
                 
 
-                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a" id="button1">Avançar</a>
+                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a" id="button1">Avançar</a>
                 <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back" id="button3">Voltar</a>
          
 
@@ -153,7 +159,12 @@
                         {
                             sessionStorage.setItem("codigo-municipio", $(this).attr('id') );
                         });
-
+                    
+                    $("#button1").on("click", function()
+                        {
+                            sessionStorage.setItem("ano-municipio", $("#ano").val() );
+                            $.mobile.changePage("menu_principal.html");
+                        });
 
                 });
         </script>
