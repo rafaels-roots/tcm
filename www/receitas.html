@@ -67,7 +67,7 @@
     <div data-role="page" id="receitas">
         <header data-role="header">
             <h3>Receitas</h3>
-            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right">home</a>
+            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
 
         <div data-role="main" class="ui-content">
@@ -97,8 +97,8 @@
                 <li data-role="list-divider">Login</li>
                 <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
                 <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
-                <li data-role="list-divider">Configurações</li>
-                <li id="config" data-icon="gear"><a href="config.html" >Configurações</a></li>
+                <li data-role="list-divider">Navegação</li>
+                <li id="voltar" data-icon="back"><a href="menu_principal.html" >Voltar</a></li>
             </ul>
         </div>
 
@@ -117,7 +117,7 @@
         <script type="text/javascript">
             $("#receitas").on("pageshow", function()
                 {
-                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas"}, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : session.getItem("codigo-municipio") }, function(data) 
                         { 
                             /*var j = data.rsp._content;
                             var html = "";
@@ -137,7 +137,6 @@
 
 
                             $(".filter").html('Apuiarés >> Prefeitura >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
-
 
                             var ul = $("#list_List"); 
                             ul.html(data[0]["dados"]);

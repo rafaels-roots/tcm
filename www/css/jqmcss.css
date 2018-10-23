@@ -22,20 +22,13 @@ img { width: 100% }
     margin-left: 10%;
     
 }
-#menuopcoes {
+#menuopcoes, #form-ano {
 	min-width:300px!important;
 }
 .ui-mobile [data-role=popup] .ui-li-divider 
 {
     background-color: #ddd!important;
 }
-/*.ui-mobile [data-role=popup] .ui-li-divider 
-{
-    text-align: center;
-    background-color: #4887cc;
-    color: #fff;
-    text-shadow: none
-}*/
 
 .ui-li-count 
 {
@@ -79,8 +72,14 @@ label
     text-shadow: none!important;
     margin-top: 20px
 }
+.az-nodisc {
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none;
+}
 
-#entrar {
+#button1
+{
 	background-color: #54698d!important;
 	color:#fff!important;
 	text-shadow:none!important;
@@ -88,16 +87,16 @@ label
 	font-size:0.95em!important;
 	
 }
-#back-config {
-text-shadow:none!important;
-	font-weight:500!important;
-	font-size:0.95em!important;
-}
-#entrar-face, #check-config 
+#button2, #check-config 
 {
 	background-color: #4887cc!important;
 	color:#fff!important;
 	text-shadow:none!important;
+	font-weight:500!important;
+	font-size:0.95em!important;
+}
+#button3 {
+text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
 }
@@ -137,7 +136,7 @@ text-shadow:none!important;
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
-#list_List {
+#list_Receitas {
 	margin-top: 5px!important;
 }
 #menu_principal .ui-content, #list .ui-content {
@@ -145,7 +144,7 @@ text-shadow:none!important;
 	
 }
 
-#list #list_List .ui-btn {
+#list #list_Receitas .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;
@@ -169,3 +168,13 @@ text-shadow:none!important;
 	border-radius:3px;
 }
 
+.form-ano-div {
+	padding:10px 20px;
+
+}
+#form-ano .ui-mobile [data-role=fieldcontain] {
+	margin-top: -20px!important;
+}
+.form-ano-title {
+	font-weight:500!important;
+}
