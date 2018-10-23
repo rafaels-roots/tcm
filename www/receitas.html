@@ -117,7 +117,16 @@
         <script type="text/javascript">
             $("#receitas").on("pageshow", function()
                 {
-                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : session.getItem("codigo-municipio") }, function(data) 
+                    
+                    $.mobile.loading("show",{
+                        text : 'Carregando...',
+                        textVisible : true,
+                        theme : 'a',
+                        textonly : false,
+
+                    });
+
+                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio") }, function(data) 
                         { 
                             /*var j = data.rsp._content;
                             var html = "";
