@@ -160,8 +160,9 @@
                             sessionStorage.setItem("codigo-municipio", $(this).attr('id') );
                         });
                     
-                    $("#form-ano").on("click", "#button1" function()
+                    $("#form-ano").on("click", "#button1", function()
                         {
+                            alert("dsada");
                             sessionStorage.setItem("ano-municipio", $("#ano").val() );
                             //$.mobile.changePage("menu_principal.html");
                         });
