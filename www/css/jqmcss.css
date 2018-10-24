@@ -136,15 +136,25 @@ text-shadow:none!important;
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
-#list_Receitas {
+#list_Receitas,
+#list_Despesas,
+#list_TiposDespesas,
+#list_Favorecidos {
 	margin-top: 5px!important;
 }
-#menu_principal .ui-content, #receitas .ui-content {
+#menu_principal .ui-content,
+#receitas .ui-content,
+#despesas .ui-content,
+#tipos-de-despesas .ui-content,
+#favorecidos .ui-content {
 	padding-top:0.4em;
 	
 }
 
-#receitas #list_Receitas .ui-btn {
+#receitas #list_Receitas .ui-btn,
+#despesas #list_Despesas .ui-btn,
+#tipos-de-despesas #list_TiposDespesas .ui-btn,
+#favorecidos #list_Favorecidos .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;
@@ -178,3 +188,5 @@ text-shadow:none!important;
 .form-ano-title {
 	font-weight:500!important;
 }
+
+

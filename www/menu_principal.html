@@ -83,7 +83,7 @@
 
             <ul data-role="listview" id="list_MenuPrincipal">
               <li data-icon="carat-u"><a href="receitas.html">Receitas</a></li>
-              <li data-icon="carat-d"><a href="#">Despesas</a></li>
+              <li data-icon="carat-d"><a href="despesas.html">Despesas</a></li>
               <li data-icon="user"><a href="#">Fornecedores</a></li>
               <li data-icon="edit"><a href="#">Prestação de Contas</a></li>
               <li data-icon="home"><a href="#">Estrutura Administrativa</a></li>
@@ -119,6 +119,48 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         -->
+        <script type="text/javascript">
+            $("#menu_principal").on("pageshow", function()
+                {
+                    $("input[type=radio]").on("change", function(){
+
+                        if($('input[type=radio]:checked').val() == "vereadores") 
+                            {
+                                $("#list_MenuPrincipal li").remove();
+                                $("#list_MenuPrincipal").html('<li data-icon="carat-d"><a href="#">Despesas</a></li>' +
+                                                              '<li data-icon="user"><a href="#">Fornecedores</a></li>' +
+                                                              '<li data-icon="edit"><a href="#">Prestação de Contas</a></li>' +
+                                                              '<li data-icon="user"><a href="#">Agentes Públicos</a></li>' + 
+                                                              '<li data-icon="info"><a href="#">Ordenadores de Despesas</a></li>' + 
+                                                              '<li data-icon="gear"><a href="#">Configurações</a></li>').listview('refresh');
+                            }
+                        else 
+                            {
+                                $("#list_MenuPrincipal li").remove();
+                                $("#list_MenuPrincipal").html('<li data-icon="carat-u"><a href="receitas.html">Receitas</a></li>' +
+                                                              '<li data-icon="carat-d"><a href="despesas.html">Despesas</a></li>'+
+                                                              '<li data-icon="user"><a href="#">Fornecedores</a></li>'+
+                                                              '<li data-icon="edit"><a href="#">Prestação de Contas</a></li>'+
+                                                              '<li data-icon="home"><a href="#">Estrutura Administrativa</a></li>'+
+                                                              '<li data-icon="user"><a href="#">Agentes Públicos</a></li>'+
+                                                              '<li data-icon="grid"><a href="#">Licitações Informadas</a></li>'+
+                                                              '<li data-icon="grid"><a href="#">Licitações Publicadas</a></li>'+
+                                                              '<li data-icon="bars"><a href="#">Relatório de Acompanhamento Gerencial</a></li>'+
+                                                              '<li data-icon="info"><a href="#">Ordenadores de Despesas</a></li>'+
+                                                              '<li data-icon="gear"><a href="#">Configurações</a></li>').listview('refresh');
+                            }    
+
+                    });
+
+                    $("#list_MenuPrincipal").on("click", ".ui-btn", function()
+                        {
+                            sessionStorage.setItem("opcao-menu", $(this).text());
+                        });
+
+
+
+                });
+        </script>
 
         
 
