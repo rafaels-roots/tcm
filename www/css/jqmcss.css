@@ -33,6 +33,7 @@ img { width: 100% }
 .ui-li-count 
 {
     right: .4em!important
+    z-index:4000!important;
 }
 
 .ui-state-disabled 
@@ -166,6 +167,9 @@ text-shadow:none!important;
 	font-weight: 500!important;
 	
 
+}
+#favorecidos #list_Favorecidos .ui-btn {
+	font-size:0.8em!important;
 }
 .filter {
 	font-family:Tahoma!important;

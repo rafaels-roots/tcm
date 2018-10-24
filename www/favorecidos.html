@@ -122,7 +122,7 @@
                                             sessionStorage.getItem('opcao-menu') + ' >> ' +
                                             sessionStorage.getItem('tipo-de-despesa_text') + ' >> ' +  
                                             sessionStorage.getItem('favorecido_text') + ' >> ' +  
-                                            sessionStorage.getItem('ano-municipio') +  '<br />'+data[0]["total"]);
+                                            sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
 
 
                             //var x = JSON.stringify(data[0]["dados"]).replace(/(?:\bBC|[^\sA-Z])\.(?=\s|[A-Z])/g, '$&<br><br>');
@@ -141,7 +141,7 @@
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                            $("#list_Favorecidos li a:last-child").remove();    
+                            $("#list_Favorecidos a[href^='/transparencia']").remove();    
 
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
