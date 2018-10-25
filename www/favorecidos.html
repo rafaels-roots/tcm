@@ -126,8 +126,7 @@
 
 
                             //var x = JSON.stringify(data[0]["dados"]).replace(/(?:\bBC|[^\sA-Z])\.(?=\s|[A-Z])/g, '$&<br><br>');
-
-
+                           
 
 
 
@@ -146,7 +145,31 @@
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-    
+
+                           
+                             //var j = data[0]["dados"].length;
+                             /*$.each($("#list_Favorecidos li"), function(i,v){
+                                alert($(this).text().slice(0,-1));
+                             });*/
+
+                             $('li').contents().filter(function(){
+                                //alert("ssdsa");
+                                console.log($(this));
+                                if($(this).nodeType == 3 && $(this).text() == ")"){
+                                    //alert("dsa");
+                                    $(this).remove();
+                                }
+                            })
+                            /*for(var i = 0; i < j.length; i++) 
+                                {
+                                    j[i]
+                                }*/
+
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
+   
+
+
                         });      
                 });
         </script>

@@ -171,6 +171,9 @@ text-shadow:none!important;
 #favorecidos #list_Favorecidos .ui-btn {
 	font-size:0.8em!important;
 }
+#favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn {
+	margin-right:0!important;
+}
 .filter {
 	font-family:Tahoma!important;
 	font-weight: 500!important;
