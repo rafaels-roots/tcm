@@ -125,15 +125,10 @@
                                             sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
 
 
-                            //var x = JSON.stringify(data[0]["dados"]).replace(/(?:\bBC|[^\sA-Z])\.(?=\s|[A-Z])/g, '$&<br><br>');
                            
 
-
-
-
-
-
                             var ul = $("#list_Favorecidos"); 
+                            $(".filter").css("display", "block");
                             ul.html(data[0]["dados"]);
                             $.mobile.loading("hide"); 
                             
@@ -142,25 +137,12 @@
 
                             $("#list_Favorecidos a[href^='/transparencia']").remove();    
 
-                            ul.listview("refresh");
-                            ul.trigger("updatelayout");
-
-
-                           
-                             //var j = data[0]["dados"].length;
-                             /*$.each($("#list_Favorecidos li"), function(i,v){
-                                alert($(this).text().slice(0,-1));
-                             });*/
-
                              $('li').contents().filter(function(){
                                 //alert("ssdsa");
                                 return this.nodeType == 3 
                                 
                             }).remove();
-                            /*for(var i = 0; i < j.length; i++) 
-                                {
-                                    j[i]
-                                }*/
+                           
 
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
