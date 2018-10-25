@@ -154,12 +154,9 @@
 
                              $('li').contents().filter(function(){
                                 //alert("ssdsa");
-                                console.log($(this));
-                                if($(this).nodeType == 3 && $(this).text() == ")"){
-                                    //alert("dsa");
-                                    $(this).remove();
-                                }
-                            })
+                                return this.nodeType == 3 
+                                
+                            }).remove();
                             /*for(var i = 0; i < j.length; i++) 
                                 {
                                     j[i]
