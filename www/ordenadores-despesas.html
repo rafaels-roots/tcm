@@ -64,9 +64,9 @@
 </head>
 
 <body>
-    <div data-role="page" id="receitas">
+    <div data-role="page" id="ordenadores-despesas">
         <header data-role="header">
-            <h3>Receitas</h3>
+            <h3>Ordenadores de Despesas</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
 
@@ -76,19 +76,9 @@
                 <p class="filter"><!--Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.--></p>
             </div>
             
-            <ul data-icon="false" data-role="listview" id="list_Receitas" data-count-theme="b">
-              <!--<li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
-              <li><a href="#">Cota-Parte do ICMS - Principal<span class="ui-li-count">2.979.832,17</span></a></li>
-              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 40<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Piso de Atenção Básica - PAB Fixo<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">PAB Variável - Programa Saúde da Família<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transferências de Recursos da Complementação da União ao FUNDEB - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do ICMS - Principal<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transferências de Recursos do Sistema Único de Saúde SUS - Principal<span class="ui-li-count">877.354,64</span></a></li>
-                -->
+            <ul data-icon="false" data-role="listview" id="list_OrdenadoresDespesas" data-count-theme="b">
             </ul>
+
         </div>
       
 
@@ -115,7 +105,7 @@
         -->
 
         <script type="text/javascript">
-            $("#receitas").on("pageshow", function()
+            $("#ordenadores-despesas").on("pageshow", function()
                 {
                     
                     $.mobile.loading("show",{
@@ -126,7 +116,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/ordenadores-despesas.php?callback=?', {action: "f_select_ordenadores_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
                             /*var j = data.rsp._content;
                             var html = "";
@@ -145,11 +135,11 @@
                             ul.trigger("updatelayout");*/
                             $.mobile.loading("hide"); 
 
-                            $(".filter").html(data[0]["municipio"]+' >> '+data[0]["selecionado"]+' >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
+                            $(".filter").html(data[0]["municipio"]+' >> '+
+                                              sessionStorage.getItem("opcao-menu")+' >> '+
+                                              sessionStorage.getItem("ano-municipio"));
 
-
-
-                            var ul = $("#list_Receitas");
+                            var ul = $("#list_OrdenadoresDespesas");
                             $(".filter").css("display", "block"); 
                             ul.html(data[0]["dados"]);
                             ul.listview("refresh");

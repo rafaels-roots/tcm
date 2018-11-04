@@ -144,14 +144,22 @@ text-shadow:none!important;
 #list_Receitas,
 #list_Despesas,
 #list_TiposDespesas,
-#list_Favorecidos {
+#list_Favorecidos,
+#list_LicitacoesInf,
+#list_PrestacaoContas,
+#list_OrdenadoresDespesas,
+#list_AgentesPublicos {
 	margin-top: 5px!important;
 }
 #menu_principal .ui-content,
 #receitas .ui-content,
 #despesas .ui-content,
 #tipos-de-despesas .ui-content,
-#favorecidos .ui-content {
+#favorecidos .ui-content,
+#licitacoes-inf .ui-content,
+#prestacao-contas .ui-content,
+#ordenadores-despesas .ui-content,
+#agentes-publicos .ui-content {
 	padding-top:0.4em;
 	
 }
@@ -159,18 +167,28 @@ text-shadow:none!important;
 #receitas #list_Receitas .ui-btn,
 #despesas #list_Despesas .ui-btn,
 #tipos-de-despesas #list_TiposDespesas .ui-btn,
-#favorecidos #list_Favorecidos .ui-btn {
+#favorecidos #list_Favorecidos .ui-btn,
+#licitacoes-inf #list_LicitacoesInf .ui-btn,
+#prestacao-contas #list_PrestacaoContas .ui-btn,
+#ordenadores-despesas #list_OrdenadoresDespesas .ui-btn,
+#agentes-publicos #list_AgentesPublicos .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;
 	padding-right: 6em!important;
 	padding-left: 0.3em!important;
-	padding-top: 0.3em!important;
-	padding-bottom: 0.3em!important;
-	
+	padding-top: 0.1em!important;
+	padding-bottom: 0.1em!important;
 	font-weight: 500!important;
 	
 
+}
+#ordenadores-despesas #list_OrdenadoresDespesas .ui-btn
+ {
+	padding-right: 5em!important;
+}
+#agentes-publicos #list_AgentesPublicos .ui-btn {
+	padding-right: 3.5em!important;	
 }
 #favorecidos #list_Favorecidos .ui-btn {
 	font-size:0.8em!important;
@@ -190,6 +208,16 @@ text-shadow:none!important;
 	border-radius:3px;
 }
 
+
+
+
+
+
+
+
+
+
+/*municipios.html*/
 .form-ano-div {
 	padding:10px 20px;
 

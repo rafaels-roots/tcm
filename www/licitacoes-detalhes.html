@@ -64,9 +64,9 @@
 </head>
 
 <body>
-    <div data-role="page" id="receitas">
+    <div data-role="page" id="licitacoes-detalhes">
         <header data-role="header">
-            <h3>Receitas</h3>
+            <h3>Licitações Informadas(Detalhe)</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
 
@@ -76,18 +76,8 @@
                 <p class="filter"><!--Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.--></p>
             </div>
             
-            <ul data-icon="false" data-role="listview" id="list_Receitas" data-count-theme="b">
-              <!--<li><a href="#">Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">10.160.002,32</span></a></li>
-              <li><a href="#">Cota-Parte do ICMS - Principal<span class="ui-li-count">2.979.832,17</span></a></li>
-              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do Fundo de Participação dos Municípios - Cota Mensal - Principal<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transf de Recursos do Fundo de Manut. e Desenvol. da Educação Básica e de Valorização dos Prof. Educação - Principal 40<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Piso de Atenção Básica - PAB Fixo<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">PAB Variável - Programa Saúde da Família<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transferências de Recursos da Complementação da União ao FUNDEB - Principal 60<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Dedução para a formação do FUNDEB - Cota-Parte do ICMS - Principal<span class="ui-li-count">877.354,64</span></a></li>
-              <li><a href="#">Transferências de Recursos do Sistema Único de Saúde SUS - Principal<span class="ui-li-count">877.354,64</span></a></li>
-                -->
+            <ul data-icon="false" data-role="listview" id="list_LicitacoesDetalhes" data-count-theme="b">
+              
             </ul>
         </div>
       
@@ -115,7 +105,7 @@
         -->
 
         <script type="text/javascript">
-            $("#receitas").on("pageshow", function()
+            $("#licitacoes-detalhes").on("pageshow", function()
                 {
                     
                     $.mobile.loading("show",{
@@ -126,36 +116,49 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
-                        { 
-                            /*var j = data.rsp._content;
-                            var html = "";
-                            
-                            for(var i = 0; i < j.length; i++) 
+                    $.getJSON('http://192.168.100.7/tcm/php/licitacoes-detalhes.php?callback=?', {action: "f_select_licitacoes_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem('licitacoes-inf_link')   }, function(data) 
+                        {                             
+                            /*$(".filter").html(data[0]["municipio"]+' >> '+
+                                              data[0]["selecionado"]+' >> '+
+                                              sessionStorage.getItem("opcao-menu")+' >> '+
+                                              sessionStorage.getItem("ano-municipio")+' >> '+data[0]["total"]);*/
+                           // var neg = data[0]['negociantes'];
+                           // var list = "";                   
+                            /*for(var i = 0; i < cab.length; i++) 
                                 {
-                                    html += "<li>" +
-                                                "<a href='#'>" + j[i]["nome_municipio"] + 
-                                                    "<p>"+j[i]["geoibgeId"]+"</p>" + 
-                                                "</a>" +
+                                    alert(cab[i]);
+                                }*/
+                           /* for(var i = 0; i < neg.length; i++)
+                                {
+                                    list +="<li>" +
+                                                "<a href='#'>" + neg[i]["cnpjcpf"] + "</a>" +
+                                                "<span class='ui-li-count'>"+neg[i]["nome"]+"</span>" + 
                                             "</li>";
-                                }
-                            alert(html);   
-                            ul.html(html);
+                                } 
+*/
+
+
+
+
+
+
+
+                            /*
+                            $(".filter").css("display", "block");
+                            ul.html(data[0]["dados"]);
+
+                            $.mobile.loading("hide"); 
                             ul.listview("refresh");
                             ul.trigger("updatelayout");*/
-                            $.mobile.loading("hide"); 
-
-                            $(".filter").html(data[0]["municipio"]+' >> '+data[0]["selecionado"]+' >> Receitas >> 2018 <br />'+data[0]["total"]+'<br />'+data[0]["atualizacao"]+ '<br />'+data[0]["fonte"]);
-
-
-
-                            var ul = $("#list_Receitas");
-                            $(".filter").css("display", "block"); 
-                            ul.html(data[0]["dados"]);
-                            ul.listview("refresh");
-                            ul.trigger("updatelayout");
     
                         });      
+                    $("#list_LicitacoesDetalhes").on("click", ".ui-btn", function()
+                        {
+                            //sessionStorage.setItem("tipo-de-despesa", $(this).attr('id') );
+                            sessionStorage.setItem("licitacoes-detalhes_text", $(this).text() );
+                            sessionStorage.setItem("licitacoes-detalhes_link", $(this).attr('alt') );
+                        });
+
                 });
         </script>
 
