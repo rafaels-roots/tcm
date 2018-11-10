@@ -139,6 +139,14 @@
                       $.each($.mobile.navigate.history.stack, function (index, val) {
                           console.log($(this));
                       });
+                      
+                      var index = $.mobile.navigate.history.stack.length - 2;
+                      $.mobile.navigate.history.stack.splice(index, 1);
+
+                      $.each($.mobile.navigate.history.stack, function (index, val) {
+                          console.log($(this));
+                      });
+                      
                   });
 
 
