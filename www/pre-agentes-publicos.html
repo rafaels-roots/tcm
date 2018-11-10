@@ -1,0 +1,180 @@
+<!DOCTYPE html> 
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
+    
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
+    
+
+    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
+    <title>Tribunal de Contas</title>
+</head>
+
+<body>
+    <div data-role="page" id="pre-agentes-publicos">
+        <header data-role="header">
+            <h3>Agentes Públicos</h3>
+            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
+        </header>
+
+        <div data-role="main" class="ui-content">
+
+             <div>
+                <p class="filter"></p>
+            </div> 
+
+             <form id="form_letra">
+
+
+                <fieldset data-role="controlgroup">
+                    <label for="indice">Índice : </label>
+                    <select name="ind" id="indice">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                      <option value="H">H</option>
+                      <option value="I">I</option>
+                      <option value="J">J</option>
+                      <option value="K">K</option>
+                      <option value="L">L</option>
+                      <option value="M">M</option>
+                      <option value="N">N</option>
+                      <option value="O">O</option>
+                      <option value="P">P</option>
+                      <option value="Q">Q</option>
+                      <option value="R">R</option>
+                      <option value="S">S</option>
+                      <option value="T">T</option>
+                      <option value="U">U</option>
+                      <option value="V">V</option>
+                      <option value="W">W</option>
+                      <option value="X">X</option>
+                      <option value="Y">Y</option>
+                      <option value="Z">Z</option>
+                    </select>
+                </fieldset>
+            </form>
+
+            <ul data-role="listview" id="list_AgentesPublicos" data-icon="false" data-count-theme="b">
+            </ul>
+
+            <p class="list-info">
+                <span class="atualizacao"></span> <br /> 
+                <span class="fonte"></span> 
+            </p>
+
+        </div>
+      
+
+        <div data-role="popup" id="menuopcoes">
+            <ul data-role="listview" data-inset="true" data-divider-theme="a">
+                <li data-role="list-divider">Login</li>
+                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
+                <li data-role="list-divider">Navegação</li>
+                <li id="voltar" data-icon="back"><a href="menu_principal.html" >Voltar</a></li>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h1>Tribunal de Contas</h1>
+        </div>
+
+        
+        <script type="text/javascript">
+            $("#pre-agentes-publicos").on("pageshow", function()
+                {                    
+
+
+                  $.mobile.loading("show",{
+                        text : 'Carregando...',
+                        textVisible : true,
+                        theme : 'a',
+                        textonly : false
+
+                    });
+
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                        { 
+                           
+                            $(".filter").html(data[0]["municipio"]+' >> '+
+                                              data[0]["selecionado"] + ' >> ' + 
+                                              sessionStorage.getItem("opcao-menu")+' >> '+
+                                              data[0]["situacao"]+' >> '+
+                                              sessionStorage.getItem("ano-municipio"));
+
+                            var ul = $("#list_AgentesPublicos");
+                            $(".filter, #indice, .list-info").css("display", "block"); 
+                            ul.html(data[0]["dados"]);
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
+
+                            $(".atualizacao").text(data[0]["atualizacao"]);
+                            $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
+
+                             $.mobile.loading("hide"); 
+
+    
+                        });      
+
+                    $("#indice").on("change", function()
+                      {
+
+                          $("#list_AgentesPublicos li").remove();
+                          $(".filter, #indice, .list-info").css("display", "none"); 
+                          $.mobile.loading("show",{
+                              text : 'Carregando...',
+                              textVisible : true,
+                              theme : 'a',
+                              textonly : false
+
+                           });
+                          $.getJSON('http://192.168.100.7/tcm/php/pre-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                                { 
+
+                                    $(".filter").html(data[0]["municipio"]+' >> '+
+                                                      data[0]["selecionado"] + ' >> ' + 
+                                                      sessionStorage.getItem("opcao-menu")+' >> '+
+                                                      data[0]["situacao"]+' >> '+
+                                                      sessionStorage.getItem("ano-municipio"));
+
+                                    var ul = $("#list_AgentesPublicos");
+                                    $(".filter, #indice, .list-info").css("display", "block"); 
+                                    ul.html(data[0]["dados"]);
+                                    ul.listview("refresh");
+                                    ul.trigger("updatelayout");
+
+                                    $(".atualizacao").text(data[0]["atualizacao"]);
+                                    $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
+
+                                    $.mobile.loading("hide"); 
+            
+                                }); 
+                      });
+
+                    
+
+
+                });
+        </script>
+
+        
+
+   </div> 
+</body>
+
+</html>

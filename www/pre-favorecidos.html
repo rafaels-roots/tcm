@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html> 
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
+    
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
+    
+
+    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
+    <title>Tribunal de Contas</title>
+</head>
+
+<body>
+    <div data-role="page" id="pre-favorecidos">
+        <header data-role="header">
+            <h3>Favorecidos</h3>
+            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
+        </header>
+
+        <div data-role="main" class="ui-content">
+            
+            <div>
+                <p class="filter"></p>
+            </div>
+            
+            <ul data-icon="false" data-role="listview" id="list_Favorecidos" data-count-theme="b"></ul>
+
+            <p class="list-info">
+                <span class="atualizacao"></span> <br /> 
+                <span class="fonte"></span> 
+            </p>
+
+        </div>
+      
+
+        <div data-role="popup" id="menuopcoes">
+            <ul data-role="listview" data-inset="true" data-divider-theme="a">
+                <li data-role="list-divider">Login</li>
+                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
+                <li data-role="list-divider">Navegação</li>
+                <li id="voltar" data-icon="back"><a href="tipos-de-despesas.html" >Voltar</a></li>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h1>Tribunal de Contas</h1>
+        </div>
+
+
+
+        <script type="text/javascript">
+            $("#pre-favorecidos").on("pageshow", function()
+                {
+                    
+                    $.mobile.loading("show",{
+                        text : 'Carregando...',
+                        textVisible : true,
+                        theme : 'a',
+                        textonly : false
+
+                    });
+
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-favorecidos.php?callback=?', {action: "f_select_favorecidos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("tipos-de-despesas-link")  }, function(data) 
+                        { 
+                            
+                            $(".filter").html(data[0]["municipio"]+' >> '+
+                                            data[0]["selecionado"]+' >> '+
+                                            sessionStorage.getItem('opcao-menu') + ' >> ' +
+                                            sessionStorage.getItem('tipo-de-despesa_text') + ' >> ' +  
+                                            sessionStorage.getItem('favorecido_text') + ' >> ' +  
+                                            sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
+
+
+                           
+
+                            var ul = $("#list_Favorecidos"); 
+                            $(".filter, .list-info").css("display", "block");
+                            ul.html(data[0]["dados"]);
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
+
+                            $("#list_Favorecidos a[href^='/transparencia']").remove();    
+
+                             $('li').contents().filter(function(){
+                                //alert("ssdsa");
+                                return this.nodeType == 3 
+                                
+                            }).remove();
+                           
+
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
+   
+                            $(".atualizacao").text(data[0]["atualizacao"]);
+                            $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
+
+                            $.mobile.loading("hide"); 
+                            
+
+                        });      
+                });
+        </script>
+
+   </div> 
+</body>
+ 
+</html>

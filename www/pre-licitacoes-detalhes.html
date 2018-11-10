@@ -1,24 +1,5 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -26,33 +7,10 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-   <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />-->
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+ 
 
    <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
     
-
-
-    <!-- * = permite qualquer URL, exceto dados: blob: filesystem: schemes.-->
-    <!-- self = só carrega arquivos da mesma origem (host,esquema,porta) -->
-    <!-- data : = Permite o carregamento de recursos por meio do esquema de dados (por exemplo, imagens codificadas em Base64)-->
-    <!-- unsafe-inline = permite o uso de elementos de origem em linha, como atributo de estilo, onclick ou corpos de tag de script (depende do contexto da origem à qual ele é aplicado)-->
-    <!-- unsafe-eval = Permite a avaliação de código dinâmico inseguro, como JavaScript.. -->
-
-
-    <!-- default-src :  default-srcé a política padrão para carregar conteúdo, como JavaScript, Imagens, CSS, Fontes, solicitações AJAX, Quadros, Mídia HTML5. -->
-
-
-
 
 
     
@@ -64,7 +22,7 @@
 </head>
 
 <body>
-    <div data-role="page" id="licitacoes-detalhes">
+    <div data-role="page" id="pre-licitacoes-detalhes">
         <header data-role="header">
             <h3>Licitações Informadas(Detalhe)</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
@@ -73,7 +31,7 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"><!--Apuiarés >> Prefeitura >> Receitas >> 2018 <br /> Foram encontradas 58 receitas - Total: R$22.488.496,86. <br /> Última atualização em: 24/09/2018. <br /> Fonte: Dados enviados pelo Município através do Sistema de Informações Municipais - SIM.--></p>
+                <p class="filter"></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_LicitacoesDetalhes" data-count-theme="b">
@@ -105,7 +63,7 @@
         -->
 
         <script type="text/javascript">
-            $("#licitacoes-detalhes").on("pageshow", function()
+            $("#pre-licitacoes-detalhes").on("pageshow", function()
                 {
                     
                     $.mobile.loading("show",{
@@ -116,7 +74,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/licitacoes-detalhes.php?callback=?', {action: "f_select_licitacoes_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem('licitacoes-inf_link')   }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-detalhes.php?callback=?', {action: "f_select_licitacoes_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem('link')   }, function(data) 
                         {                             
                             /*$(".filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+
@@ -155,8 +113,8 @@
                     $("#list_LicitacoesDetalhes").on("click", ".ui-btn", function()
                         {
                             //sessionStorage.setItem("tipo-de-despesa", $(this).attr('id') );
-                            sessionStorage.setItem("licitacoes-detalhes_text", $(this).text() );
-                            sessionStorage.setItem("licitacoes-detalhes_link", $(this).attr('alt') );
+                            sessionStorage.setItem("text", $(this).text() );
+                            sessionStorage.setItem("link", $(this).attr('alt') );
                         });
 
                 });

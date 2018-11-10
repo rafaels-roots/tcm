@@ -148,30 +148,51 @@ text-shadow:none!important;
 #list_LicitacoesInf,
 #list_PrestacaoContas,
 #list_OrdenadoresDespesas,
-#list_AgentesPublicos {
+#list_AgentesPublicos,
+#list_Fornecedores,
+#list_FornecedoresItens,
+#list_FornecedoresDetalhes {
 	margin-top: 5px!important;
 }
+#list_AgentesPublicos {
+	margin-top: 20px!important;	
+}
 #menu_principal .ui-content,
-#receitas .ui-content,
-#despesas .ui-content,
-#tipos-de-despesas .ui-content,
-#favorecidos .ui-content,
-#licitacoes-inf .ui-content,
-#prestacao-contas .ui-content,
-#ordenadores-despesas .ui-content,
-#agentes-publicos .ui-content {
+#pre-receitas .ui-content,
+#pre-despesas .ui-content,
+#pre-tipos-de-despesas .ui-content,
+#pre-favorecidos .ui-content,
+#pre-licitacoes-inf .ui-content,
+#pre-prestacao-contas .ui-content,
+#pre-ordenadores-despesas .ui-content,
+#pre-agentes-publicos .ui-content,
+#pre-fornecedores .ui-content,
+#pre-fornecedores-itens .ui-content,
+#pre-fornecedores-detalhes .ui-content,
+#ver-despesas .ui-content,
+#ver-tipos-de-despesas .ui-content,
+#ver-favorecidos .ui-content,
+#ver-prestacao-contas .ui-content,
+#ver-ordenadores-despesas .ui-content,
+#ver-agentes-publicos .ui-content,
+#ver-fornecedores .ui-content,
+#ver-fornecedores-itens .ui-content,
+#ver-fornecedores-detalhes .ui-content {
 	padding-top:0.4em;
 	
 }
 
-#receitas #list_Receitas .ui-btn,
-#despesas #list_Despesas .ui-btn,
-#tipos-de-despesas #list_TiposDespesas .ui-btn,
-#favorecidos #list_Favorecidos .ui-btn,
-#licitacoes-inf #list_LicitacoesInf .ui-btn,
-#prestacao-contas #list_PrestacaoContas .ui-btn,
-#ordenadores-despesas #list_OrdenadoresDespesas .ui-btn,
-#agentes-publicos #list_AgentesPublicos .ui-btn {
+#list_Receitas .ui-btn,
+#list_Despesas .ui-btn,
+#list_TiposDespesas .ui-btn,
+#list_Favorecidos .ui-btn,
+#list_LicitacoesInf .ui-btn,
+#list_PrestacaoContas .ui-btn,
+#list_OrdenadoresDespesas .ui-btn,
+#list_AgentesPublicos .ui-btn,
+#list_Fornecedores .ui-btn,
+#list_FornecedoresItens .ui-btn,
+#list_FornecedoresDetalhes .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;
@@ -183,17 +204,21 @@ text-shadow:none!important;
 	
 
 }
-#ordenadores-despesas #list_OrdenadoresDespesas .ui-btn
+#list_OrdenadoresDespesas .ui-btn
  {
 	padding-right: 5em!important;
 }
-#agentes-publicos #list_AgentesPublicos .ui-btn {
+#list_AgentesPublicos .ui-btn {
 	padding-right: 3.5em!important;	
 }
-#favorecidos #list_Favorecidos .ui-btn {
+#list_Favorecidos .ui-btn,
+#list_FornecedoresDetalhes .ui-btn {
 	font-size:0.8em!important;
 }
-#favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn {
+#pre-favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn,
+#pre-fornecedores-detalhes .ui-listview>li.ui-li-has-alt>.ui-btn,
+#ver-favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn,
+#ver-fornecedores-detalhes .ui-listview>li.ui-li-has-alt>.ui-btn {
 	margin-right:0!important;
 }
 .filter {
@@ -206,6 +231,9 @@ text-shadow:none!important;
 	padding:0.6em 0.3em;
 	display:none;
 	border-radius:3px;
+}
+#form-letra {
+	display:none;
 }
 
 
@@ -229,4 +257,17 @@ text-shadow:none!important;
 	font-weight:500!important;
 }
 
+.list-info {
+	display: none;
+	text-align: right;
+}
+.atualizacao {
+	color:red!important;
+	
+}
 
+
+.fonte {
+	font-style:italic!important;
+	color:#000;
+}
