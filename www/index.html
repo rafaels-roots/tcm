@@ -50,7 +50,6 @@
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
-        <!--<script type="text/javascript" src="js/index.js"></script>-->
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
@@ -119,47 +118,52 @@
 
 */
 
-
-
-           /* $("#index").on("pageshow", function()
-                {
-                    /*$("#entrar").on("click", function()
-                        {
-                            //$.mobile.allowCrossDomainPages = true;
-                            $.mobile.changePage("municipios.html");
-
-                        });
-
-                });  */     
-
-                $(document).on('pagechange',function() 
+                $("#index").on("pageshow", function()
                   {
-                      //console.log("Current:" + $.mobile.navigate.history.getActive().url);
-                      //console.log("Stack: (active index = " + $.mobile.navigate.history.activeIndex + " -previous index: " + $.mobile.navigate.history.previousIndex + " )");
-                      $.each($.mobile.navigate.history.stack, function (index, val) {
-                          console.log($(this));
-                      });
-                      
-                      var index = $.mobile.navigate.history.stack.length - 2;
-                      $.mobile.navigate.history.stack.splice(index, 1);
-
-                      $.each($.mobile.navigate.history.stack, function (index, val) {
-                          console.log($(this));
-                      });
-                      
+                     facebookConnectPlugin.getLoginStatus(function(response)
+                       {
+                           alert("oi");
+                       }); 
                   });
-
 
                 function onBackButtonTapped() 
                   {
                       //alert( $.mobile.activePage.attr('id') );
                       if( $.mobile.activePage.attr('id') == "municipios" ) 
                         {
-                            return false;
+                            navigator.app.exitApp();
                         }
+                      else 
+                        {
+                           if($.mobile.activePage.attr('id') == "pre-favorecidos" ||
+                              $.mobile.activePage.attr('id') == "pre-fornecedores-detalhes" ||
+                              $.mobile.activePage.attr('id') == "pre-fornecedores-itens" ||
+                              $.mobile.activePage.attr('id') == "pre-tipos-de-despesas" ||
+                              $.mobile.activePage.attr('id') == "ver-favorecidos" ||
+                              $.mobile.activePage.attr('id') == "ver-fornecedores-detalhes" ||
+                              $.mobile.activePage.attr('id') == "ver-fornecedores-itens" ||
+                              $.mobile.activePage.attr('id') == "ver-tipos-despesas") 
+                                   {
+                                      $.mobile.changePage("menu_principal.html")
+                                   }
+                               else 
+                                   {
+                                      
+                                      if($.mobile.activePage.attr('id') == "menu_principal") 
+                                          {
+                                            $.mobile.changePage("municipios.html")    
+                                          }
+                                      else 
+                                          {
+                                            window.history.back();       
+                                          }
+                                      
+                                   }
+                           
+                        }  
                   }
+                document.addEventListener("backbutton", onBackButtonTapped, false);   
 
-                document.addEventListener("backbutton", onBackButtonTapped, false);            
         </script>
 
    </div> 

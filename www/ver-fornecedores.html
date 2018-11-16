@@ -20,7 +20,7 @@
 
 <body>
     <div data-role="page" id="ver-fornecedores">
-        <header data-role="header">
+        <header data-role="header" data-position="fixed">
             <h3>Fornecedores</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
@@ -71,7 +71,7 @@
 
                     $.getJSON('http://192.168.100.7/tcm/php/ver-fornecedores.php?callback=?', {action: "f_select_fornecedores", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         {                             
-                            $(".filter").html(data[0]["municipio"]+' >> '+
+                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio")+' >> '+data[0]["total"]);
@@ -82,8 +82,8 @@
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                            $(".atualizacao").text(data[0]["atualizacao"]);
-                            $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
+                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
+                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
 
                              $.mobile.loading("hide"); 
     

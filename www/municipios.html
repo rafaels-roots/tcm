@@ -21,7 +21,7 @@
 
 <body>
     <div data-role="page" id="municipios">
-        <header data-role="header">
+        <header data-role="header" data-position="fixed">
             <h3>Escolha o município?</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="a" data-iconpos="notext"  class="ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
@@ -89,7 +89,7 @@
                         theme : 'a',
                         textonly : false
 
-                    });
+                    }); 
 
                     $.getJSON('http://192.168.100.7/tcm/php/municipios.php?callback=?', {action: "f_select_municipios"}, function(data) 
                         { 
@@ -112,12 +112,13 @@
                     $("#list_Municipios").on("click", ".ui-btn", function()
                         {
                             sessionStorage.setItem("codigo-municipio", $(this).attr('id') );
+                            sessionStorage.setItem("text-municipio", $(this).text());
                         });
                     
                     $("#form-ano").on("click", "#button1", function()
                         {
                             sessionStorage.setItem("ano-municipio", $("#ano").val() );
-                            //$.mobile.changePage("menu_principal.html");
+                           
                         });
 
                 });

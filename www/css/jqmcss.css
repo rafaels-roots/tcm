@@ -11,9 +11,9 @@ img { width: 100% }
 .ui-mobile [data-role=footer],
 .ui-mobile [data-role=header] 
 {
-    background-color: #4887cc;
-    color: beige;
-    text-shadow: 1px 1px 12px #000;
+    background-color: #ffeb3b!important;
+    color: #000;
+    /*text-shadow: 1px 1px 12px #000;*/
     z-index: 1001
 }
 .ui-header .ui-title 
@@ -72,7 +72,7 @@ label
 
 /*estilos personalizados á página*/
 #index .ui-input-btn {
-    background-color: #4887cc!important;
+    background-color: #4caf50!important;
     color: #fff!important;
     text-shadow: none!important;
     margin-top: 20px
@@ -85,8 +85,11 @@ label
 
 #button1
 {
-	background-color: #54698d!important;
-	color:#fff!important;
+	/*background-color: #54698d!important;*/
+	/*background-color: #ffeb3b!important;*/
+	
+	background-color: #ffeb3b!important;
+	color:#000!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
@@ -94,8 +97,9 @@ label
 }
 #button2, #check-config 
 {
-	background-color: #4887cc!important;
-	color:#fff!important;
+	background-color: #8bc34a!important;
+	/*background-color: #8bc34a!important;*/
+	color:#000!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
@@ -116,7 +120,8 @@ text-shadow:none!important;
 	font-size:2em!important;
 	font-weight:bold!important;
 	text-align: center;
-	color: #54698d!important;
+	/*color: #54698d!important;*/
+	color : #000;
 }/*
 .sumary-search 
 {	
@@ -151,7 +156,8 @@ text-shadow:none!important;
 #list_AgentesPublicos,
 #list_Fornecedores,
 #list_FornecedoresItens,
-#list_FornecedoresDetalhes {
+#list_FornecedoresDetalhes, 
+#list_LicitacoesPublicadas { 
 	margin-top: 5px!important;
 }
 #list_AgentesPublicos {
@@ -169,6 +175,7 @@ text-shadow:none!important;
 #pre-fornecedores .ui-content,
 #pre-fornecedores-itens .ui-content,
 #pre-fornecedores-detalhes .ui-content,
+#pre-licitacoes-publicadas .ui-content,
 #ver-despesas .ui-content,
 #ver-tipos-de-despesas .ui-content,
 #ver-favorecidos .ui-content,
@@ -192,7 +199,8 @@ text-shadow:none!important;
 #list_AgentesPublicos .ui-btn,
 #list_Fornecedores .ui-btn,
 #list_FornecedoresItens .ui-btn,
-#list_FornecedoresDetalhes .ui-btn {
+#list_FornecedoresDetalhes .ui-btn,
+#list_LicitacoesPublicadas .ui-btn {
 	text-overflow:clip!important;
 	overflow:initial!important;
 	white-space:normal!important;
@@ -203,6 +211,12 @@ text-shadow:none!important;
 	font-weight: 500!important;
 	
 
+}
+#list_LicitacoesPublicadas .ui-btn .uiaa {
+	text-overflow:clip!important;
+	overflow:initial!important;
+	white-space:normal!important;
+	
 }
 #list_OrdenadoresDespesas .ui-btn
  {
@@ -218,7 +232,8 @@ text-shadow:none!important;
 #pre-favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn,
 #pre-fornecedores-detalhes .ui-listview>li.ui-li-has-alt>.ui-btn,
 #ver-favorecidos .ui-listview>li.ui-li-has-alt>.ui-btn,
-#ver-fornecedores-detalhes .ui-listview>li.ui-li-has-alt>.ui-btn {
+#ver-fornecedores-detalhes .ui-listview>li.ui-li-has-alt>.ui-btn,
+#pre-licitacoes-publicadas .ui-listview>li.ui-li-has-alt>.ui-btn {
 	margin-right:0!important;
 }
 .filter {

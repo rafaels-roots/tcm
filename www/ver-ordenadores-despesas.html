@@ -21,7 +21,7 @@
 
 <body>
     <div data-role="page" id="ver-ordenadores-despesas">
-        <header data-role="header">
+        <header data-role="header" data-position="fixed">
             <h3>Ordenadores de Despesas</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
@@ -74,7 +74,7 @@
                         { 
                             
                            
-                            $(".filter").html(data[0]["municipio"]+' >> '+
+                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                             data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio"));
@@ -86,8 +86,8 @@
                             ul.trigger("updatelayout");
 
                             
-                            $(".atualizacao").text(data[0]["atualizacao"]);
-                            $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
+                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
+                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
 
                              $.mobile.loading("hide"); 
     
