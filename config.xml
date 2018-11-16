@@ -27,7 +27,7 @@
         <param name="APP_ID" value="264472504257738" />
         <param name="APP_NAME" value="Tribunal de Contas do Município" />
     </plugin>-->
-    <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
+    <plugin name="cordova-plugin-facebook4" source="npm" spec="1.7.4">
             <param name="APP_ID" value="264472504257738" />
             <param name="APP_NAME" value="Tribunal de Contas do Município" />
 </plugin>
