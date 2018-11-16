@@ -27,7 +27,7 @@
         <param name="APIKey" value="264472504257738" />
         <param name="APISecret" value="018ed2e730256be459caa5b5d5a2d650" />
     </plugin>-->
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="3.21.1">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="">
         <param name="APP_ID" value="264472504257738" />
         <param name="APP_NAME" value="Tribunal de Contas do Município" />
     </gap:plugin>
