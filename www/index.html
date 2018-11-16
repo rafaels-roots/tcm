@@ -120,10 +120,17 @@
 
                 $("#index").on("pageshow", function()
                   {
-                     facebookConnectPlugin.getLoginStatus(function(response)
-                       {
-                           alert("oi");
+                       $("#button2").on("click", function(){
+                          facebookConnectPlugin.login(['email'], function(response){
+                              alert("conectado");
+                              alert(JSON.stringify(response.authResponse));
+                          }, function(error) {
+                              alert(JSON.stringify(error));
+                          })
                        }); 
+
+
+
                   });
 
                 function onBackButtonTapped() 

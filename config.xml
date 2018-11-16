@@ -23,11 +23,6 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" source="npm" />
-    <!--<plugin name="phonegap-facebook-plugin" source="git" />
-        <param name="APIKey" value="264472504257738" />
-        <param name="APISecret" value="018ed2e730256be459caa5b5d5a2d650" />
-    </plugin>-->
-    
     <plugin spec="https://github.com/Wizcorp/phonegap-facebook-plugin.git#0.8.0"> 
         <param name="APP_ID" value="264472504257738" />
         <param name="APP_NAME" value="Tribunal de Contas do Município" />
