@@ -123,7 +123,7 @@
                        $("#button2").on("click", function(){
                           facebookConnectPlugin.login(['email'], function(response){
                               alert("conectado");
-                              alert(JSON.stringify(response.authResponse));
+                              console.log(JSON.stringify(response));
                           }, function(error) {
                               alert(JSON.stringify(error));
                           })
@@ -136,7 +136,7 @@
                 function onBackButtonTapped() 
                   {
                       //alert( $.mobile.activePage.attr('id') );
-                      if( $.mobile.activePage.attr('id') == "municipios" ) 
+                      if( $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "index"  ) 
                         {
                             navigator.app.exitApp();
                         }
