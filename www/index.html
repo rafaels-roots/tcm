@@ -123,7 +123,7 @@
                        $("#button2").on("click", function(){
                           facebookConnectPlugin.login(['email'], function(response){
                               alert("conectado");
-                              console.log(JSON.stringify(response));
+                              alert(JSON.stringify(response));
                           }, function(error) {
                               alert(JSON.stringify(error));
                           })
