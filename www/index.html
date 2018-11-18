@@ -121,6 +121,7 @@
                 $("#index").on("pageshow", function()
                   {
                        $("#button2").on("click", function(){
+                          alert("dsda");
                           facebookConnectPlugin.login(function(response){
                               
                               alert(JSON.stringify(response));
