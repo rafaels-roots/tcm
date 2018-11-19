@@ -11,9 +11,9 @@ img { width: 100% }
 .ui-mobile [data-role=footer],
 .ui-mobile [data-role=header] 
 {
-    background-color: #ffeb3b!important;
-    color: #000;
-    /*text-shadow: 1px 1px 12px #000;*/
+    background-color: #4887cc!important;
+    color: #fff;
+    text-shadow: 1px 1px 12px #000;
     z-index: 1001
 }
 .ui-header .ui-title 
@@ -85,11 +85,11 @@ label
 
 #button1
 {
-	/*background-color: #54698d!important;*/
+	background-color: #54698d!important;
 	/*background-color: #ffeb3b!important;*/
 	
-	background-color: #ffeb3b!important;
-	color:#000!important;
+	/*background-color: #ffeb3b!important;*/
+	color:#fff!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
@@ -97,15 +97,15 @@ label
 }
 #button2, #check-config 
 {
-	background-color: #8bc34a!important;
+	background-color: #4887cc!important;
 	/*background-color: #8bc34a!important;*/
-	color:#000!important;
+	color:#fff!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
 }
 #button3 {
-text-shadow:none!important;
+	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
 }
@@ -120,8 +120,8 @@ text-shadow:none!important;
 	font-size:2em!important;
 	font-weight:bold!important;
 	text-align: center;
-	/*color: #54698d!important;*/
-	color : #000;
+	color: #54698d!important;
+	/*color : #000;*/
 }/*
 .sumary-search 
 {	

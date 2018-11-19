@@ -43,7 +43,7 @@
         <div data-role="popup" id="menuopcoes">
             <ul data-role="listview" data-inset="true" data-divider-theme="a">
                 <li data-role="list-divider">Login</li>
-                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="usuario" data-icon="user"><a href="#">...</a></li>
                 <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
                 <li data-role="list-divider">Navegação</li>
                 <li id="voltar" data-icon="back"><a href="menu_principal.html" >Voltar</a></li>
@@ -54,18 +54,14 @@
             <h1>Tribunal de Contas</h1>
         </div>
 
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <!--<script type="text/javascript" src="js/index.js"></script>-->
-        
-        <!-- isso era o que tava ocasionando o refluxo
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquerymobile.js"></script>
-        -->
+      
 
         <script type="text/javascript">
             $("#pre-licitacoes-detalhes").on("pageshow", function()
                 {
                     
+                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
+
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,

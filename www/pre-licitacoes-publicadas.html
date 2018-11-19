@@ -45,7 +45,7 @@
         <div data-role="popup" id="menuopcoes">
             <ul data-role="listview" data-inset="true" data-divider-theme="a">
                 <li data-role="list-divider">Login</li>
-                <li id="usuario" data-icon="user"><a href="#">Admin</a></li>
+                <li id="usuario" data-icon="user"><a href="#">...</a></li>
                 <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
                 <li data-role="list-divider">Navegação</li>
                 <li id="voltar" data-icon="back"><a href="tipos-de-despesas.html" >Voltar</a></li>
@@ -62,6 +62,8 @@
             $("#pre-licitacoes-publicadas").on("pageshow", function()
                 {
                     
+                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
+
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
