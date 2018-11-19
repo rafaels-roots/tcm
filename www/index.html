@@ -130,7 +130,7 @@
                                 facebookConnectPlugin.api('me?fields=id,name,email', ["public_profile"], function(data)
                                   {
                                     
-                                    sessionStorage.getItem("user-info",JSON.stringify(data)); 
+                                    sessionStorage.setItem("user-info",JSON.stringify(data)); 
                                     $.mobile.changePage("municipios.html");
 
                                   }, function(error)
