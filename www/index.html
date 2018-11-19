@@ -124,20 +124,23 @@
                   {
                        $("#button2").on("click", function()
                          {
-                            alert("dsda");
-                            
                             facebookConnectPlugin.login(['email'],function(response)
                               {
                                 
-                                facebookConnectPlugin.api('me?fields=id,name,email', ["public_profile"], function(data){
-                                  alert(JSON.stringify(data));  
-                                }, function(error){
-                                  alert(JSON.stringify(error));
-                                });
+                                facebookConnectPlugin.api('me?fields=id,name,email', ["public_profile"], function(data)
+                                  {
+                                    
+                                    sessionStorage.getItem("user-info",JSON.stringify(data)); 
+                                    $.mobile.changePage("municipios.html");
+
+                                  }, function(error)
+                                  {
+                                    alert("A senha ou usuario inserido está incorreta");
+                                  });
 
                               }, function(error) 
                                 {
-                                    alert( JSON.stringify(error) );
+                                    alert("Não foi possível conectar com facebook");
                                 });
                          }); 
 
