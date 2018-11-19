@@ -91,6 +91,8 @@
                           sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);
                           sessionStorage.setItem("fonte", data[0]["fonte"].substring(7));  
 
+                          
+                          $("#menu_principal .ui-content").css("display","block");
                           $(".list-info").css("display", "block");
                           $(".atualizacao").text(data[0]["atualizacao"]);
                           $(".fonte").html("<strong>Fonte : </strong>"+data[0]["fonte"].substring(7));
