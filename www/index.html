@@ -126,7 +126,7 @@
                          {
                             alert("dsda");
                             
-                            facebookConnectPlugin.login(function(response)
+                            facebookConnectPlugin.login(['email'],function(response)
                               {
                                 alert( JSON.stringify(response) );
 
@@ -149,7 +149,7 @@
                 function onBackButtonTapped() 
                   {
                       //alert( $.mobile.activePage.attr('id') );
-                      if( $.mobile.activePage.attr('id') == "municipios" ) 
+                      if( $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "index"  ) 
                         {
                             navigator.app.exitApp();
                         }
