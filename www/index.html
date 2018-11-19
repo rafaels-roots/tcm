@@ -128,13 +128,12 @@
                             
                             facebookConnectPlugin.login(['email'],function(response)
                               {
-                                alert( JSON.stringify(response) );
-
-                                /*facebookConnectPlugin.api('me?fields=id,name,email', ["public_profile"], function(data){
+                                
+                                facebookConnectPlugin.api('me?fields=id,name,email', ["public_profile"], function(data){
                                   alert(JSON.stringify(data));  
                                 }, function(error){
                                   alert(JSON.stringify(error));
-                                });*/
+                                });
 
                               }, function(error) 
                                 {
