@@ -33,7 +33,7 @@ img { width: 100% }
 .ui-li-count 
 {
     right: .4em!important
-    z-index:4000!important;
+    z-index:999!important;
 }
 .ui-li-aside {
 	right: .4em!important;	
@@ -64,6 +64,8 @@ img { width: 100% }
 	border-color:#A5A5A5!important;
 	background-color:#fbfbfb !important; 
 
+
+	
 }
 label 
 {
@@ -121,29 +123,8 @@ label
 	font-weight:bold!important;
 	text-align: center;
 	color: #54698d!important;
-	/*color : #000;*/
-}/*
-.sumary-search 
-{	
-	font-weight:bold!important;	 
-}
-#search .ui-content {
-	padding-top:0!important;
 	
 }
-#search .ui-content form {
-	margin-top: -10px!important;
-}
-
-#autocomplete {
-	margin-top:6px;
-}
-
-#autocomplete .ui-btn {
-	padding-top:0.6em!important;
-	padding-bottom:0!important;
-}*/
-
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
@@ -152,6 +133,7 @@ label
 #list_TiposDespesas,
 #list_Favorecidos,
 #list_LicitacoesInf,
+#list_LicitacoesInfDetalhes,
 #list_PrestacaoContas,
 #list_OrdenadoresDespesas,
 #list_AgentesPublicos,
@@ -170,6 +152,7 @@ label
 #pre-tipos-de-despesas .ui-content,
 #pre-favorecidos .ui-content,
 #pre-licitacoes-inf .ui-content,
+#pre-licitacoes-inf-detalhes .ui-content,
 #pre-prestacao-contas .ui-content,
 #pre-ordenadores-despesas .ui-content,
 #pre-agentes-publicos .ui-content,
@@ -197,6 +180,7 @@ label
 #list_TiposDespesas .ui-btn,
 #list_Favorecidos .ui-btn,
 #list_LicitacoesInf .ui-btn,
+#list_LicitacoesInfDetalhes .ui-btn,
 #list_PrestacaoContas .ui-btn,
 #list_OrdenadoresDespesas .ui-btn,
 #list_AgentesPublicos .ui-btn,
@@ -209,8 +193,8 @@ label
 	white-space:normal!important;
 	padding-right: 6em!important;
 	padding-left: 0.3em!important;
-	padding-top: 0.1em!important;
-	padding-bottom: 0.1em!important;
+	padding-top: 0.28em!important;
+	padding-bottom: 0.28em!important;
 	font-weight: 500!important;
 	
 
@@ -250,6 +234,26 @@ label
 	display:none;
 	border-radius:3px;
 }
+.info-licitacao {
+	display:none;
+}
+.info-licitacao span{
+	font-family:Tahoma!important;
+	font-weight: 500!important;
+	font-size:0.8em!important;	
+}
+.info-licitacao .value_dhrealizacao,
+.info-licitacao .value_dautuacao,
+.info-licitacao .value_modalidade,
+.info-licitacao .value_tipo,
+.info-licitacao .value_vlrestimado,
+.info-licitacao .value_vlrlimite,
+.info-licitacao .value_objeto,
+.info-licitacao .value_gestorcomissao {
+	font-weight:normal!important;
+}
+
+
 #form-letra {
 	display:none;
 }
@@ -278,6 +282,7 @@ label
 .list-info {
 	display: none;
 	text-align: right;
+	margin-top:30px!important;
 }
 .atualizacao {
 	color:red!important;

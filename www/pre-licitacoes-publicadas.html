@@ -39,7 +39,7 @@
                 <span class="fonte"></span> 
             </p>
 
-        </div>
+        </div> 
       
 
         <div data-role="popup" id="menuopcoes">
@@ -75,10 +75,10 @@
                     $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                         { 
                             
-                            $(".filter").html(sessionStorage.getItem('text-municipio')+' >> '+
-                                            "Prefeitura >> "+
-                                            sessionStorage.getItem('opcao-menu') + ' >> ' +
-                                            sessionStorage.getItem('ano-municipio') );
+                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                                              'PREFEITURA >> '+
+                                              sessionStorage.getItem("opcao-menu")+' >> '+
+                                              sessionStorage.getItem("ano-municipio"));
 
 
                            

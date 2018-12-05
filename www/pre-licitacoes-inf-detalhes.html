@@ -7,11 +7,13 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-  
+ 
 
    <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
     
 
+
+    
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
     
 
@@ -20,9 +22,9 @@
 </head>
 
 <body>
-    <div data-role="page" id="pre-licitacoes-inf">
+    <div data-role="page" id="pre-licitacoes-inf-detalhes">
         <header data-role="header" data-position="fixed">
-            <h3>Licitações Informadas</h3>
+            <h3>Licitações Informadas(Detalhe)</h3>
             <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
         </header>
 
@@ -31,11 +33,22 @@
             <div>
                 <p class="filter"></p>
             </div>
+
+            <p class="info-licitacao">
+                <span class='dhrealizacao'>Data/Hora Realização :  </span><span class="value_dhrealizacao"></span> <br />
+                <span class='dautuacao'>Data de Autuação do Processo Adm. : </span><span class="value_dautuacao"></span> <br />
+                <span class='modalidade'>Modalidade : </span><span class="value_modalidade"></span> <br />
+                <span class='tipo'>Tipo : </span><span class="value_tipo"></span> <br />
+                <span class='vlrestimado'>Valor Estimado : </span><span class="value_vlrestimado"></span> <br />
+                <span class='vlrlimite'>Valor Limite : </span><span class="value_vlrlimite"></span> <br />
+                <span class='objeto'>Objeto : </span><span class="value_objeto"></span> <br />
+                <span class='gestorcomissao'>Gestor da UG a qual pertence a Comissão : </span><span class="value_gestorcomissao"></span>
+            </p>
             
-            <ul data-icon="false" data-role="listview" id="list_LicitacoesInf" data-count-theme="b">             
+            <ul data-icon="false" data-role="listview" id="list_LicitacoesInfDetalhes" data-count-theme="b">
             </ul>
 
-            <p class="list-info">
+             <p class="list-info">
                 <span class="atualizacao"></span> <br /> 
                 <span class="fonte"></span> 
             </p>
@@ -57,11 +70,14 @@
             <h1>Tribunal de Contas</h1>
         </div>
 
+      
+
         <script type="text/javascript">
-            $("#pre-licitacoes-inf").on("pageshow", function()
+            $("#pre-licitacoes-inf-detalhes").on("pageshow", function()
                 {
-                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
                     
+                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
+
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
@@ -70,16 +86,28 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('link')   }, function(data) 
                         {                             
                             $(".filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
-                                              sessionStorage.getItem("ano-municipio")+ ' >> ' +
-                                              data[0]["qtdelicitacoes"]);
+                                              sessionStorage.getItem("ano-municipio")+' >> '+
+                                              data[0]["licitacao"]);    
 
-                            var ul = $("#list_LicitacoesInf"); 
-                            $(".filter, .list-info").css("display", "block");
+                            $(".value_dhrealizacao").text(data[0]["cab"][0] );
+                            $(".value_dautuacao").text(data[0]["cab"][1] );
+                            $(".value_modalidade").text(data[0]["cab"][2] );
+                            $(".value_tipo").text(data[0]["cab"][3] );
+                            $(".value_vlrestimado").text(data[0]["cab"][4] );
+                            $(".value_vlrlimite").text(data[0]["cab"][5] );
+                            $(".value_objeto").text(data[0]["cab"][6] );
+                            $(".value_gestorcomissao").text(data[0]["cab"][7] );
+
+                            $(".filter").css("display", "block");                                                                     
+
+
+                            var ul = $("#list_LicitacoesInfDetalhes"); 
+                            $(".filter, .list-info, .info-licitacao").css("display", "block");
                             ul.html(data[0]["dados"]);
 
                             $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
@@ -88,13 +116,10 @@
                             $.mobile.loading("hide"); 
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
+
     
                         });      
-                    $("#list_LicitacoesInf").on("click", ".ui-btn", function()
-                        {
-                            sessionStorage.setItem("text", $(this).text() );
-                            sessionStorage.setItem("link", $(this).attr('alt') );
-                        });
+                    
 
                 });
         </script>

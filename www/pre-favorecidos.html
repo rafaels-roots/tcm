@@ -79,8 +79,9 @@
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                             data[0]["selecionado"]+' >> '+
                                             sessionStorage.getItem('opcao-menu') + ' >> ' +
-                                            sessionStorage.getItem('tipo-de-despesa_text') + ' >> ' +  
-                                            sessionStorage.getItem('favorecido_text') + ' >> ' +  
+                                            sessionStorage.getItem('tipos-de-despesas-text') + ' >> ' +  
+                                            data[0]["despesa"] + ' >> ' + 
+                                            data[0]["favorecido"] + ' >> ' +  
                                             sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
 
 

@@ -83,6 +83,14 @@
 
 
 
+                       $("#button1").on("click", function(){
+
+                         sessionStorage.setItem("user-info",JSON.stringify( {name : "Admin"} )); 
+                        $.mobile.changePage("municipios.html")
+                       })
+
+
+
                   });
 
                 function onBackButtonTapped() 
@@ -94,7 +102,7 @@
                         }
                       else 
                         {
-                           if($.mobile.activePage.attr('id') == "pre-favorecidos" ||
+                           /*if($.mobile.activePage.attr('id') == "pre-favorecidos" ||
                               $.mobile.activePage.attr('id') == "pre-fornecedores-detalhes" ||
                               $.mobile.activePage.attr('id') == "pre-fornecedores-itens" ||
                               $.mobile.activePage.attr('id') == "pre-tipos-de-despesas" ||
@@ -117,7 +125,8 @@
                                             window.history.back();       
                                           }
                                       
-                                   }
+                                   }*/
+                                   window.history.back(); 
                            
                         }  
                   }

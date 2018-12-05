@@ -77,8 +77,10 @@
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
+                                              data[0]["despesa"] + ' >> ' +
+                                              data[0]["favorecido"] + ' >> ' +
                                               sessionStorage.getItem("ano-municipio")+' >> ' +
-                                              data[0]["favorecido"]+ ' >> ' +data[0]["total"]);
+                                              data[0]["total"]);
 
                             var ul = $("#list_FornecedoresDetalhes"); 
                             $(".filter, .list-info").css("display", "block");
