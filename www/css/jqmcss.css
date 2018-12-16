@@ -83,7 +83,6 @@ label
 }
 .az-nodisc {
     /*só consigo por causa do ui-nodisc-icon az-nodisc e o ui=li-alt é preto e tem que deixar o backgrouno aqui transparent*/
-
     background-color: #4887cc !important;
     /*background-color: transparent !important;*/
     border: none;
@@ -93,8 +92,7 @@ label
 #button1
 {
 	background-color: #54698d!important;
-	/*background-color: #ffeb3b!important;*/
-	
+	/*background-color: #ffeb3b!important;*/	
 	/*background-color: #23569c!important;*/
 	color:#fff!important;
 	text-shadow:none!important;
@@ -102,7 +100,7 @@ label
 	font-size:0.95em!important;
 	
 }
-#button2, #check-config 
+#button2/*, #check-config */
 {
 	/*background-color: #23569c!important;*/
 	background-color: #4887cc!important;
@@ -131,9 +129,44 @@ label
 	color: #54698d!important;
 	
 }
+.filter {
+	font-family:Tahoma!important;
+	font-weight: 500!important;
+	font-size:0.8em!important;
+	padding-left:0!important;
+	border:1px solid #ddd;
+	/*background-color: #faffbd;*/
+	background-color: #ddd;
+	/*color: #fff;*/
+	padding:0.6em 0.3em;
+	display:none;
+	border-radius:3px;
+}
+.list-info {
+	display: none;
+	text-align: right;
+	margin-top:30px!important;
+}
+.atualizacao {
+	color:red!important;
+	
+}
+.fonte {
+	font-style:italic!important;
+	color:#000;
+}
+
+#pre-licitacoes-publicadas .list-info {
+	margin-top:16px!important;
+}
+
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
+#menu_principal .ui-content {
+	display:none;
+}
+
 #list_Receitas,
 #list_Despesas,
 #list_TiposDespesas,
@@ -178,9 +211,7 @@ label
 	padding-top:0.4em;
 	
 }
-#menu_principal .ui-content {
-	display:none;
-}
+
 #list_Receitas .ui-btn,
 #list_Despesas .ui-btn,
 #list_TiposDespesas .ui-btn,
@@ -198,6 +229,12 @@ label
 	padding-left: 0.3em!important;
 	padding-top: 0.25em!important;
 	padding-bottom: 0.25em!important;
+}
+/*para melhorar a leitura resolvi dar uns espaco*/
+#list_FornecedoresDetalhes .ui-btn,
+#list_Favorecidos .ui-btn {
+	padding-top: 0.50em!important;
+	padding-bottom: 0.50em!important;	
 }
 
 #list_Receitas .ui-btn h1,
@@ -246,17 +283,18 @@ label
 #pre-licitacoes-publicadas .ui-listview>li.ui-li-has-alt>.ui-btn {
 	margin-right:0!important;
 }
-.filter {
-	font-family:Tahoma!important;
-	font-weight: 500!important;
-	font-size:0.8em!important;
-	padding-left:0!important;
-	border:1px solid #ddd;
-	background-color: #faffbd;
-	padding:0.6em 0.3em;
+
+
+
+
+/*pre-agentes-publicos.html, ver-agentes-publicos.html*/
+#form-letra {
 	display:none;
-	border-radius:3px;
 }
+/*pre-agentes-publicos.html, ver-agentes-publicos.html*/
+
+
+/*pre-licitacoes-informadas.html*/
 .info-licitacao {
 	display:none;
 }
@@ -275,31 +313,9 @@ label
 .info-licitacao .value_gestorcomissao {
 	font-weight:normal!important;
 }
+/*pre-licitacoes-informadas.html*/
 
-
-#form-letra {
-	display:none;
-}
-
-
-.list-info {
-	display: none;
-	text-align: right;
-	margin-top:30px!important;
-}
-.atualizacao {
-	color:red!important;
-	
-}
-.fonte {
-	font-style:italic!important;
-	color:#000;
-}
-
-
-#pre-licitacoes-publicadas .list-info {
-	margin-top:16px!important;
-}
+/*pre-licitacoes-publicadas.html*/
 .next-previous {
 	margin-top: 15px!important;
 	display:none;
@@ -314,8 +330,7 @@ label
 .next-previous .ui-block-c {
 	text-align:right;
 }
-
-
+/*pre-licitacoes-publicadas.html*/
 
 
 /*municipios.html*/
