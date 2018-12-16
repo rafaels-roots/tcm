@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html> 
-
+ 
 <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
@@ -23,7 +23,7 @@
     <div data-role="page" id="pre-licitacoes-publicadas">
         <header data-role="header" data-position="fixed">
             <h3>Licitações Publicadas</h3>
-            <a href="#menuopcoes" data-transition="fade" data-rel="popup" id="menu" data-position-to="#menu" data-role="button" data-icon="bars" data-iconshadow="false" data-theme="b" data-iconpos="notext"  class="ui-btn-right ui-btn-right ui-nodisc-icon ui-alt-icon az-nodisc">home</a>
+             <a href="#" data-transition="fade" data-rel="back" id="menu" data-position-to="#menu" data-role="button" data-icon="arrow-l" data-iconshadow="false" data-theme="a" data-iconpos="notext"  class="ui-btn-left ui-nodisc-icon az-nodisc">home</a> 
         </header>
 
         <div data-role="main" class="ui-content">
@@ -33,6 +33,13 @@
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_LicitacoesPublicadas" data-count-theme="b"></ul>
+
+
+            <div class="ui-grid-b next-previous">
+                <div class="ui-block-a"><a href="#" class="ui-shadow ui-btn ui-btn-b ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-inline">previous</a></div>
+                <div class="ui-block-b">1</div>
+                <div class="ui-block-c"><a href="#" class="ui-shadow ui-btn ui-btn-b ui-corner-all ui-icon-carat-r ui-btn-icon-notext ui-btn-inline">next</a></div>
+            </div>
 
             <p class="list-info">
                 <span class="atualizacao"></span> <br /> 
@@ -53,7 +60,7 @@
         </div>
 
         <div data-role="footer" data-position="fixed">
-            <h1>Tribunal de Contas</h1>
+            <h1>Fonte | Portal da Transparência</h1>
         </div>
 
 
@@ -72,7 +79,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : "1"  }, function(data) 
                         { 
                             
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
@@ -84,7 +91,7 @@
                            
 
                             var ul = $("#list_LicitacoesPublicadas"); 
-                            $(".filter, .list-info").css("display", "block");
+                            $(".filter, .list-info, .next-previous").css("display", "block");
                             ul.html(data[0]["dados"]);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
@@ -92,10 +99,69 @@
                             $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
                             $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
 
+                            sessionStorage.setItem("pg",1);
                             $.mobile.loading("hide"); 
-                            
+                                    
 
-                        });      
+                        });  
+
+                     $(".next-previous").on("click", "a", function()
+                         {
+                            $.mobile.loading("show",{
+                                text : 'Carregando...',
+                                textVisible : true,
+                                theme : 'a',
+                                textonly : false
+
+                            });
+
+                            var pg = parseInt(sessionStorage.getItem("pg"));
+                            if( $(this).text() == "next" ) {
+                              pg++;  
+                            }
+                            else {
+                                pg--;
+                            }
+
+                            sessionStorage.setItem("pg", pg);
+
+                            $(".ui-content").css("display", "none"); 
+                            $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : pg.toString()  }, function(data) 
+                                { 
+                                    
+                                    $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                                                      'PREFEITURA >> '+
+                                                      sessionStorage.getItem("opcao-menu")+' >> '+
+                                                      sessionStorage.getItem("ano-municipio"));
+
+                                    var ul = $("#list_LicitacoesPublicadas");           
+
+                                    $("#list_LicitacoesPublicadas li").remove();
+                                    
+                                    $(".ui-content").css("display", "block");
+                                    if(data[0]['is_end'] == "true") {
+                                        $(".next-previous .ui-block-c a").addClass('ui-disabled');
+                                    }
+                                    else {
+                                        $(".next-previous .ui-block-c a").removeClass('ui-disabled');;   
+                                    }
+
+
+                                    ul.html(data[0]["dados"]);
+                                    ul.listview("refresh");
+                                    ul.trigger("updatelayout");
+           
+                                    $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
+                                    $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+
+                                    $(".next-previous .ui-block-b").text(pg);
+                                    sessionStorage.setItem("pg",pg);
+                                    $.mobile.loading("hide"); 
+                                            
+
+                                });
+                         }) ;  
+
                 });
         </script>
 

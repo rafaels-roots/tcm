@@ -67,7 +67,7 @@
         </div>
 
         <div data-role="footer" data-position="fixed">
-            <h1>Tribunal de Contas</h1>
+            <h1>Fonte | Portal da Transparência</h1>
         </div>
 
       
@@ -85,7 +85,7 @@
                         textonly : false
 
                     });
-
+ 
                     $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('link')   }, function(data) 
                         {                             
                             $(".filter").html(data[0]["municipio"]+' >> '+
