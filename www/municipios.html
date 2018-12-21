@@ -100,7 +100,9 @@
                             ul.html(html);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
-
+                            alert(html);
+                        }).fail(function(jqxhr){
+                            alert(JSON.stringify(jqxhr));
                         });
 
                     $("#list_Municipios").on("click", ".ui-btn", function()
