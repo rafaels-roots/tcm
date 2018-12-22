@@ -110,7 +110,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                         { 
                            
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+

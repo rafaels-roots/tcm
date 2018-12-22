@@ -86,7 +86,7 @@
 
                     });
  
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('link')   }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('link')   }, function(data) 
                         {                             
                             $(".filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+

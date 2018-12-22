@@ -71,7 +71,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio") , link : sessionStorage.getItem('despesas-link')  }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio") , link : sessionStorage.getItem('despesas-link')  }, function(data) 
                         { 
                             
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+

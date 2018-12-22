@@ -68,7 +68,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
                            
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+

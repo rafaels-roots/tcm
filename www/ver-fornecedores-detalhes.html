@@ -72,7 +72,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/ver-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/ver-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
                         {                             
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> '+

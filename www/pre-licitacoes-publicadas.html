@@ -79,7 +79,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : "1"  }, function(data) 
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : "1"  }, function(data) 
                         { 
                             
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
