@@ -74,7 +74,6 @@
             $("#municipios").on("pageshow", function()
                 {
                     
-                    
                     $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
 
                     $.mobile.loading("show",{
@@ -84,6 +83,22 @@
                         textonly : false
 
                     }); 
+
+
+                    $.getJSON('http://transparecia.6te.net/transparencia/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
+                        { 
+                        
+                            if(data.keypass == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data.keypass == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            }
+                        });
+
+
 
                     $.getJSON('http://transparecia.6te.net/transparencia/php/municipios.php?callback=?', {action: "f_select_municipios"}, function(data) 
                         { 
@@ -101,7 +116,7 @@
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
                         });
-
+ 
                     $("#list_Municipios").on("click", ".ui-btn", function()
                         {
                             sessionStorage.setItem("codigo-municipio", $(this).attr('id') );

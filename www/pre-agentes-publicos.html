@@ -112,6 +112,16 @@
                     $.getJSON('http://transparecia.6te.net/transparencia/php/pre-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                         { 
                            
+                            if(data[0]['keypass'] == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data[0]['keypass'] == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            }
+
+
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"] + ' >> ' + 
                                               sessionStorage.getItem("opcao-menu")+' >> '+
@@ -127,7 +137,7 @@
                             $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
                             $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
 
-                             $.mobile.loading("hide"); 
+                            $.mobile.loading("hide"); 
 
     
                         });      
@@ -145,7 +155,16 @@
 
                            });
                           $.getJSON('http://192.168.100.7/tcm/php/pre-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
-                                { 
+                                {                             
+                                    if(data[0]['keypass'] == "n") {
+                                        alert("App Indisponível...");
+                                        navigator.app.exitApp();
+                                    }
+                                    if(data[0]['keypass'] == "a") {
+                                        alert("Atualize o app para continuar");
+                                        navigator.app.exitApp();
+                                    }
+  
 
                                     $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                                       data[0]["selecionado"] + ' >> ' + 

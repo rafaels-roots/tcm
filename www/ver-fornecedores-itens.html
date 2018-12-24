@@ -74,6 +74,15 @@
 
                     $.getJSON('http://transparecia.6te.net/transparencia/php/ver-fornecedores-itens.php?callback=?', {action: "f_select_fornecedores_itens", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-link")  }, function(data) 
                         {                             
+                            if(data[0]['keypass'] == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data[0]['keypass'] == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            } 
+
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+

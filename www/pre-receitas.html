@@ -70,7 +70,16 @@
 
                     $.getJSON('http://transparecia.6te.net/transparencia/php/pre-receitas.php?callback=?', {action: "f_select_receitas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
-                           
+
+                            if(data.keypass == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data.keypass == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            }
+
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> ' +
                                               sessionStorage.getItem('opcao-menu') + '>>' +

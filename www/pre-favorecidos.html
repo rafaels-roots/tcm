@@ -75,6 +75,16 @@
  
                     $.getJSON('http://transparecia.6te.net/transparencia/php/pre-favorecidos.php?callback=?', {action: "f_select_favorecidos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("tipos-de-despesas-link")  }, function(data) 
                         { 
+
+
+                            if(data[0]['keypass'] == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data[0]['keypass'] == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            }
                             
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                             data[0]["selecionado"]+' >> '+
@@ -102,20 +112,6 @@
                             ul.append(li);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
-
-
-
-
-/*
-
-                            $("#list_Favorecidos a[href^='/transparencia']").remove();    
-
-                             $('li').contents().filter(function(){
-                                //alert("ssdsa");
-                                return this.nodeType == 3 
-                                
-                            }).remove();*/
-                           
 
                             $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
                             $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));

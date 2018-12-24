@@ -87,7 +87,17 @@
 
 
                    $.getJSON('http://transparecia.6te.net/transparencia/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
-                      { 
+                      {   
+                            if(data.keypass == "n") {
+                                alert("App Indisponível...");
+                                navigator.app.exitApp();
+                            }
+                            if(data.keypass == "a") {
+                                alert("Atualize o app para continuar");
+                                navigator.app.exitApp();
+                            }
+
+
                           sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);
                           sessionStorage.setItem("fonte", data[0]["fonte"].substring(7));  
                           $('#mun').text(sessionStorage.getItem("text-municipio"));
