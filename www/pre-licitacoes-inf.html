@@ -83,23 +83,41 @@
                                 navigator.app.exitApp();
                             }
 
-
                             $(".filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio")+ ' >> ' +
                                               data[0]["qtdelicitacoes"]);
 
+                            var dados =  data[0]["dados"];
+                            var dte = "";
+                            var list_LicitacoesInf ="";
+                            for(var i = 0; i < dados.length; i++) 
+                              {
+                                if(dados[i]['dtedital']) { dte = "-"; } else { dte = dados[i]['dtedital']; }
+                                list_LicitacoesInf += '<li><a href="pre-licitacoes-inf-detalhes.html" alt="'+dados[i]['link']+'">'+
+                                                                '<h1>'+dados[i]['codigo']+'</h1>' +
+                                                                '<p><strong>Dt. Realização : </strong>'+dados[i]['dtrealizacao']+'<br />' +
+                                                                '<strong>Dt.Edital :</strong> ' +dte+' <br />'+
+                                                                '<strong>Modalidade :</strong> '+dados[i]['modalidade']+' <br /> '+
+                                                                '<strong>Tipo :</strong> '+dados[i]['tipo']+'</p>' +
+                                                                '<span class="ui-li-count">'+dados[i]['valor']+'</span>'+
+                                                            '</a>' +
+                                                            
+                                                      '</li>';
+                              }
+
                             var ul = $("#list_LicitacoesInf"); 
                             $(".filter, .list-info").css("display", "block");
                             ul.html(data[0]["dados"]);
+                            ul.listview("refresh");
+                            ul.trigger("updatelayout");
 
                             $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
                             $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
 
                             $.mobile.loading("hide"); 
-                            ul.listview("refresh");
-                            ul.trigger("updatelayout");
+                           
     
                         });      
                     $("#list_LicitacoesInf").on("click", ".ui-btn", function()
