@@ -109,7 +109,7 @@
                         textonly : false
 
                     });
-
+ 
                     $.getJSON('http://transparecia.6te.net/transparencia/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                         { 
                            
@@ -128,9 +128,25 @@
                                               data[0]["situacao"]+' >> '+
                                               sessionStorage.getItem("ano-municipio"));
 
+                            var dados =  data[0]["dados"];
+                            var list_AgentesPublicos ="";
+                            for(var i = 0; i < dados.length; i++) 
+                              {
+                                list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
+                                                            '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
+                                                               +dados[i]["vinculo"] +' <br />  Ato de Nomeação : ' 
+                                                               +dados[i]["atnomeacao"] +' <br /> Dt. Posse : '
+                                                               +dados[i]["dtposse"] +' - Dt. Desligamento : ' 
+                                                               +dados[i]["dtdesligamento"] +'</p>' +
+                                                            '</a>' +
+                                                        '</li>';
+                              }
+
+
+
                             var ul = $("#list_AgentesPublicos");
                             $(".filter, #indice, .list-info").css("display", "block"); 
-                            ul.html(data[0]["dados"]);
+                            ul.html(list_AgentesPublicos);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
@@ -163,9 +179,25 @@
                                                       data[0]["situacao"]+' >> '+
                                                       sessionStorage.getItem("ano-municipio"));
 
+                                    var dados =  data[0]["dados"];
+                                    var list_AgentesPublicos ="";
+                                    for(var i = 0; i < dados.length; i++) 
+                                      {
+                                        list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
+                                                                    '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
+                                                                       +dados[i]["vinculo"] +' <br />  Ato de Nomeação : ' 
+                                                                       +dados[i]["atnomeacao"] +' <br /> Dt. Posse : '
+                                                                       +dados[i]["dtposse"] +' - Dt. Desligamento : ' 
+                                                                       +dados[i]["dtdesligamento"] +'</p>' +
+                                                                    '</a>' +
+                                                                '</li>';
+                                      }
+
+
+
                                     var ul = $("#list_AgentesPublicos");
                                     $(".filter, #indice, .list-info").css("display", "block"); 
-                                    ul.html(data[0]["dados"]);
+                                    ul.html(list_AgentesPublicos);
                                     ul.listview("refresh");
                                     ul.trigger("updatelayout");
 
