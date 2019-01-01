@@ -104,11 +104,11 @@
                               {
                                 if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
                                 list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
-                                                                    "<p class='uiaa'><strong>Objeto :</strong> "+data[i]['objeto']+"<br />" +
-                                                                        "<strong>Dt. Abertura :</strong> "+$data[i]['dtabertura']+" - " +
+                                                                    "<p class='uiaa'><strong>Objeto :</strong> "+dados[i]['objeto']+"<br />" +
+                                                                        "<strong>Dt. Abertura :</strong> "+dados[i]['dtabertura']+" - " +
                                                                         "<strong>Dt. Reabertura :</strong> " +dtr +
                                                                     "</p>" +
-                                                                    "<span class='ui-li-count'>"+data[i]["valor"]+"</span>"  +
+                                                                    "<span class='ui-li-count'>"+dados[i]["valor"]+"</span>"  +
                                                                 "</a>"+
                                                             "</li>";
                               }    
@@ -178,11 +178,11 @@
                                       {
                                         if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
                                         list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
-                                                                            "<p class='uiaa'><strong>Objeto :</strong> "+data[i]['objeto']+"<br />" +
-                                                                                "<strong>Dt. Abertura :</strong> "+$data[i]['dtabertura']+" - " +
+                                                                            "<p class='uiaa'><strong>Objeto :</strong> "+dados[i]['objeto']+"<br />" +
+                                                                                "<strong>Dt. Abertura :</strong> "+dados[i]['dtabertura']+" - " +
                                                                                 "<strong>Dt. Reabertura :</strong> " +dtr +
                                                                             "</p>" +
-                                                                            "<span class='ui-li-count'>"+data[i]["valor"]+"</span>"  +
+                                                                            "<span class='ui-li-count'>"+dados[i]["valor"]+"</span>"  +
                                                                         "</a>"+
                                                                     "</li>";
                                       }    
