@@ -130,18 +130,17 @@
 
                             var dados =  data[0]["dados"];
                             var list_AgentesPublicos ="";
-                            for(var i = 0; i < dados.length; i++) 
-                              {
-                                list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
-                                                            '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
-                                                               +dados[i]["vinculo"] +' <br />  Ato de Nomeação : ' 
-                                                               +dados[i]["atnomeacao"] +' <br /> Dt. Posse : '
-                                                               +dados[i]["dtposse"] +' - Dt. Desligamento : ' 
-                                                               +dados[i]["dtdesligamento"] +'</p>' +
-                                                            '</a>' +
-                                                        '</li>';
-                              }
-
+                              for(var i = 0; i < dados.length; i++) 
+                                {
+                                  list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
+                                                              '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
+                                                                 +dados[i]["vinculo"] +' <br />  Ato de Nomeação : ' 
+                                                                 +dados[i]["atnomeacao"] +' <br /> Dt. Posse : '
+                                                                 +dados[i]["dtposse"] +' - Dt. Desligamento : ' 
+                                                                 +dados[i]["dtdesligamento"] +'</p>' +
+                                                              '</a>' +
+                                                          '</li>';
+                                }
 
 
                             var ul = $("#list_AgentesPublicos");

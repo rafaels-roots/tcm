@@ -97,12 +97,26 @@
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio"));
 
-
+                            var dados =  data[0]["dados"];
+                            var dtr = "";
+                            var list_LicitacoesPublicadas ="";
+                            for(var i = 0; i < dados.length; i++) 
+                              {
+                                if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
+                                list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
+                                                                    "<p class='uiaa'><strong>Objeto :</strong> "+data[i]['objeto']+"<br />" +
+                                                                        "<strong>Dt. Abertura :</strong> "+$data[i]['dtabertura']+" - " +
+                                                                        "<strong>Dt. Reabertura :</strong> " +dtr +
+                                                                    "</p>" +
+                                                                    "<span class='ui-li-count'>"+data[i]["valor"]+"</span>"  +
+                                                                "</a>"+
+                                                            "</li>";
+                              }    
                            
 
                             var ul = $("#list_LicitacoesPublicadas"); 
                             $(".filter, .list-info, .next-previous").css("display", "block");
-                            ul.html(data[0]["dados"]);
+                            ul.html(list_LicitacoesPublicadas);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
    
@@ -157,7 +171,25 @@
                                     }
 
 
-                                    ul.html(data[0]["dados"]);
+                                    var dados =  data[0]["dados"];
+                                    var dtr = "";
+                                    var list_LicitacoesPublicadas ="";
+                                    for(var i = 0; i < dados.length; i++) 
+                                      {
+                                        if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
+                                        list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
+                                                                            "<p class='uiaa'><strong>Objeto :</strong> "+data[i]['objeto']+"<br />" +
+                                                                                "<strong>Dt. Abertura :</strong> "+$data[i]['dtabertura']+" - " +
+                                                                                "<strong>Dt. Reabertura :</strong> " +dtr +
+                                                                            "</p>" +
+                                                                            "<span class='ui-li-count'>"+data[i]["valor"]+"</span>"  +
+                                                                        "</a>"+
+                                                                    "</li>";
+                                      }    
+
+
+
+                                    ul.html(list_LicitacoesPublicadas);
                                     ul.listview("refresh");
                                     ul.trigger("updatelayout");
            
