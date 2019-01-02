@@ -103,12 +103,12 @@
                             for(var i = 0; i < dados.length; i++) 
                               {
                                 if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
-                                list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
+                                list_LicitacoesPublicadas += "<li><a href='#'>"+ dados[i]['codigo'] + 
                                                                     "<p class='uiaa'><strong>Objeto :</strong> "+dados[i]['objeto']+"<br />" +
                                                                         "<strong>Dt. Abertura :</strong> "+dados[i]['dtabertura']+" - " +
                                                                         "<strong>Dt. Reabertura :</strong> " +dtr +
                                                                     "</p>" +
-                                                                    "<span class='ui-li-count'>"+dados[i]["valor"]+"</span>"  +
+                                                                    "<span class='ui-li-count'>"+dados[i]["status"]+"</span>"  +
                                                                 "</a>"+
                                                             "</li>";
                               }    
@@ -177,12 +177,12 @@
                                     for(var i = 0; i < dados.length; i++) 
                                       {
                                         if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
-                                        list_LicitacoesPublicadas += "<li><a href='#'>"+ data[i]['codigo'] + 
+                                        list_LicitacoesPublicadas += "<li><a href='#'>"+ dados[i]['codigo'] + 
                                                                             "<p class='uiaa'><strong>Objeto :</strong> "+dados[i]['objeto']+"<br />" +
                                                                                 "<strong>Dt. Abertura :</strong> "+dados[i]['dtabertura']+" - " +
                                                                                 "<strong>Dt. Reabertura :</strong> " +dtr +
                                                                             "</p>" +
-                                                                            "<span class='ui-li-count'>"+dados[i]["valor"]+"</span>"  +
+                                                                            "<span class='ui-li-count'>"+dados[i]["status"]+"</span>"  +
                                                                         "</a>"+
                                                                     "</li>";
                                       }    
