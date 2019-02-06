@@ -83,12 +83,12 @@
                                 navigator.app.exitApp();
                             }
 
-
+                            var total = data[0]["total"] == null ? "Não foi encontrado Registro para o exercicio de 2019" : data[0]["total"];
 
                             $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
-                                              sessionStorage.getItem("ano-municipio")+' >> '+data[0]["total"]);
+                                              sessionStorage.getItem("ano-municipio")+' >> '+total);
 
                             var ul = $("#list_Despesas"); 
                             $(".filter, .list-info").css("display", "block");

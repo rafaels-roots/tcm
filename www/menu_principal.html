@@ -39,14 +39,11 @@
               <li data-icon="minus"><a href="pre-despesas.html">Despesas</a></li> <!-- retira do site -->
               <li data-icon="user"><a href="pre-fornecedores.html">Fornecedores</a></li>
               <li data-icon="edit"><a href="pre-prestacao-contas.html">Prestação de Contas</a></li> <!-- retira do site -->
-              <!--<li data-icon="home"><a href="#">Estrutura Administrativa</a></li>-->
               <li data-icon="user"><a href="pre-agentes-publicos.html">Agentes Públicos</a></li>
               <li data-icon="grid"><a href="pre-licitacoes-inf.html">Licitações Informadas</a></li> <!-- retira do site -->
               <li data-icon="grid"><a href="pre-licitacoes-publicadas.html">Licitações Publicadas</a></li>
-              <!--<li data-icon="bars"><a href="#">Relatório de Acompanhamento Gerencial</a></li>-->
               <li data-icon="info"><a href="pre-ordenadores-despesas.html">Ordenadores de Despesas</a></li>
-              <!--<li data-icon="gear"><a href="#">Configurações</a></li>-->
-
+              
             </ul>
 
              <p class="list-info">
@@ -100,7 +97,7 @@
 
                           sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);
                           sessionStorage.setItem("fonte", data[0]["fonte"].substring(7));  
-                          $('#mun').text(sessionStorage.getItem("text-municipio"));
+                          $('#mun').text(sessionStorage.getItem("text-municipio") + ' | ' + sessionStorage.getItem("ano-municipio") );
                           
                           $("#menu_principal .ui-content").css("display","block");
                           $(".list-info").css("display", "block");
