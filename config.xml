@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <!-- pra dar certo no FB o nome do package tem que tá igual ao package do FB deelopers, no caso o id do <widget> -->
-<widget id="rafaels.com.tcm" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="tcm.com" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Tribunal de Contas do Município</name>
     <description>
         Prestação de contas do município de Maranguape-CE
@@ -11,6 +11,7 @@
     <content src="index.html" /> 
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="15" />
+    <preference name="android-targetSdkVersion" value="16" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.2.4" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.4.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.4.3" />
