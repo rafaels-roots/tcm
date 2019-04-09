@@ -29,15 +29,15 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_OrdenadoresDespesas" data-count-theme="b">
             </ul>
 
-             <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+             <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
 
         </div>
@@ -72,7 +72,7 @@
 
                     });
 
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/ver-ordenadores-despesas.php?callback=?', {action: "f_select_ordenadores_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('../../tcm/php/ver-ordenadores-despesas.php?callback=?', {action: "f_select_ordenadores_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
                             if(data[0]['keypass'] == "n") {
                                 alert("App Indisponível...");
@@ -83,20 +83,21 @@
                                 navigator.app.exitApp();
                             }                  
                            
-                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                             data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio"));
+                            document.getElementById("filter").style.display = "block";
 
                             var ul = $("#list_OrdenadoresDespesas");
-                            $(".filter, .list-info").css("display", "block"); 
+                             document.getElementById("list-info").style.display = "block";
                             ul.html(data[0]["dados"]);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
                             
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                              $.mobile.loading("hide"); 
     

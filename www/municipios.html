@@ -22,46 +22,37 @@
 <body>
     <div data-role="page" id="municipios">
         <header data-role="header" data-position="fixed">
-            <h3>Município</h3>
+            <h3>Ano</h3>
         </header>
 
         <div data-role="main" class="ui-content">
+             
+
+             <div id="form-ano">
+                <div data-role="fieldcontain" class="ui-hide-label">
+                    <select name="ano" id="ano">
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>
+                        <option value="2009">2009</option>
+                        <option value="2008">2008</option>
+                   </select>
+                </div>    
             
-            <ul data-icon="false" data-role="listview" id="list_Municipios" data-count-theme="b" data-filter="true" data-filter-placeholder="...">
-            </ul>
+
+                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
+                <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back" id="button3">Voltar</a>-->
+     
+            </div>
         </div>
-      
-        <div id="form-ano" data-role="popup" data-theme="a" class="ui-corner-all">
-            <form>
-                <div class="form-ano-div">
-                    
 
-                    <div data-role="fieldcontain" class="ui-hide-label">
-                        <h3 class="form-ano-title">Ano</h3>
-                        <select name="ano" id="ano">
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                            <option value="2015">2015</option>
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                            <option value="2012">2012</option>
-                            <option value="2011">2011</option>
-                            <option value="2010">2010</option>
-                            <option value="2009">2009</option>
-                            <option value="2008">2008</option>
-                       </select>
-                    </div>    
-                
-
-                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a" id="button1">Avançar</a>
-                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back" id="button3">Voltar</a>
-         
-
-                </div>
-            </form>
-        </div>
 
 
         <div data-role="footer" data-position="fixed">
@@ -73,21 +64,8 @@
         <script type="text/javascript">
             $("#municipios").on("pageshow", function()
                 {
-                    
-                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-
-                    $.mobile.loading("show",{
-                        text : 'Carregando...',
-                        textVisible : true,
-                        theme : 'a',
-                        textonly : false
-
-                    }); 
-
-
                     $.getJSON('http://transparecia.6te.net/transparencia/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
                         { 
-                        
                             if(data.keypass == "n") {
                                 alert("App Indisponível...");
                                 navigator.app.exitApp();
@@ -99,35 +77,12 @@
                         });
 
 
-
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/municipios.php?callback=?', {action: "f_select_municipios"}, function(data) 
-                        { 
-                            var j = data.rsp._content;
-                            var html = "";
-                            var ul = $("#list_Municipios"); 
-                            for(var i = 0; i < j.length; i++) 
-                                {
-                                    html += "<li>" +
-                                                "<a href='#form-ano' id='"+j[i]["codigo_municipio"]+"' data-rel='popup' data-position-to='window'>" + j[i]["nome_municipio"] + "</a>" +
-                                            "</li>";
-                                }
-                            $.mobile.loading("hide");    
-                            ul.html(html);
-                            ul.listview("refresh");
-                            ul.trigger("updatelayout");
-                        });
- 
-                    $("#list_Municipios").on("click", ".ui-btn", function()
-                        {
-                            sessionStorage.setItem("codigo-municipio", $(this).attr('id') );
-                            sessionStorage.setItem("text-municipio", $(this).text());
-                        });
-                    
-                    $("#form-ano").on("click", "#button1", function()
+                    document.getElementById("avancar").onclick = function()
                         {
                             sessionStorage.setItem("ano-municipio", $("#ano").val() );
-                           
-                        });
+                            sessionStorage.setItem("codigo-municipio", "100" );
+                            sessionStorage.setItem("text-municipio", "MARANGUAPE");
+                        }
 
                 });
         </script>

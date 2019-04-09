@@ -31,26 +31,26 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div>
 
-            <p class="info-licitacao">
-                <span class='dhrealizacao'>Data/Hora Realização :  </span><span class="value_dhrealizacao"></span> <br />
-                <span class='dautuacao'>Data de Autuação do Processo Adm. : </span><span class="value_dautuacao"></span> <br />
-                <span class='modalidade'>Modalidade : </span><span class="value_modalidade"></span> <br />
-                <span class='tipo'>Tipo : </span><span class="value_tipo"></span> <br />
-                <span class='vlrestimado'>Valor Estimado : </span><span class="value_vlrestimado"></span> <br />
-                <span class='vlrlimite'>Valor Limite : </span><span class="value_vlrlimite"></span> <br />
-                <span class='objeto'>Objeto : </span><span class="value_objeto"></span> <br />
-                <span class='gestorcomissao'>Gestor da UG a qual pertence a Comissão : </span><span class="value_gestorcomissao"></span>
+            <p id="info-licitacao">
+                <span id='dhrealizacao'>Data/Hora Realização :  </span><span id="value_dhrealizacao"></span> <br />
+                <span id='dautuacao'>Data de Autuação do Processo Adm. : </span><span id="value_dautuacao"></span> <br />
+                <span id='modalidade'>Modalidade : </span><span id="value_modalidade"></span> <br />
+                <span id='tipo'>Tipo : </span><span id="value_tipo"></span> <br />
+                <span id='vlrestimado'>Valor Estimado : </span><span id="value_vlrestimado"></span> <br />
+                <span id='vlrlimite'>Valor Limite : </span><span id="value_vlrlimite"></span> <br />
+                <span id='objeto'>Objeto : </span><span id="value_objeto"></span> <br />
+                <span id='gestorcomissao'>Gestor da UG a qual pertence a Comissão : </span><span id="value_gestorcomissao"></span>
             </p>
             
             <ul data-icon="false" data-role="listview" id="list_LicitacoesInfDetalhes" data-count-theme="b">
             </ul>
 
-             <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+             <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
 
         </div>
@@ -86,7 +86,7 @@
 
                     });
  
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('link')   }, function(data) 
+                    $.getJSON('../../tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('lic-link')   }, function(data) 
                         {                             
                             
                             if(data[0]['keypass'] == "n") {
@@ -98,34 +98,37 @@
                                 navigator.app.exitApp();
                             }
 
-                            $(".filter").html(data[0]["municipio"]+' >> '+
+                            $("#filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio")+' >> '+
                                               data[0]["licitacao"]);    
 
-                            $(".value_dhrealizacao").text(data[0]["cab"][0] );
-                            $(".value_dautuacao").text(data[0]["cab"][1] );
-                            $(".value_modalidade").text(data[0]["cab"][2] );
-                            $(".value_tipo").text(data[0]["cab"][3] );
-                            $(".value_vlrestimado").text(data[0]["cab"][4] );
-                            $(".value_vlrlimite").text(data[0]["cab"][5] );
-                            $(".value_objeto").text(data[0]["cab"][6] );
-                            $(".value_gestorcomissao").text(data[0]["cab"][7] );
-
-                            $(".filter").css("display", "block");                                                                     
+                            document.getElementById("value_dhrealizacao").innerHTML = data[0]["cab"][0];
+                            document.getElementById("value_dautuacao").innerHTML = data[0]["cab"][1];
+                            document.getElementById("value_modalidade").innerHTML = data[0]["cab"][2];
+                            document.getElementById("value_tipo").innerHTML = data[0]["cab"][3];
+                            document.getElementById("value_vlrestimado").innerHTML = data[0]["cab"][4];
+                            document.getElementById("value_vlrlimite").innerHTML = data[0]["cab"][5];
+                            document.getElementById("value_objeto").innerHTML = data[0]["cab"][6];
+                            document.getElementById("value_gestorcomissao").innerHTML = data[0]["cab"][7];
+                            
+                            document.getElementById("filter").style.display = "block";                                                                    
 
 
                             var ul = $("#list_LicitacoesInfDetalhes"); 
-                            $(".filter, .list-info, .info-licitacao").css("display", "block");
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("info-licitacao").style.display = "block";
                             ul.html(data[0]["dados"]);
 
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
-                            $.mobile.loading("hide"); 
+                            
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
+
+                            $.mobile.loading("hide"); 
 
     
                         });      

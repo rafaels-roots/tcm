@@ -17,8 +17,6 @@
                                                        media-src 'none';
                                                        font-src *;
                                                        connect-src *">
-
-
     
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
     
@@ -48,8 +46,8 @@
                     <input type="password" name="textPassword" id="textPassword" placeholder="Password"/>
                 </div>
                 
-                <a href="municipios.html" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-corner-all" id="button1">Entrar</a>
-                <a href="#" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all" id="button2">Entrar com facebook</a>
+                <a href="municipios.html" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-corner-all button1" id="entrar">Entrar</a>
+                <a href="#" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all button2" id="fb">Entrar com facebook</a>
 
             </form>
         </div>
@@ -60,15 +58,16 @@
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
                
-
+               
                 $("#index").on("pageshow", function()
                   {
-                       $("#button2").on("click", function()
-                         {
+                      
+                      document.getElementById("fb").onclick = function()
+                        {
                             facebookConnectPlugin.login(['email'],function(response)
                               {
                                 
@@ -86,18 +85,14 @@
                               }, function(error) 
                                 {
                                     alert("Não foi possível conectar com facebook");
-                                });
-                         }); 
+                                });  
+                        }  
 
-
-
-                       $("#button1").on("click", function(){
-
-                         sessionStorage.setItem("user-info",JSON.stringify( {name : "Admin"} )); 
-                        $.mobile.changePage("municipios.html")
-                       })
-
-
+                      document.getElementById("entrar").onclick = function()
+                        {
+                            sessionStorage.setItem("user-info",JSON.stringify( {name : "Admin"} )); 
+                            $.mobile.changePage("municipios.html");
+                        } 
 
                   });
 
@@ -138,6 +133,7 @@
                            
                         }  
                   }
+
                 document.addEventListener("backbutton", onBackButtonTapped, false);   
 
         </script>

@@ -30,7 +30,7 @@
         <div data-role="main" class="ui-content">
 
              <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div> 
 
              <form id="form_letra">
@@ -72,9 +72,9 @@
             <ul data-role="listview" id="list_AgentesPublicos" data-icon="false" data-count-theme="b">
             </ul>
 
-            <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+            <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
 
         </div>
@@ -110,7 +110,7 @@
 
                     });
  
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                    $.getJSON('../../tcm/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                         { 
                            
                             if(data[0]['keypass'] == "n") {
@@ -122,11 +122,12 @@
                                 navigator.app.exitApp();
                             }  
 
-                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                               data[0]["selecionado"] + ' >> ' + 
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               data[0]["situacao"]+' >> '+
                                               sessionStorage.getItem("ano-municipio"));
+                            document.getElementById("filter").style.display = "block"; 
 
                             var dados =  data[0]["dados"];
                             var list_AgentesPublicos ="";
@@ -144,13 +145,15 @@
 
 
                             var ul = $("#list_AgentesPublicos");
-                            $(".filter, #indice, .list-info").css("display", "block"); 
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("indice").style.display = "block"; 
                             ul.html(list_AgentesPublicos);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao"); 
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
+
 
                              $.mobile.loading("hide"); 
 
@@ -161,7 +164,9 @@
                       {
 
                           $("#list_AgentesPublicos li").remove();
-                          $(".filter, #indice, .list-info").css("display", "none"); 
+                          document.getElementById("filter").style.display = "none";
+                          document.getElementById("list-info").style.display = "none";
+                          document.getElementById("indice").style.display = "none";
                           $.mobile.loading("show",{
                               text : 'Carregando...',
                               textVisible : true,
@@ -169,14 +174,15 @@
                               textonly : false
 
                            });
-                          $.getJSON('http://192.168.100.7/tcm/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                          $.getJSON('../../tcm/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                                 { 
 
-                                    $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                                    $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                                       data[0]["selecionado"] + ' >> ' + 
                                                       sessionStorage.getItem("opcao-menu")+' >> '+
                                                       data[0]["situacao"]+' >> '+
                                                       sessionStorage.getItem("ano-municipio"));
+                                    document.getElementById("filter").style.display = "block"; 
 
                                     var dados =  data[0]["dados"];
                                     var list_AgentesPublicos ="";
@@ -195,13 +201,14 @@
 
 
                                     var ul = $("#list_AgentesPublicos");
-                                    $(".filter, #indice, .list-info").css("display", "block"); 
+                                    document.getElementById("list-info").style.display = "block";
+                                    document.getElementById("indice").style.display = "block";
                                     ul.html(list_AgentesPublicos);
                                     ul.listview("refresh");
                                     ul.trigger("updatelayout");
 
-                                    $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                                    $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                                    document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                                    document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                                     $.mobile.loading("hide"); 
             

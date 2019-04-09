@@ -29,14 +29,14 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_TiposDespesas" data-count-theme="b"></ul>
 
-            <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+            <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
         </div>
       
@@ -61,8 +61,7 @@
             $("#pre-tipos-de-despesas").on("pageshow", function()
                 {
                     
-                    $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-
+                    document.getElementById("usuario").childNodes[0].innerHTML = JSON.parse(sessionStorage.getItem("user-info")).name;
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
@@ -71,7 +70,7 @@
 
                     });
 
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio") , link : sessionStorage.getItem('despesas-link')  }, function(data) 
+                    $.getJSON('../../tcm/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio") , link : sessionStorage.getItem('despesas-link')  }, function(data) 
                         { 
                             
                             if(data[0]['keypass'] == "n") {
@@ -83,20 +82,21 @@
                                 navigator.app.exitApp();
                             }
 
-                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
                                             data[0]["selecionado"]+' >> '+
                                             sessionStorage.getItem('opcao-menu') + ' >> ' +
                                             sessionStorage.getItem('despesas-text') + ' >> ' +  
                                             sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
 
-                            var ul = $("#list_TiposDespesas"); 
-                            $(".filter, list-info").css("display", "block");
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block"; 
+                            var ul = $("#list_TiposDespesas");
                             ul.html(data[0]["dados"]);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte");
 
                             $.mobile.loading("hide");
     
@@ -105,7 +105,7 @@
                     $("#list_TiposDespesas").on("click", ".ui-btn", function()
                         {
                             sessionStorage.setItem("tipos-de-despesas-text", $(this).find('h1').text() );
-                            sessionStorage.setItem("tipos-de-despesas-link", $(this).attr('alt') );
+                            sessionStorage.setItem("tipos-de-despesas-link", this.id );
                         });         
                 }); 
         </script>

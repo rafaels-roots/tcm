@@ -29,15 +29,15 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_LicitacoesInf" data-count-theme="b">             
             </ul>
 
-            <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+            <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
 
         </div>
@@ -70,7 +70,7 @@
 
                     });
 
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('../../tcm/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         {                             
                             
                             
@@ -83,19 +83,20 @@
                                 navigator.app.exitApp();
                             }
 
-                            $(".filter").html(data[0]["municipio"]+' >> '+
+                            $("#filter").html(data[0]["municipio"]+' >> '+
                                               data[0]["selecionado"]+' >> '+
                                               sessionStorage.getItem("opcao-menu")+' >> '+
                                               sessionStorage.getItem("ano-municipio")+ ' >> ' +
                                               data[0]["qtdelicitacoes"]);
+                            document.getElementById("filter").style.display = "block"; 
 
                             var dados =  data[0]["dados"];
                             var dte = "";
                             var list_LicitacoesInf ="";
-                            for(var i = 0; i < dados.length; i++) 
+                            for(var i = 0, len = dados.length; i < len; i++) 
                               {
                                 if(dados[i]['dtedital']) { dte = "-"; } else { dte = dados[i]['dtedital']; }
-                                list_LicitacoesInf += '<li><a href="pre-licitacoes-inf-detalhes.html" alt="'+dados[i]['link']+'">'+
+                                list_LicitacoesInf += '<li><a href="pre-licitacoes-inf-detalhes.html" id="'+dados[i]['link']+'">'+
                                                                 '<h1>'+dados[i]['codigo']+'</h1>' +
                                                                 '<p><strong>Dt. Realização : </strong>'+dados[i]['dtrealizacao']+'<br />' +
                                                                 '<strong>Dt.Edital :</strong> ' +dte+' <br />'+
@@ -108,13 +109,13 @@
                               }
 
                             var ul = $("#list_LicitacoesInf"); 
-                            $(".filter, .list-info").css("display", "block");
+                            document.getElementById("list-info").style.display = "block";
                             ul.html(list_LicitacoesInf);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                             $.mobile.loading("hide"); 
                            
@@ -122,8 +123,8 @@
                         });      
                     $("#list_LicitacoesInf").on("click", ".ui-btn", function()
                         {
-                            sessionStorage.setItem("text", $(this).text() );
-                            sessionStorage.setItem("link", $(this).attr('alt') );
+                            sessionStorage.setItem("lic-text", $(this).text() );
+                            sessionStorage.setItem("lic-link", this.id );
                         });
 
                 });

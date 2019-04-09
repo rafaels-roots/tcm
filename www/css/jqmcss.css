@@ -24,9 +24,6 @@ img { width: 100% }
     
     
 }
-#menuopcoes, #form-ano {
-	min-width:300px!important;
-}
 .ui-mobile [data-role=popup] .ui-li-divider 
 {
     background-color: #ddd!important;
@@ -89,7 +86,7 @@ label
     box-shadow: none;
 }
 
-#button1
+.button1
 {
 	background-color: #54698d!important;
 	/*background-color: #ffeb3b!important;*/	
@@ -100,7 +97,7 @@ label
 	font-size:0.95em!important;
 	
 }
-#button2/*, #check-config */
+.button2/*, #check-config */
 {
 	/*background-color: #23569c!important;*/
 	background-color: #4887cc!important;
@@ -110,7 +107,7 @@ label
 	font-weight:500!important;
 	font-size:0.95em!important;
 }
-#button3 {
+.button3 {
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
@@ -129,7 +126,7 @@ label
 	color: #54698d!important;
 	
 }
-.filter {
+#filter {
 	font-family:Tahoma!important;
 	font-weight: 500!important;
 	font-size:0.8em!important;
@@ -142,16 +139,16 @@ label
 	display:none;
 	border-radius:3px;
 }
-.list-info {
+#list-info {
 	display: none;
 	text-align: right;
 	margin-top:30px!important;
 }
-.atualizacao {
+#atualizacao {
 	color:red!important;
 	
 }
-.fonte {
+#fonte {
 	font-style:italic!important;
 	color:#000;
 }
@@ -163,10 +160,12 @@ label
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
-#menu_principal .ui-content {
+#menu_principal #content {
 	display:none;
 }
-
+#menu_principal a[href^="ver-"] {
+	display:none;
+}
 #list_Receitas,
 #list_Despesas,
 #list_TiposDespesas,
@@ -295,39 +294,39 @@ label
 
 
 /*pre-licitacoes-informadas.html*/
-.info-licitacao {
+#info-licitacao {
 	display:none;
 }
-.info-licitacao span{
+#info-licitacao span{
 	font-family:Tahoma!important;
 	font-weight: 500!important;
 	font-size:0.8em!important;	
 }
-.info-licitacao .value_dhrealizacao,
-.info-licitacao .value_dautuacao,
-.info-licitacao .value_modalidade,
-.info-licitacao .value_tipo,
-.info-licitacao .value_vlrestimado,
-.info-licitacao .value_vlrlimite,
-.info-licitacao .value_objeto,
-.info-licitacao .value_gestorcomissao {
-	font-weight:normal!important;
+#info-licitacao #dhrealizacao,
+#info-licitacao #dautuacao,
+#info-licitacao #modalidade,
+#info-licitacao #tipo,
+#info-licitacao #vlrestimado,
+#info-licitacao #vlrlimite,
+#info-licitacao #objeto,
+#info-licitacao #gestorcomissao {
+	font-weight:700!important;
 }
 /*pre-licitacoes-informadas.html*/
 
 /*pre-licitacoes-publicadas.html*/
-.next-previous {
+#next-previous {
 	margin-top: 15px!important;
 	display:none;
 }
-.next-previous .ui-block-b  {
+#next-previous .ui-block-b  {
 	text-align:center;
 	vertical-align: middle!important;
 	text-decoration:underline;
 	font-weight:500;
 	margin-top:12px;
 }
-.next-previous .ui-block-c {
+#next-previous .ui-block-c {
 	text-align:right;
 }
 /*pre-licitacoes-publicadas.html*/
@@ -335,14 +334,14 @@ label
 
 /*municipios.html*/
 .form-ano-div {
-	padding:10px 20px;
+	padding:6px!important;
 
-}
+}/*
 #form-ano .ui-mobile [data-role=fieldcontain] {
 	margin-top: -20px!important;
 }
 .form-ano-title {
 	font-weight:500!important;
-}
+}*/
 /*municipios.html*/
 

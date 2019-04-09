@@ -29,17 +29,22 @@
         <div data-role="main" class="ui-content">
             
             <div>
-                <p class="filter"></p>
+                <p id="filter"></p>
             </div>
             
             <ul data-icon="false" data-role="listview" id="list_FornecedoresDetalhes" data-count-theme="b">
             </ul>
 
-            <p class="list-info">
-                <span class="atualizacao"></span> <br /> 
-                <span class="fonte"></span> 
+            <p id="list-info">
+                <span id="atualizacao"></span> <br /> 
+                <span id="fonte"></span> 
             </p>
 
+         
+            <form style="display:none;"  id="form_print" data-ajax="false" method="post" action="FPDF/favorecidopdf.php">
+                <input type="hidden" name="link" id="print_link"/>
+                
+            </form>
         </div>
       
 
@@ -72,9 +77,10 @@
 
                     });
 
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/pre-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
+                    $.getJSON('../../tcm/php/pre-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
                         {                             
-                            
+                           
+
                             if(data[0]['keypass'] == "n") {
                                 alert("App Indisponível...");
                                 navigator.app.exitApp();
@@ -83,54 +89,65 @@
                                 alert("Atualize o app para continuar");
                                 navigator.app.exitApp();
                             }
+                            
+                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
+                                            data[0]["selecionado"]+' >> '+
+                                            data[0]["despesa"] + ' >> ' + 
+                                            data[0]["favorecido"] + ' >> ' +  
+                                            sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
 
+                             document.getElementById("filter").style.display = "block"; 
 
-                            $(".filter").html(sessionStorage.getItem("text-municipio")+' >> '+
-                                              data[0]["selecionado"]+' >> '+
-                                              data[0]["despesa"] + ' >> ' +
-                                              data[0]["favorecido"] + ' >> ' +
-                                              sessionStorage.getItem("ano-municipio")+' >> ' +
-                                              data[0]["total"]);
-
-
-                            var dados =  data[0]["dados"];
+                            var dados = data[0]["dados"];
                             var li = "";
-                            for(var i = 0; i < dados.length; i++) 
+                            for(var i = 0, len = dados.length; i < len; i++) 
                                 {
-                                      var xz = dados[i]['text'];
                                       li += "<li>" +
                                                 "<a href='#'>"+
                                                     "<p class='ui-li-aside'><strong>"+dados[i]['data']+"</strong></p>" + 
-                                                    xz.substr(0,xz.length - 23) +
+                                                    dados[i]['text']+
                                                     "<span class='ui-li-count'>"+dados[i]['valor']+"</span>" +
                                                 "</a>" +
                                             "</li>";
 
-                                }
 
-                            var ul = $("#list_FornecedoresDetalhes"); 
-                            $(".filter, .list-info").css("display", "block");
-                            ul.append(li);
+                                }
+                           
+                            var ul = $("#list_FornecedoresDetalhes");
+                            ul.html(li);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
-                           /* $("#list_FornecedoresDetalhes a[href^='/transparencia']").remove();    
 
-                             $('li').contents().filter(function(){
-                                //alert("ssdsa");
-                                return this.nodeType == 3 
-                                
-                            }).remove();
-                           
+                            li = "";
+                            $.each( $("#list_FornecedoresDetalhes li"), function(i)
+                                {
+                                    var xz = $(this).find('a:nth-child(1)').html();
+                                    li += "<li>" +
+                                            "<a href='#' id='http://municipios.tce.ce.gov.br"+$(this).find("a[href^='/transparencia']").attr("href")+"' class='ui-btn'>" + xz.substr(0,xz.length - 2) + "</a>" +
+                                            "<span class='ui-li-count'>"+$(this).find('span').text()+"</span>" +
+                                          "</li>";  
+                                    
+                                });
+                            $("#list_FornecedoresDetalhes li").remove();
+                            $("#list_FornecedoresDetalhes").html(li).listview('refresh')
 
-                            ul.listview("refresh");
-                            ul.trigger("updatelayout");*/
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte");
 
-                            $(".atualizacao").text(sessionStorage.getItem("atualizacao"));
-                            $(".fonte").html("<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"));
+                            $.mobile.loading("hide"); 
+                            
 
-                            $.mobile.loading("hide");     
-                        });      
+                        }); 
+
+
+                    $("#list_FornecedoresDetalhes").on("click", "li", function()
+                        {    
+                            $("#print_link").val( $(this).find("a").attr('id'));
+                            $("#form_print").submit();
+                            
+                        });                             
 
                     
                 });
