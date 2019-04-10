@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <!-- pra dar certo no FB o nome do package tem que tá igual ao package do FB deelopers, no caso o id do <widget> -->
 <widget id="tcm.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Tribunal de Contas do Município</name>
+    <name>Transparência Maranguape</name>
     <description>
-        Prestação de contas do município
+        Registro de ações do governo do município de Maranguape
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Elohim Systems
     </author>
     <content src="index.html" /> 
     <preference name="DisallowOverscroll" value="true" />

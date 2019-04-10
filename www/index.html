@@ -46,7 +46,7 @@
                     <input type="password" name="textPassword" id="textPassword" placeholder="Password"/>
                 </div>
                 
-                <a href="municipios.html" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-corner-all button1" id="entrar">Entrar</a>
+                <a href="#" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-corner-all button1" id="entrar">Entrar</a>
                 <a href="https://play.google.com/store/apps/details?id=tcm.com" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all button2" id="fb">Entrar com facebook</a>
 
             </form>
@@ -68,34 +68,28 @@
                       document.getElementById("entrar").onclick = function()
                         {
                             
-                            $.getJSON('../../tcm/php/index.php?callback=?', {action: "f_select_keypass" }, function(data) 
+                           alert("ffsfds");
+                            $.getJSON('192.168.100.7/tcm/php/index.php?callback=?', {action: "f_select_keypass" }, function(data) 
                                 {  
-                                  if(data.keypass == "stop") 
+                                  alert("ffsfds");
+                                  if(data[0].keypass == "stop") 
                                     {
                                         alert("Aplicativo indisponível no momento..");
                                         navigator.app.exitApp();
                                         return true;
                                     }
-                                  if("1.0.1" != data.keypass) 
+                                  if(data[0].keypass != "1.0.1") 
                                     {
                                         alert("Atualize o app para continuar..");
-                                        navigator.app.exitApp();
-                                        return true;
+                                        return openExternal(this);
+                                        
                                     }
                                   
                                   //sessionStorage.setItem("user-info",JSON.stringify( {name : "Admin"} )); 
                                   $.mobile.changePage("municipios.html");                                  
 
                                 }, "json");
-
                         } 
-
-
-                      document.getElementById("fb").onclick = function() 
-                        {
-                          alert("entrei aqui");
-                          return openExternal(this);
-                        }   
 
                   });
 
