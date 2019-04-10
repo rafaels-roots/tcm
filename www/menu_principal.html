@@ -88,7 +88,7 @@
                     }); 
 
 
-                   $.getJSON('http://transparecia.6te.net/transparencia/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
+                   $.getJSON('../../tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
                             if(data.keypass == "n") {
                                 alert("App Indisponível...");
