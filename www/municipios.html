@@ -22,14 +22,15 @@
 <body>
     <div data-role="page" id="municipios">
         <header data-role="header" data-position="fixed">
-            <h3>Ano</h3>
+            <h3>Transparência Maranguape</h3>
         </header>
 
         <div data-role="main" class="ui-content">
              
-
              <div id="form-ano">
+                <strong>Escolha o ano :</strong> 
                 <div data-role="fieldcontain" class="ui-hide-label">
+
                     <select name="ano" id="ano">
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -44,10 +45,11 @@
                         <option value="2009">2009</option>
                         <option value="2008">2008</option>
                    </select>
+                    <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
                 </div>    
             
 
-                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
+                <!--<a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>-->
                 <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back" id="button3">Voltar</a>-->
      
             </div>
@@ -56,7 +58,7 @@
 
 
         <div data-role="footer" data-position="fixed">
-            <h1>Portal da Transparência</h1>
+            <h1>Fonte | Portal da Transparência</h1>
         </div>
 
       
@@ -64,16 +66,21 @@
         <script type="text/javascript">
             $("#municipios").on("pageshow", function()
                 {
-                    $.getJSON('http://transparecia.6te.net/transparencia/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
+                    $.mobile.loading("show");
+                    $.getJSON('http://192.168.100.7/tcm/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
                         { 
-                            if(data.keypass == "n") {
-                                alert("App Indisponível...");
-                                navigator.app.exitApp();
-                            }
-                            if(data.keypass == "a") {
-                                alert("Atualize o app para continuar");
-                                navigator.app.exitApp();
-                            }
+                             if(data.keypass == "stop") 
+                                {
+                                    alert("Aplicativo indisponível no momento..");
+                                    navigator.app.exitApp();
+                                    return true;
+                                }
+                              if(data.keypass != "1.0.1") 
+                                {
+                                    alert("Atualize o app para continuar..");
+                                    return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                                }
+                              $.mobile.loading("hide");  
                         });
 
 

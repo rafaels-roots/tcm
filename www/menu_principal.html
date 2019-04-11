@@ -78,7 +78,7 @@
             $("#menu_principal").on("pageshow", function()
                 {
 
-                  document.getElementById("usuario").childNodes[0].innerHTML = JSON.parse(sessionStorage.getItem("user-info")).name;
+                 // document.getElementById("usuario").childNodes[0].innerHTML = JSON.parse(sessionStorage.getItem("user-info")).name;
                   $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
@@ -87,17 +87,20 @@
 
                     }); 
 
-
-                   $.getJSON('../../tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
+                   
+                   $.getJSON('http://192.168.100.7/tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
-                            if(data.keypass == "n") {
-                                alert("App Indisponível...");
-                                navigator.app.exitApp();
-                            }
-                            if(data.keypass == "a") {
-                                alert("Atualize o app para continuar");
-                                navigator.app.exitApp();
-                            }
+                          if(data[0].keypass == "stop") 
+                              {
+                                  alert("Aplicativo indisponível no momento..");
+                                  navigator.app.exitApp();
+                                  return true;
+                              }
+                            if(data[0].keypass != "1.0.1") 
+                              {
+                                  alert("Atualize o app para continuar..");
+                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                              }
 
 
                           sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);

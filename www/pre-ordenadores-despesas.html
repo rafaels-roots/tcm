@@ -72,16 +72,19 @@
 
                     });
 
-                    $.getJSON('../../tcm/php/pre-ordenadores-despesas.php?callback=?', {action: "f_select_ordenadores_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('http://192.168.100.7/tcm/php/pre-ordenadores-despesas.php?callback=?', {action: "f_select_ordenadores_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         { 
                             
-                           if(data[0]['keypass'] == "n") {
-                                alert("App Indisponível...");
+                           if(data[0].keypass == "stop") 
+                            {
+                                alert("Aplicativo indisponível no momento..");
                                 navigator.app.exitApp();
+                                return true;
                             }
-                            if(data[0]['keypass'] == "a") {
-                                alert("Atualize o app para continuar");
-                                navigator.app.exitApp();
+                          if(data[0].keypass != "1.0.1") 
+                            {
+                                alert("Atualize o app para continuar..");
+                                return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
                             }
                             
                             $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
