@@ -8,7 +8,7 @@
     <author email="support@phonegap.com" href="http://phonegap.com">
         Elohim Systems
     </author>
-    <content src="municipios.html"></content> 
+    <content src="municipios.html"></content>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="15" />
     <preference name="android-targetSdkVersion" value="26" />

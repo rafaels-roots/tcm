@@ -4,12 +4,19 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
+    <<meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-   
+    
 
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:;
+                                                       script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval';
+                                                       object-src *;
+                                                       style-src *;
+                                                       img-src 'self' data:;
+                                                       media-src 'none';
+                                                       font-src *;
+                                                       connect-src *">
     
 
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
@@ -62,7 +69,9 @@
         </div>
 
       
-
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
             $("#municipios").on("pageshow", function()
                 {
