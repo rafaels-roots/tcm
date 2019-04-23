@@ -19,12 +19,10 @@
                                                        connect-src *">
     
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
     <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
 
-
+   
     <script type="text/javascript">
        function onBackButtonTapped() 
           {
@@ -34,17 +32,15 @@
           {
               window.open(elem, "_system");
               return false; // Prevent execution of the default onClick handler 
-          }  
-
-           
+          }         
     </script>
 
-
-
-
+ 
 </head>
 
 <body>
+
+
     <div data-role="page" id="index">
         <header data-role="header">
             <h3>Tribunal de Contas</h3>
@@ -67,6 +63,8 @@
                 <!--<a href="#" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all button2" id="fb">Entrar com facebook</a>-->
 
             </form>
+
+            
         </div>
     
 
@@ -77,11 +75,13 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
+        
         <script type="text/javascript">
                
                
                 $("#index").on("pageshow", function()
                   {
+                    
                       document.getElementById("entrar").onclick = function()
                         {
                             $.mobile.loading("show");
@@ -115,6 +115,8 @@
         </script>
 
    </div> 
+
+
 </body>
 
 </html>
