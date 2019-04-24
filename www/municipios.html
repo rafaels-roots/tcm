@@ -24,6 +24,18 @@
 
     <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
+
+     <script type="text/javascript">
+       function onBackButtonTapped() 
+          {
+              $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "index" ? navigator.app.exitApp() : window.history.back();
+          }
+        function openExternal(elem) 
+          {
+              window.open(elem, "_system");
+              return false; // Prevent execution of the default onClick handler 
+          }         
+    </script>
 </head>
 
 <body>
@@ -33,7 +45,7 @@
         </header>
 
 
-        <div data-role="content" id="content">
+        <div data-role="main" class="ui-content" id="content">
             <div style="width: 100%; height: 100%; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
                 <img src="img/arlindomota.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px"/>
             </div>
@@ -131,6 +143,8 @@
                             sessionStorage.setItem("ano-municipio", $("#ano").val() );
                             sessionStorage.setItem("codigo-municipio", "100" );
                             sessionStorage.setItem("text-municipio", "MARANGUAPE");
+
+                            $.mobile.changePage("menu_principal.html");    
                         }
 
                 });
