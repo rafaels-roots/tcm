@@ -75,6 +75,8 @@
         <script type="text/javascript">
             $("#municipios").on("pageshow", function()
                 {
+                    navigator.splashscreen.show();
+
                     $.mobile.loading("show");
                     $.getJSON('http://192.168.100.7/tcm/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
                         { 
