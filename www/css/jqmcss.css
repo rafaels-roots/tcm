@@ -161,7 +161,7 @@ label
 	margin-top:7px!important;
 }
 #menu_principal #content {
-	display:none;
+	/*display:none;*/
 }
 #menu_principal a[href^="ver-"] {
 	display:none;
