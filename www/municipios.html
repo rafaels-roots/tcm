@@ -121,7 +121,7 @@
             $("#municipios").on("pageshow", function()
                 {
                     $.mobile.loading("show");
-                    $.getJSON('http://192.168.100.7/tcm/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
+                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
                         { 
                              if(data.keypass == "stop") 
                                 {
