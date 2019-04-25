@@ -94,11 +94,9 @@
                         textonly : false
 
                     }); 
-alert(sessionStorage.getItem("codigo-municipio"));
                    
                    $.getJSON('http://192.168.100.7/tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
-                          alert(data[0].keypass);
                           if(data[0].keypass == "stop") 
                               {
                                   alert("Aplicativo indisponível no momento..");
