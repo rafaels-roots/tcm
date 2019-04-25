@@ -160,8 +160,8 @@ label
 #list_MenuPrincipal {
 	margin-top:7px!important;
 }
-#menu_principal #content {
-	/*display:none;*/
+#menu_principal #contentt {
+	display:none;
 }
 #menu_principal a[href^="ver-"] {
 	display:none;
