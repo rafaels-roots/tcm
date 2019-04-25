@@ -23,7 +23,7 @@
     <div data-role="page" id="pre-licitacoes-inf">
         <header data-role="header" data-position="fixed">
             <h3>Licitações Informadas</h3>
-            <a href="#" data-transition="fade" data-rel="back" id="menu" data-position-to="#menu" data-role="button" data-icon="arrow-l" data-iconshadow="false" data-theme="a" data-iconpos="notext"  class="ui-btn-left ui-nodisc-icon az-nodisc">home</a> 
+           <!--  <a href="#" data-transition="fade" data-rel="back" id="menu" data-position-to="#menu" data-role="button" data-icon="arrow-l" data-iconshadow="false" data-theme="a" data-iconpos="notext"  class="ui-btn-left ui-nodisc-icon az-nodisc">home</a> -->
         </header>
 
         <div data-role="main" class="ui-content">
@@ -70,7 +70,7 @@
 
                     });
 
-                    $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         {                             
                             
                             
