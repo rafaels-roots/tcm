@@ -32,7 +32,8 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" source="npm" />
     <plugin name="cordova-plugin-splashscreen" source="npm" />
-    <plugin name="https://github.com/heimmat/FileOpener.git" source="git" />
+    <plugin name="cordova-plugin-android-native-pdfviewer" spec="~1.2.0" source="npm" />
+    
     
 
     <platform name="android">

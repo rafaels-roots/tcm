@@ -40,10 +40,10 @@
             </p>
 
            
-            <form style="display:none;"  id="form_print" data-ajax="false" method="post" action="FPDF/favorecidopdf.php">
+            <!--<form style="display:none;"  id="form_print" data-ajax="false" method="post" action="FPDF/favorecidopdf.php">
                 <input type="hidden" name="link" id="print_link"/>
                 
-            </form>
+            </form>-->
 
         </div>
       
@@ -135,8 +135,24 @@
 
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
-                            $("#print_link").val( $(this).find("a").attr('id'));
-                            $("#form_print").submit();
+                            $.mobile.loading("show",{
+                                text : 'Gerando Pdf...',
+                                textVisible : true,
+                                theme : 'a',
+                                textonly : false
+
+                            });
+
+                            $.getJSON('http://192.168.100.7/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
+                                {
+                                    $.mobile.loading("hide");
+
+                                }); 
+
+
+
+                            /*$("#print_link").val( $(this).find("a").attr('id'));
+                            $("#form_print").submit();*/
                             
                         });                             
                 });
