@@ -146,7 +146,9 @@
                             $.getJSON('http://192.168.100.7/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
                                 {
                                     $.mobile.loading("hide");
-                                    window.plugins.fileOpener.open("http://192.168.100.7/FPDF/doc.pdf");
+                                    //window.plugins.fileOpener.open("http://192.168.100.7/FPDF/doc.pdf");
+
+                                    window.open(encodeURI('http://192.168.100.7/FPDF/doc.pdf'), '_blank', 'location=yes,EnableViewPortScale=yes');
 
                                 }); 
 
