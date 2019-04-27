@@ -147,7 +147,20 @@
                                 {
                                     $.mobile.loading("hide");
                                     //window.plugins.fileOpener.open("http://192.168.100.7/FPDF/doc.pdf");
-                                    location.href = 'http://192.168.100.7/FPDF/doc.pdf';
+                                    //location.href = 'http://192.168.100.7/FPDF/doc.pdf';
+
+                                    cordova.plugins.fileOpener2.open(
+                                        'http://192.168.100.7/FPDF/doc.pdf', 
+                                        'application/pdf', 
+                                        { 
+                                            error : function(errorObj) { 
+                                                alert('Error status: ' + errorObj.status + ' - Error message: ' + errorObj.message); 
+                                            },
+                                            success : function () {
+                                                alert('file opened successfully');              
+                                            }
+                                        }
+                                    );
 
                                 }); 
 
