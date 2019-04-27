@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <!-- pra dar certo no FB o nome do package tem que tá igual ao package do FB deelopers, no caso o id do <widget> -->
-<widget id="tcm.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="tcm.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
     <name>Transparência Maranguape</name>
     <description>
         Registro de ações do governo do município de Maranguape
@@ -36,7 +39,11 @@
     
     
     
-    
+    <platform name="android">
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    </config-file>
+</platform>
 
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi/icon.png" />
