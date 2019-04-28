@@ -37,20 +37,24 @@
     <plugin name="cordova-plugin-file-opener2" spec="https://github.com/siegfriedbolz/cordova-plugin-file-opener2" source="npm" />
     <plugin spec="https://github.com/Whebcraft/cordova-plugin-downloader.git" source="git" />
     
-    
+
+    <gap:config-file platform="android" parent="/manifest" mode="add">
+        <uses-permission android:name="android.permission.CAMERA" />
+    </gap:config-file>
+        
     <!--
     <platform name="android">
-    <config-file target="AndroidManifest.xml" parent="/manifest">
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    </config-file>
-</platform>-->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+    </platform>-->
 
 
-<!-- Strip away maxSdkVersion -->
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion"/>
+    <!-- Strip away maxSdkVersion -->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion"/>-->
 
-<!-- Add the permission with no maxSdkVersion defined -->
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- Add the permission with no maxSdkVersion defined -->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
 
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi/icon.png" />
