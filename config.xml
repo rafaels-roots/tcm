@@ -39,7 +39,7 @@
     
 
     <gap:config-file platform="android" parent="/manifest" mode="add">
-        <uses-permission android:name="android.permission.CAMERA" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </gap:config-file>
         
     <!--
