@@ -167,7 +167,7 @@
 
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
-                            $.mobile.loading("show",{
+                           /* $.mobile.loading("show",{
                                 text : 'Gerando Pdf...',
                                 textVisible : true,
                                 theme : 'a',
@@ -192,8 +192,8 @@
                                                 alert('file opened successfully');              
                                             }
                                         }
-                                    );*/
-                                    cordova.InAppBrowser.open('http://192.168.100.7/FPDF/doc.pdf', '_blank', 'location=yes');
+                                    );
+                                    //cordova.InAppBrowser.open('http://192.168.100.7/FPDF/doc.pdf', '_blank', 'location=yes');
                                     //Downloader.download(options, downloadSuccessCallback, downloadErrorCallback);   
 
                                 }); 
