@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <!-- pra dar certo no FB o nome do package tem que tá igual ao package do FB deelopers, no caso o id do <widget> -->
-<widget id="tcm.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget id="tcm.com"
+         version="1.0.1"
+         xmlns="http://www.w3.org/ns/widgets"
+         xmlns:gap="http://phonegap.com/ns/1.0"
+         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
 
@@ -38,11 +42,15 @@
     <plugin spec="https://github.com/Whebcraft/cordova-plugin-downloader.git" source="git" />
     
 
-    <gap:config-file platform="android" parent="/manifest" mode="add">
+    <custom-config-file parent="/*" target="AndroidManifest.xml">
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    </custom-config-file>     
+
+    <!--<gap:config-file platform="android" parent="/manifest" mode="add">
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </gap:config-file>
         
-    <!--
+    
     <platform name="android">
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
