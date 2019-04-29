@@ -45,7 +45,7 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
           <provider android:name="io.github.pwlin.cordova.plugins.fileopener2.FileProvider" android:authorities="${applicationId}.opener.provider" android:exported="false" android:grantUriPermissions="true">
-    <!--<engine name="android" spec="^6.4.0" />-->
+    </config-file><!--<engine name="android" spec="^6.4.0" />-->
     
 
 
