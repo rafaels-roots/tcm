@@ -175,15 +175,27 @@
 
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
-                          
-                             window.html2pdf.create(
+                            
+                            let options = {
+                                            documentSize: 'A4',
+                                            type: 'base64'
+                                          }
+
+                            pdf.fromData('<html><h1>Hello World</h1></html>', options)
+                                .then((base64)=>'ok')   // it will
+                                .catch((err)=>console.err(err))
+
+
+
+
+                             /*window.html2pdf.create(
                                 "<html><head></head><body><h1>Some</h1><p>html content.</p></body></html>",
                                 "~/Documents/test.pdf", // on iOS,
                                 // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
                                 success,
                                 error
                             );
-
+*/
 
                            /* $.mobile.loading("show",{
                                 text : 'Gerando Pdf...',
