@@ -55,41 +55,7 @@
 
         <script type="text/javascript">
 
-             var success = function(status) {
-            alert('Message: ' + status);
-        }
-
-        var error = function(status) {
-            alert('Error: ' + status);
-        }
-            
-            var Downloader = window.plugins.Downloader;
-            var downloadSuccessCallback = function(result) {
-                   // result is an object
-                    /*{
-                        path: "file:///storage/sdcard0/documents/doc.pdf", // Returns full file path
-                        file: "doc.pdf", // Returns Filename
-                        folder: "documents" // Returns folder name
-                    }*/
-                   console.log(result.file); // My Pdf.pdf
-            };
-
-            var downloadErrorCallback = function(error) {
-                // error: string
-                console.log(error);
-            };
-
-            var options = {
-                title: 'Downloading File', // Download Notification Title
-                url: "http://192.168.100.7/FPDF/doc.pdf", // File Url
-                path: "doc.pdf", // The File Name with extension
-                description: 'The pdf file is downloading', // Download description Notification String
-                visible: true, // This download is visible and shows in the notifications while in progress and after completion.
-                folder: "documents" // Folder to save the downloaded file, if not exist it will be created
-            };
-
-
-
+       
             $("#pre-favorecidos").on("pageshow", function()
                 {
                     
