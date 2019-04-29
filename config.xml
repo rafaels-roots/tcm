@@ -16,7 +16,7 @@
     <content src="municipios.html"></content>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="15" />
-    <preference name="android-targetSdkVersion" value="27" />
+    
     <preference name="orientation" value="portrait" />
     
     <!--<preference name="SplashScreenDelay" value="10000" />
@@ -39,13 +39,9 @@
     <!--<plugin name="cordova-pdf-generator" spec="^2.0.8" />-->
     <plugin spec="https://github.com/neptsoft/cordova-plugin-file-opener2" source="git" />
 
-    <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-          <provider android:name="io.github.pwlin.cordova.plugins.fileopener2.FileProvider" android:authorities="${applicationId}.opener.provider" android:exported="false" android:grantUriPermissions="true">
-    </config-file><!--<engine name="android" spec="^6.4.0" />-->
+    <preference name="android-targetSdkVersion" value="27" />
+
+    <!--<engine name="android" spec="^6.4.0" />-->
     
 
 
