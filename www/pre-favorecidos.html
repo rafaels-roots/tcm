@@ -180,9 +180,9 @@
                                             documentSize: 'A4',
                                             type: 'base64'
                                           }
-
+                            alert(options);              
                             pdf.fromData('<html><h1>Hello World</h1></html>', options)
-                                .then((base64)=>'ok');   // it will
+                                .then((base64)=>'ok')   // it will
                                 .catch((err)=>console.err(err));
 
 

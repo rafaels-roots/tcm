@@ -119,18 +119,7 @@
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
 
-            document.addEventListener('deviceready', function(){
-  // start using cordova plugin here.
-   let options = {
-                                            documentSize: 'A4',
-                                            type: 'base64'
-                                          }
-
-                            pdf.fromData('<html><h1>Hello World</h1></html>', options)
-                                .then((base64)=>'ok');   // it will
-                                .catch((err)=>console.err(err));
-})
-
+        
 
             $("#municipios").on("pageshow", function()
                 {
