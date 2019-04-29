@@ -141,14 +141,14 @@
 
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
-                            alert("dsad");
-                            let options = {
+                           alert("dsadssssss");
+      let options = {
                 documentSize: 'A4',
-                type: 'base64'
+                type: 'share'
               }
  
-pdf.fromURL('http://www.google.es', options)
-    .then(()=>'ok')
+pdf.fromData('<html><h1>Hello World</h1></html>', options)
+    .then((base64)=> console.log(base64) )   // returns base64:JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9DcmVh...
     .catch((err)=>console.err(err))
 
 
