@@ -142,28 +142,9 @@
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
                            alert("dsadssssss");
-     /* let options = {
-                documentSize: 'A4',
-                type: 'share'
-              }
- 
-pdf.fromData('<html><h1>Hello World</h1></html>', options)
-    .then((base64)=> console.log(base64) )   // returns base64:JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9DcmVh...
-    .catch((err)=>console.err(err))*/
+  
 
-
-
-
-                             /*window.html2pdf.create(
-                                "<html><head></head><body><h1>Some</h1><p>html content.</p></body></html>",
-                                "~/Documents/test.pdf", // on iOS,
-                                // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
-                                success,
-                                error
-                            );
-*/
-
-                           /* $.mobile.loading("show",{
+                            $.mobile.loading("show",{
                                 text : 'Gerando Pdf...',
                                 textVisible : true,
                                 theme : 'a',
@@ -174,6 +155,22 @@ pdf.fromData('<html><h1>Hello World</h1></html>', options)
                             $.getJSON('http://192.168.100.7/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
                                 {
                                     $.mobile.loading("hide");
+
+                                    DocumentViewer.previewFileFromUrlOrPath(
+                                        function () {
+                                        console.log('success');
+                                        }, function (error) {
+                                        if (error == 53) {
+                                            console.log('No app that handles this file type.');
+                                        }else if (error == 2){
+                                            console.log('Invalid link');
+                                        }
+                                    },
+                                    'http://192.168.100.7/FPDF/doc.pdf', 'pdf-sample');
+                                      });
+
+
+                                    
                                     //window.plugins.fileOpener.open("http://192.168.100.7/FPDF/doc.pdf");
                                     //location.href = 'http://192.168.100.7/FPDF/doc.pdf';
 
