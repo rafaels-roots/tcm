@@ -199,6 +199,10 @@ DocumentViewer.previewFileFromUrlOrPath(
                           $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
                               { 
                                    console.log(data);
+                                   alert(data.wresult[0]["ter_id"]);
+                                   alert(data.wresult);
+                                   alert(data.wresult.length);
+
                                    if(data.keypass == "stop") 
                                       {
                                           alert("Aplicativo indisponível no momento..");
@@ -210,7 +214,9 @@ DocumentViewer.previewFileFromUrlOrPath(
                                           alert("Atualize o app para continuar..");
                                           return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
                                       }
-                                    if(data[0].wresult)  
+                                    /*if(data.wresult[0]["ter_id"]) {
+
+                                    }  */
 
                                     sessionStorage.setItem("ano-municipio", $("#ano").val() );   
                                     sessionStorage.setItem("codigo-municipio", "100" );
