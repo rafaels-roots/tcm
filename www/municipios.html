@@ -199,9 +199,11 @@ DocumentViewer.previewFileFromUrlOrPath(
                           $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
                               { 
                                    console.log(data);
-                                   alert(data.wresult[0]["ter_id"]);
-                                   alert(data.wresult);
                                    alert(data.wresult.length);
+                                   alert(data.wresult);
+                                   alert(data.wresult[0]["ter_id"]);
+                                   
+                                  // alert(data.wresult.length);
 
                                    if(data.keypass == "stop") 
                                       {
