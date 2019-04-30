@@ -42,7 +42,7 @@ img { width: 100% }
 .ui-state-disabled 
 {
     background-color: #ebebe4!important;
-    opacity: .6
+    opacity: .3
 }
 .ui-select .ui-state-disabled 
 {
