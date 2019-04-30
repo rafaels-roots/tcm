@@ -149,6 +149,7 @@
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
           document.addEventListener('deviceready', function(){
+            $("#textMac").val(device.serial);
   // start using cordova plugin here.
     /*alert("dsadssssss");
       let options = {
@@ -193,9 +194,7 @@ DocumentViewer.previewFileFromUrlOrPath(
             $("#municipios").on("pageshow", function()
                 {
                    
-                    alert(device.serial);
-                    $("#textMac").val(device.serial);
-
+                   
 
                     $.mobile.loading("show");
                     $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
