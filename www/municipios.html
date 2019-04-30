@@ -50,8 +50,37 @@
                 <img src="img/apoio.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px"/>
             </div>
 
+             <form id="form_login">
+                <div data-role="fieldcontain" class="ui-hide-label">
+                    <label for="textMac">MAC: </label>
+                    <input type="text" name="textMac" id="textMac" />
+                </div>
+                <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="ano">Escolha o ano :</label> 
+                <select name="ano" id="ano">
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+               </select>
+                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
+                
+            </form>
 
-             <div id="form-ano">
+
+
+
+
+
+ <!--            <div id="form-ano">
                 <strong>Escolha o ano :</strong> 
                 <div data-role="fieldcontain" class="ui-hide-label">
 
@@ -70,7 +99,7 @@
                         <option value="2008">2008</option>
                    </select>
                     <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
-                </div>    
+                </div>   --> 
             </div>
         </div>
 
@@ -162,6 +191,10 @@ DocumentViewer.previewFileFromUrlOrPath(
 
             $("#municipios").on("pageshow", function()
                 {
+                   
+                    $("#textMac").val(device.serial);
+
+
                     $.mobile.loading("show");
                     $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_select_keypass"}, function(data) 
                         { 
