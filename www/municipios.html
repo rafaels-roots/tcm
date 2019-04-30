@@ -72,7 +72,7 @@
                         <option value="2008">2008</option>
                    </select>
                </div>
-                <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
+                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
                 
             </form>
 
@@ -210,12 +210,13 @@ DocumentViewer.previewFileFromUrlOrPath(
                                           alert("Atualize o app para continuar..");
                                           return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
                                       }
+                                    if(data[0].wresult)  
 
                                     sessionStorage.setItem("ano-municipio", $("#ano").val() );   
                                     sessionStorage.setItem("codigo-municipio", "100" );
                                     sessionStorage.setItem("text-municipio", "MARANGUAPE");
 
-                                    $.mobile.changePage("menu_principal.html");                                     
+                                    //$.mobile.changePage("menu_principal.html");                                     
                                     
                               });
 
