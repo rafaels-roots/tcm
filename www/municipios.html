@@ -193,35 +193,32 @@ DocumentViewer.previewFileFromUrlOrPath(
 
             $("#municipios").on("pageshow", function()
                 {
-                   
-                   
-
-                    $.mobile.loading("show");
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
-                        { 
-                             console.log(data);
-                             if(data.keypass == "stop") 
-                                {
-                                    alert("Aplicativo indisponível no momento..");
-                                    navigator.app.exitApp();
-                                    return true;
-                                }
-                              if(data.keypass != "1.0.1") 
-                                {
-                                    alert("Atualize o app para continuar..");
-                                    return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                                }
-                              $.mobile.loading("hide");  
-                        });
-
-
                     document.getElementById("avancar").onclick = function()
                         {
-                            sessionStorage.setItem("ano-municipio", $("#ano").val() );
-                            sessionStorage.setItem("codigo-municipio", "100" );
-                            sessionStorage.setItem("text-municipio", "MARANGUAPE");
+                            
+                          $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
+                              { 
+                                   console.log(data);
+                                   if(data.keypass == "stop") 
+                                      {
+                                          alert("Aplicativo indisponível no momento..");
+                                          navigator.app.exitApp();
+                                          return true;
+                                      }
+                                    if(data.keypass != "1.0.1") 
+                                      {
+                                          alert("Atualize o app para continuar..");
+                                          return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                                      }
 
-                            $.mobile.changePage("menu_principal.html");    
+                                    sessionStorage.setItem("ano-municipio", $("#ano").val() );   
+                                    sessionStorage.setItem("codigo-municipio", "100" );
+                                    sessionStorage.setItem("text-municipio", "MARANGUAPE");
+
+                                    $.mobile.changePage("menu_principal.html");                                     
+                                    
+                              });
+
                         }
 
                 });
