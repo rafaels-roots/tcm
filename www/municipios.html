@@ -50,7 +50,7 @@
                 <img src="img/apoio.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px"/>
             </div>-->
 
-             <form id="form_login">
+             <form id="form_municipios">
                 <div data-role="fieldcontain" class="ui-hide-label">
                     <label for="textMac">MAC: </label>
                     <input type="text" name="textMac" id="textMac" />
@@ -101,7 +101,7 @@
                    </select>
                     <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
                 </div>   --> 
-            </div>
+            
         </div>
 
 
@@ -183,8 +183,8 @@ DocumentViewer.previewFileFromUrlOrPath(
         console.log('Invalid link');
     }
 },
-'http://192.168.100.7/FPDF/doc.pdf', 'pdf-sample');
-  });*/
+'http://192.168.100.7/FPDF/doc.pdf', 'pdf-sample');*/
+  });
         </script>
         <script type="text/javascript">
 
@@ -193,6 +193,7 @@ DocumentViewer.previewFileFromUrlOrPath(
             $("#municipios").on("pageshow", function()
                 {
                    
+                    alert(device.serial);
                     $("#textMac").val(device.serial);
 
 
