@@ -196,7 +196,7 @@ DocumentViewer.previewFileFromUrlOrPath(
                     
                     document.getElementById("avancar").onclick = function()
                         {
-                          $.mobile.loading("show")  
+                          $.mobile.loading("show")  ;
                           $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
                               { 
                                    console.log(data);
