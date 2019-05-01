@@ -214,7 +214,8 @@ DocumentViewer.previewFileFromUrlOrPath(
                                     if(data.wresult.length == 0) 
                                       {
                                          alert("Dispositivo não cadastrado..");
-                                         return false;   
+                                         $.mobile.loading("hide")  ;
+                                         return true;   
                                       }
                                     if(data.wresult.length > 0) 
                                       {
