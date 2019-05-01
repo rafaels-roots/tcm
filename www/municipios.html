@@ -199,12 +199,6 @@ DocumentViewer.previewFileFromUrlOrPath(
                           $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
                               { 
                                    console.log(data);
-                                   alert(data.wresult.length);
-                                   alert(data.wresult);
-                                   alert(data.wresult[0]["ter_id"]);
-                                   
-                                  // alert(data.wresult.length);
-
                                    if(data.keypass == "stop") 
                                       {
                                           alert("Aplicativo indisponível no momento..");
@@ -216,15 +210,18 @@ DocumentViewer.previewFileFromUrlOrPath(
                                           alert("Atualize o app para continuar..");
                                           return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
                                       }
-                                    /*if(data.wresult[0]["ter_id"]) {
-
-                                    }  */
-
-                                    sessionStorage.setItem("ano-municipio", $("#ano").val() );   
-                                    sessionStorage.setItem("codigo-municipio", "100" );
-                                    sessionStorage.setItem("text-municipio", "MARANGUAPE");
-
-                                    //$.mobile.changePage("menu_principal.html");                                     
+                                    if(data.wresult.length == 0) 
+                                      {
+                                         alert("Equipamento não cadastrado..");
+                                         return false;   
+                                      }
+                                    if(data.wresult.length > 0) 
+                                      {
+                                        sessionStorage.setItem("ano-municipio", $("#ano").val() );   
+                                        sessionStorage.setItem("codigo-municipio", "100" );
+                                        sessionStorage.setItem("text-municipio", "MARANGUAPE");
+                                        $.mobile.changePage("menu_principal.html");                                     
+                                      }    
                                     
                               });
 
