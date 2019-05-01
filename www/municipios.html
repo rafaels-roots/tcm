@@ -28,7 +28,7 @@
      <script type="text/javascript">
        function onBackButtonTapped() 
           {
-              $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "index" ? navigator.app.exitApp() : window.history.back();
+              $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "menu_principal" ? navigator.app.exitApp() : window.history.back();
           }
         function openExternal(elem) 
           {
@@ -105,39 +105,6 @@
         </div>
 
 
-       <!-- <div data-role="main" class="ui-content">
-             
-             <div id="divarlindo">
-                <img src="img/arlindomota.png" alt="image"/>
-             </div>
-
-
-             <div id="form-ano">
-                <strong>Escolha o ano :</strong> 
-                <div data-role="fieldcontain" class="ui-hide-label">
-
-                    <select name="ano" id="ano">
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
-                   </select>
-                    <a href="menu_principal.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
-                </div>    
-            </div>
-
-
-        </div>-->
-
-
 
         <div data-role="footer" data-position="fixed">
             <h1>Fonte | Portal da Transparência</h1>
@@ -150,47 +117,10 @@
         <script type="text/javascript">
           document.addEventListener('deviceready', function(){
             $("#textMac").val(device.serial);
-  // start using cordova plugin here.
-    /*alert("dsadssssss");
-      let options = {
-                documentSize: 'A4',
-                type: 'share'
-              }
- 
-pdf.fromData('<html><h1>Hello World</h1></html>', options)
-    .then((base64)=> console.log(base64) )   // returns base64:JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9DcmVh...
-    .catch((err)=>console.err(err))*/
-
-    /*cordova.plugins.fileOpener2.open(
-    'http://192.168.100.7/doc.pdf', // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Downloads/starwars.pdf
-    'application/pdf',
-    {
-        error : function(e) {
-            console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
-        },
-        success : function () {
-            console.log('file opened successfully');
-        }
-    }
-);*/
-/*
-DocumentViewer.previewFileFromUrlOrPath(
-    function () {
-    console.log('success');
-    }, function (error) {
-    if (error == 53) {
-        console.log('No app that handles this file type.');
-    }else if (error == 2){
-        console.log('Invalid link');
-    }
-},
-'http://192.168.100.7/FPDF/doc.pdf', 'pdf-sample');*/
-  });
+  
+          });
         </script>
         <script type="text/javascript">
-
-
-
             $("#municipios").on("pageshow", function()
                 {
                     
