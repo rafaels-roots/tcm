@@ -160,7 +160,7 @@
 
                             $.getJSON('http://www.elohimsystems.com.br/transmpe/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
                                 {
-                                    $.mobile.loading("hide");
+                                    
                                     DocumentViewer.previewFileFromUrlOrPath(function () 
                                         {
                                             console.log('success');
@@ -176,6 +176,7 @@
                                                 }
                                         },
                                     'http://www.elohimsystems.com.br/transmpe/FPDF/doc.pdf', 'pdf-sample');
+                                    $.mobile.loading("hide");
                                 });    
                             
                         });                             
