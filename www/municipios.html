@@ -46,15 +46,15 @@
 
 
         <div data-role="main" class="ui-content" id="content">
-            <!--<div style="width: 100%; height: 100%; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
+            <div style="width: 100%; height: 100%; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
                 <img src="img/apoio.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px"/>
-            </div>-->
+            </div>
 
              <form id="form_municipios">
-                <div data-role="fieldcontain">
+                <!--<div data-role="fieldcontain">
                     <label for="textMac">Serial : </label>
                     <input type="text" name="textMac" id="textMac" disabled/>
-                </div>
+                </div>-->
                 <div data-role="fieldcontain">
                     <label for="ano">Escolha o ano :</label> 
                     <select name="ano" id="ano">
@@ -127,7 +127,7 @@
                     document.getElementById("avancar").onclick = function()
                         {
                           $.mobile.loading("show")  ;
-                          $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : $("#textMac").val() }, function(data) 
+                          $.getJSON('http://www.elohimsystems.com.br/transmpe/php/municipios.php?callback=?', {action: "f_login", mac : "42007f93f297b453" }, function(data) 
                               { 
                                    console.log(data);
                                    if(data.keypass == "stop") 
