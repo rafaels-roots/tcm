@@ -119,7 +119,7 @@
                                 navigator.app.exitApp();
                                 return true;
                             }
-                          if(data[0].keypass != "1.0.1") 
+                          if(data[0].keypass != "1.4.0") 
                             {
                                 alert("Atualize o app para continuar..");
                                 return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
@@ -134,7 +134,7 @@
 
                             var dados =  data[0]["dados"];
                             var list_AgentesPublicos ="";
-                              for(var i = 0; i < dados.length; i++) 
+                              for(var i = 0, len = dados.length; i < len; i++) 
                                 {
                                   list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
                                                               '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
@@ -186,7 +186,7 @@
                                           navigator.app.exitApp();
                                           return true;
                                       }
-                                    if(data[0].keypass != "1.0.1") 
+                                    if(data[0].keypass != "1.4.0") 
                                       {
                                           alert("Atualize o app para continuar..");
                                           return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
@@ -203,7 +203,7 @@
 
                                     var dados =  data[0]["dados"];
                                     var list_AgentesPublicos ="";
-                                    for(var i = 0; i < dados.length; i++) 
+                                    for(var i = 0, len = dados.length; i < len; i++) 
                                       {
                                         list_AgentesPublicos += '<li><a href="#">'+dados[i]["nome"] +
                                                                     '<p><strong>'+dados[i]["lotacao"] +'</strong> <br /> Vinculo : ' 
