@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <!-- pra dar certo no FB o nome do package tem que tá igual ao package do FB deelopers, no caso o id do <widget> -->
 <widget id="tcm.com"
-         version="1.5.0"
+         version="1.6.0"
          xmlns="http://www.w3.org/ns/widgets"
          xmlns:gap="http://phonegap.com/ns/1.0"
          xmlns:android="http://schemas.android.com/apk/res/android">

@@ -119,7 +119,7 @@
                                 navigator.app.exitApp();
                                 return true;
                             }
-                          if(data[0].keypass != "1.5.0") 
+                          if(data[0].keypass != "1.6.0") 
                             {
                                 alert("Atualize o app para continuar..");
                                 return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
@@ -177,7 +177,7 @@
                               textonly : false
 
                            });
-                          $.getJSON('http://192.168.100.7/tcm/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
+                          $.getJSON('http://www.elohimsystems.com.br/transmpe/php/ver-agentes-publicos.php?callback=?', {action: "f_select_agentes_publicos", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), param3 : $('#indice').val()  }, function(data) 
                                 { 
 
                                     if(data[0].keypass == "stop") 
@@ -186,7 +186,7 @@
                                           navigator.app.exitApp();
                                           return true;
                                       }
-                                    if(data[0].keypass != "1.5.0") 
+                                    if(data[0].keypass != "1.6.0") 
                                       {
                                           alert("Atualize o app para continuar..");
                                           return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
