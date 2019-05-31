@@ -39,24 +39,10 @@
                 <span id="fonte"></span> 
             </p>
 
-            
-            <form style="display:none;"  id="form_print" data-ajax="false" method="post" action="FPDF/favorecidopdf.php">
-                <input type="hidden" name="link" id="print_link"/>
-                
-            </form>
+          
 
         </div>
       
-
-        <div data-role="popup" id="menuopcoes">
-            <ul data-role="listview" data-inset="true" data-divider-theme="a">
-                <li data-role="list-divider">Login</li>
-                <li id="usuario" data-icon="user"><a href="#">...</a></li>
-                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
-                <li data-role="list-divider">Navegação</li>
-                <li id="voltar" data-icon="back"><a href="ver-tipos-de-despesas.html" >Voltar</a></li>
-            </ul>
-        </div>
 
         <div data-role="footer" data-position="fixed">
             <h1>Fonte | Portal da Transparência</h1>
@@ -87,7 +73,7 @@
                                   navigator.app.exitApp();
                                   return true;
                               }
-                            if(data[0].keypass != "1.6.0") 
+                            if(data[0].keypass != "1.7.0") 
                               {
                                   alert("Atualize o app para continuar..");
                                   return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
@@ -145,12 +131,42 @@
                         }); 
 
 
+                    
                     $("#list_Favorecidos").on("click", "li", function()
                         {    
-                            $("#print_link").val( $(this).find("a").attr('id'));
-                            $("#form_print").submit();
+                           
+                            $.mobile.loading("show",{
+                                text : 'Gerando Pdf...',
+                                textVisible : true,
+                                theme : 'a',
+                                textonly : false
+
+                            });
+
+                            $.getJSON('http://www.elohimsystems.com.br/transmpe/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
+                                {
+                                    
+                                    DocumentViewer.previewFileFromUrlOrPath(function () 
+                                        {
+                                            console.log('success');
+                                        }, function (error) 
+                                        {
+                                            if (error == 53) 
+                                                {
+                                                    console.log('No app that handles this file type.');
+                                                }
+                                            else if (error == 2)
+                                                {
+                                                    console.log('Invalid link');
+                                                }
+                                        },
+                                    'http://www.elohimsystems.com.br/transmpe/FPDF/doc.pdf', 'pdf-sample');
+                                    $.mobile.loading("hide");
+
+                                }); 
+
                             
-                        });                             
+                        });                                
                 });
         </script>
 

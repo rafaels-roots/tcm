@@ -56,15 +56,6 @@
         </div>
       
 
-        <div data-role="popup" id="menuopcoes">
-            <ul data-role="listview" data-inset="true" data-divider-theme="a">
-                <li data-role="list-divider">Login</li>
-                <li id="usuario" data-icon="user"><a href="#">...</a></li>
-                <li id="logout" data-icon="back"><a href="#" >Logout</a></li>
-                <li data-role="list-divider">Navegação</li>
-                <li id="voltar" data-icon="back"><a href="menu_principal.html" >Voltar</a></li>
-            </ul>
-        </div>
 
         <div data-role="footer" data-position="fixed">
             <h1>Fonte | Portal da Transparência</h1>
@@ -95,7 +86,7 @@
                                 navigator.app.exitApp();
                                 return true;
                             }
-                          if(data[0].keypass != "1.6.0") 
+                          if(data[0].keypass != "1.7.0") 
                             {
                                 alert("Atualize o app para continuar..");
                                 return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
