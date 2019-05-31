@@ -112,8 +112,10 @@
                                 {
                                     var xz = $(this).find('a:nth-child(1)').html();
                                     li += "<li>" +
-                                            "<a href='#' id='http://municipios.tce.ce.gov.br"+$(this).find("a[href^='/transparencia']").attr("href")+"' class='ui-btn'>" + xz.substr(0,xz.length - 2) + "</a>" +
-                                            "<span class='ui-li-count'>"+$(this).find('span').text()+"</span>" +
+                                            "<a href='#' id='http://municipios.tce.ce.gov.br"+$(this).find("a[href^='/transparencia']").attr("href")+"' class='ui-btn'>" + xz.substr(0,xz.length - 2) + 
+                                                "<span class='ui-li-count'>"+$(this).find('span').text()+"</span>" +
+                                            "</a>" +
+                                            
                                           "</li>";  
                                     
                                 });
