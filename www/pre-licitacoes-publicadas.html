@@ -4,18 +4,6 @@
  
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
-    
-
-    
-    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
-    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
 </head>
 
@@ -52,7 +40,7 @@
       
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
 
@@ -61,42 +49,26 @@
             $("#pre-licitacoes-publicadas").on("pageshow", function()
                 {
                     
-                    //$("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
                     });
 
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : "1"  }, function(data) 
+                    $.getJSON('https://elohimsystems.com.br/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : "1"  }, function(data) 
                         { 
 
-                           if(data[0].keypass == "stop") 
-                            {
-                                alert("Aplicativo indisponível no momento..");
-                                navigator.app.exitApp();
-                                return true;
-                            }
-                          if(data[0].keypass != "1.9.0") 
-                            {
-                                alert("Atualize o app para continuar..");
-                                return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                            }
-
-
-                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
-                                              'PREFEITURA >> '+
-                                              sessionStorage.getItem("opcao-menu")+' >> '+
+                            $("#filter").html(sessionStorage.getItem("text-municipio")+' &#187 '+
+                                              'Prefeitura &#187 '+
+                                              sessionStorage.getItem("opcao-menu")+' &#187 '+
                                               sessionStorage.getItem("ano-municipio"));
-                            document.getElementById("filter").style.display = "block";
+                            
 
-                            var dados =  data[0]["dados"];
-                            var dtr = "";
-                            var list_LicitacoesPublicadas ="";
-                            for(var i = 0; i < dados.length; i++) 
+                            const dados =  data.dados;
+                            let dtr = "";
+                            let list_LicitacoesPublicadas ="";
+                            for(let i = 0; i < dados.length; i++) 
                               {
                                 if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
                                 list_LicitacoesPublicadas += "<li><a href='#'>"+ dados[i]['codigo'] + 
@@ -110,17 +82,17 @@
                               }    
                            
 
-                            var ul = $("#list_LicitacoesPublicadas"); 
-                            document.getElementById("list-info").style.display = "block";
-                            document.getElementById("next-previous").style.display = "block";
-
+                            const ul = $("#list_LicitacoesPublicadas"); 
                             ul.html(list_LicitacoesPublicadas);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
    
     
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block";
                             document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
                             document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
+                            document.getElementById("next-previous").style.display = "block";
 
                             sessionStorage.setItem("pg",1);
                             $.mobile.loading("hide"); 
@@ -133,12 +105,10 @@
                             $.mobile.loading("show",{
                                 text : 'Carregando...',
                                 textVisible : true,
-                                theme : 'a',
-                                textonly : false
-
+                                theme : 'b'
                             });
 
-                            var pg = parseInt(sessionStorage.getItem("pg"));
+                            let pg = parseInt(sessionStorage.getItem("pg"));
                             if( $(this).text() == "next" ) {
                               pg++;  
                             }
@@ -149,21 +119,20 @@
                             sessionStorage.setItem("pg", pg);
 
                             $(".ui-content").css("display", "none"); 
-                            $.getJSON('http://192.168.100.7/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : pg.toString()  }, function(data) 
+                            $.getJSON('https://elohimsystems.com.br/tcm/php/pre-licitacoes-publicadas.php?callback=?', {action: "f_select_licitacoes_publicadas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : pg.toString()  }, function(data) 
                                 { 
                                     
-                                    $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
-                                                      'PREFEITURA >> '+
-                                                      sessionStorage.getItem("opcao-menu")+' >> '+
-                                                      sessionStorage.getItem("ano-municipio"));
-                                    document.getElementById("filter").style.display = "block";
+                                   $("#filter").html(sessionStorage.getItem("text-municipio")+' &#187 '+
+                                              'Prefeitura &#187 '+
+                                              sessionStorage.getItem("opcao-menu")+' &#187 '+
+                                              sessionStorage.getItem("ano-municipio"));
 
-                                    var ul = $("#list_LicitacoesPublicadas");           
+                                    const ul = $("#list_LicitacoesPublicadas");           
 
                                     $("#list_LicitacoesPublicadas li").remove();
                                     
                                     $(".ui-content").css("display", "block");
-                                    if(data[0]['is_end'] == "true") {
+                                    if(data.isend== "true") {
                                         $("#next-previous .ui-block-c a").addClass('ui-disabled');
                                     }
                                     else {
@@ -171,10 +140,10 @@
                                     }
 
 
-                                    var dados =  data[0]["dados"];
-                                    var dtr = "";
-                                    var list_LicitacoesPublicadas ="";
-                                    for(var i = 0; i < dados.length; i++) 
+                                    const dados =  data.dados;
+                                    let dtr = "";
+                                    let list_LicitacoesPublicadas ="";
+                                    for(let i = 0; i < dados.length; i++) 
                                       {
                                         if(dados[i]['dtreabertura']) { dtr = "-"; } else { dtr = dados[i]['dtreabertura']; }
                                         list_LicitacoesPublicadas += "<li><a href='#'>"+ dados[i]['codigo'] + 
@@ -192,9 +161,6 @@
                                     ul.html(list_LicitacoesPublicadas);
                                     ul.listview("refresh");
                                     ul.trigger("updatelayout");
-           
-                                    document.getElementById("atualizacao").innerHTML = data[0]["atualizacao"];
-                                    document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                                     $("#next-previous .ui-block-b").text(pg);
                                     sessionStorage.setItem("pg",pg);

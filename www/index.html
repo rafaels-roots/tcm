@@ -2,7 +2,7 @@
 
 <html>
 
-<head> 
+<head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
@@ -18,15 +18,17 @@
                                                        font-src *;
                                                        connect-src *">
     
+
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
+    
+
     <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
 
-   
-    <script type="text/javascript">
+     <script type="text/javascript">
        function onBackButtonTapped() 
           {
-              $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "index" ? navigator.app.exitApp() : window.history.back();
+              $.mobile.activePage.attr('id') == "municipios" || $.mobile.activePage.attr('id') == "menu_principal" ? navigator.app.exitApp() : window.history.back();
           }
         function openExternal(elem) 
           {
@@ -34,90 +36,64 @@
               return false; // Prevent execution of the default onClick handler 
           }         
     </script>
-
- 
 </head>
 
 <body>
-
-
-    <div data-role="page" id="index">
-        <header data-role="header">
-            <h3>Tribunal de Contas</h3>
+    <div data-role="page" id="municipios">
+        <header data-role="header" data-position="fixed">
+            <h3>Ínicio</h3>
         </header>
 
-        <div data-role="main" class="ui-content">
-            <p class="sumary">Login</p>
-         
-            <form id="form_login">
-                <div data-role="fieldcontain" class="ui-hide-label">
-                    <label for="textUser">Usuário: </label>
-                    <input type="text" name="textUser" id="textUser" placeholder="Username"/>
-                </div>
-                <div data-role="fieldcontain" class="ui-hide-label">
-                    <label for="textPassword">Senha: </label>
-                    <input type="password" name="textPassword" id="textPassword" placeholder="Password"/>
-                </div>
+
+        <div data-role="main" class="ui-content" id="content">
+            
+             <form id="form_municipios">
+              
+                <div data-role="fieldcontain">
+                    <label for="ano">Escolha o ano :</label> 
+                    <select name="ano" id="ano">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                   </select>
+               </div>
+               <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
                 
-                <a href="#" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-corner-all button1" id="entrar">Entrar</a>
-                <!--<a href="#" class="ui-btn ui-btn-a ui-icon-myicon ui-btn-icon-left ui-corner-all button2" id="fb">Entrar com facebook</a>-->
-
             </form>
-
             
         </div>
-    
 
         <div data-role="footer" data-position="fixed">
-            <h1></h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+      
+       <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
-        <script type="text/javascript" src="js/pdfviewer.js"></script>
-        
         <script type="text/javascript">
-               
-               
-                $("#index").on("pageshow", function()
-                  {
-                    //navigator.splashscreen.show();
-                      document.getElementById("entrar").onclick = function()
+            $("#municipios").on("pageshow", function()
+                {
+                    //getJSON
+                    $.mobile.allowCrossDomainPages = true;
+                    //getJSON
+                    document.getElementById("avancar").onclick = function()
                         {
-                            $.mobile.loading("show");
-                            $.getJSON('http://www.elohimsystems.com.br/transmpe/php/index.php?callback=?', {action: "f_select_keypass" }, function(data) 
-                                {  
-                                  if(data[0].keypass == "stop") 
-                                    {
-                                        alert("Aplicativo indisponível no momento..");
-                                        navigator.app.exitApp();
-                                        return true;
-                                    }
-                                  if(data[0].keypass != "1.0.1") 
-                                    {
-                                        alert("Atualize o app para continuar..");
-                                        return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                                    }
-                                  
-                                  //sessionStorage.setItem("user-info",JSON.stringify( {name : "Admin"} )); 
-                                  $.mobile.changePage("municipios.html");                                  
+                          $.mobile.loading("show", { text: "Carregando...", textVisible: true, theme : "b" });;
 
-                                }, "json");
-                        } 
+                          sessionStorage.setItem("ano-municipio", $("#ano").val() );   
+                          sessionStorage.setItem("codigo-municipio", "100" );
+                          sessionStorage.setItem("text-municipio", "Maranguape");
+                          $.mobile.changePage("menu_principal.html");                                     
+                          
 
-                      document.addEventListener("backbutton", onBackButtonTapped, false); 
+                        }
 
-                  });
-
-               
-                 
-
+                });
         </script>
 
    </div> 
-
-
 </body>
-
+ 
 </html>

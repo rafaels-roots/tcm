@@ -4,18 +4,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-  
-
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
-    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
 </head>
 
@@ -35,6 +23,8 @@
             <ul data-icon="false" data-role="listview" id="list_LicitacoesInf" data-filter="true" data-filter-placeholder="Buscar..." data-count-theme="b">             
             </ul>
 
+            <div id="dados_null">&laquo;Vazio&raquo;</div>
+
             <p id="list-info">
                 <span id="atualizacao"></span> <br /> 
                 <span id="fonte"></span> 
@@ -45,49 +35,47 @@
 
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
         <script type="text/javascript">
             $("#pre-licitacoes-inf").on("pageshow", function()
                 {
-                    //$("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-                    
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
                     });
 
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
+                    $.getJSON('https://elohimsystems.com.br/tcm/php/pre-licitacoes-inf.php?callback=?', {action: "f_select_licitacoes_inf", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio")  }, function(data) 
                         {                             
                             
+                            if(data.dados.length == 0) 
+                                {
+                                    $("#filter").html(data.municipio+' &#187 '+
+                                              'Prefeitura &#187 '+
+                                              sessionStorage.getItem("opcao-menu")+' &#187 '+
+                                              sessionStorage.getItem("ano-municipio")+ ' &#187 ' +
+                                              data.qtdelicitacoes);
+                                    $(".ui-input-search").css("display", "none");
+                                    $("#dados_null").css("display", "block");
                             
-                            if(data[0].keypass == "stop") 
-                            {
-                                alert("Aplicativo indisponível no momento..");
-                                navigator.app.exitApp();
-                                return true;
-                            }
-                          if(data[0].keypass != "1.9.0") 
-                            {
-                                alert("Atualize o app para continuar...");
-                                return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                            }
+                                }
+                            else 
+                                {
+                                     $("#filter").html(data.municipio+' &#187 '+
+                                                      'Prefeitura &#187 '+
+                                                      sessionStorage.getItem("opcao-menu")+' &#187 '+
+                                                      sessionStorage.getItem("ano-municipio")+ ' &#187 ' +
+                                                      data.qtdelicitacoes);
+                                }    
+                            
 
-                            $("#filter").html(data[0]["municipio"]+' >> '+
-                                              data[0]["selecionado"]+' >> '+
-                                              sessionStorage.getItem("opcao-menu")+' >> '+
-                                              sessionStorage.getItem("ano-municipio")+ ' >> ' +
-                                              data[0]["qtdelicitacoes"]);
-                            document.getElementById("filter").style.display = "block"; 
-
-                            var dados =  data[0]["dados"];
-                            var dte = "";
-                            var list_LicitacoesInf ="";
-                            for(var i = 0, len = dados.length; i < len; i++) 
+                            let dados =  data.dados;
+                            let dte = "";
+                            let list_LicitacoesInf ="";
+                            for(let i = 0, len = dados.length; i < len; i++) 
                               {
                                 if(dados[i]['dtedital']) { dte = "-"; } else { dte = dados[i]['dtedital']; }
                                 list_LicitacoesInf += '<li><a href="pre-licitacoes-inf-detalhes.html" id="'+dados[i]['link']+'">'+
@@ -102,12 +90,13 @@
                                                       '</li>';
                               }
 
-                            var ul = $("#list_LicitacoesInf"); 
-                            document.getElementById("list-info").style.display = "block";
+                            let ul = $("#list_LicitacoesInf"); 
                             ul.html(list_LicitacoesInf);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block";
                             document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
                             document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 

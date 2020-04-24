@@ -3,18 +3,8 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+   <meta charset="utf-8" />
    
-
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
-    
-    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
-    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
     <title>Tribunal de Contas</title>
 </head>
 
@@ -46,7 +36,7 @@
        
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
 
@@ -54,41 +44,43 @@
             $("#ver-fornecedores-detalhes").on("pageshow", function()
                 {
                     
-                    //$("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
                     });
 
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/ver-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
+                    $.getJSON('https://elohimsystems.com.br/tcm/php/ver-fornecedores-detalhes.php?callback=?', {action: "f_select_fornecedores_detalhes", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio"), link : sessionStorage.getItem("fornecedores-itens-link")  }, function(data) 
                         {                             
-                            if(data[0].keypass == "stop") 
-                              {
-                                  alert("Aplicativo indisponível no momento..");
-                                  navigator.app.exitApp();
-                                  return true;
-                              }
-                            if(data[0].keypass != "1.9.0") 
-                              {
-                                  alert("Atualize o app para continuar..");
-                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                              } 
                             
-                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
-                                            data[0]["selecionado"]+' >> '+
-                                            data[0]["despesa"] + ' >> ' + 
-                                            data[0]["favorecido"] + ' >> ' +  
-                                            sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
-
-                             document.getElementById("filter").style.display = "block"; 
-
-                            var dados = data[0]["dados"];
-                            var li = "";
-                            for(var i = 0, len = dados.length; i < len; i++) 
+                            let filter = "";
+                           if(data.dados.length == 0) 
+                               {
+                                   filter = sessionStorage.getItem("text-municipio")+' &#187 '+
+                                              'Câmara de Vereadores &#187 ' +
+                                              sessionStorage.getItem('opcao-menu') + ' &#187 Fornecedor : ' +
+                                              sessionStorage.getItem('fornecedor-text') + ' &#187 Favorecido : ' + 
+                                              sessionStorage.getItem('fornecedor-item-text') + ' &#187 ' +  
+                                              sessionStorage.getItem('ano-municipio');
+                                    $(".ui-input-search").css("display", "none");
+                                    $("#dados_null").css("display", "block");
+                               }   
+                           else 
+                               {
+                                    filter = sessionStorage.getItem("text-municipio")+' &#187 '+
+                                              'Câmara de Vereadores &#187 ' +
+                                              sessionStorage.getItem('opcao-menu') + ' &#187 Fornecedor : ' +
+                                              sessionStorage.getItem('fornecedor-text') + ' &#187 Favorecido : ' + 
+                                              sessionStorage.getItem('fornecedor-item-text') + ' &#187 ' +  
+                                              sessionStorage.getItem('ano-municipio') + ' &#187 ' + data.total;
+                               } 
+                            $("#filter").html(filter);       
+                           
+                            
+                            let dados = data.dados;
+                            let li = "";
+                            for(let i = 0, len = dados.length; i < len; i++) 
                                 {
                                       li += "<li>" +
                                                 "<a href='#'>"+
@@ -101,7 +93,7 @@
 
                                 }
                            
-                            var ul = $("#list_FornecedoresDetalhes");
+                            let ul = $("#list_FornecedoresDetalhes");
                             ul.html(li);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
@@ -110,7 +102,7 @@
                             li = "";
                             $.each( $("#list_FornecedoresDetalhes li"), function(i)
                                 {
-                                    var xz = $(this).find('a:nth-child(1)').html();
+                                    let xz = $(this).find('a:nth-child(1)').html();
                                     li += "<li>" +
                                             "<a href='#' id='http://municipios.tce.ce.gov.br"+$(this).find("a[href^='/transparencia']").attr("href")+"' class='ui-btn'>" + xz.substr(0,xz.length - 2) + 
                                                 "<span class='ui-li-count'>"+$(this).find('span').text()+"</span>" +
@@ -123,10 +115,12 @@
                             $("#list_FornecedoresDetalhes").html(li).listview('refresh')
 
                             document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block";
                             document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
-                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                             $.mobile.loading("hide"); 
+                          
                             
 
                         }); 
@@ -138,12 +132,11 @@
                             $.mobile.loading("show",{
                                 text : 'Gerando Pdf...',
                                 textVisible : true,
-                                theme : 'a',
-                                textonly : false
+                                theme : 'b'
 
                             });
 
-                            $.getJSON('http://www.elohimsystems.com.br/transmpe/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
+                           /* $.getJSON('http://www.elohimsystems.com.br/transmpe/FPDF/favorecidopdf.php?callback=?',{ link : $(this).find("a").attr("id") }, function(data) 
                                 {
                                     
                                     DocumentViewer.previewFileFromUrlOrPath(function () 
@@ -162,7 +155,7 @@
                                         },
                                     'http://www.elohimsystems.com.br/transmpe/FPDF/doc.pdf', 'pdf-sample');
                                     $.mobile.loading("hide");
-                                });    
+                                });  */  
                             
                         });               
                     

@@ -3,28 +3,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
- 
-
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
-    
-
-
-    
-    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
-    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
+   <meta charset="utf-8" />
     <title>Tribunal de Contas</title>
 </head>
 
 <body>
     <div data-role="page" id="pre-licitacoes-inf-detalhes">
         <header data-role="header" data-position="fixed">
-            <h3>Licitações Informadas(Detalhe)</h3>
+            <h3>Licitações Informadas (Detalhe)</h3>
             <a href="#" data-transition="fade" data-rel="back" id="menu" data-position-to="#menu" data-role="button" data-icon="arrow-l" data-iconshadow="false" data-theme="a" data-iconpos="notext"  class="ui-btn-left ui-nodisc-icon az-nodisc">home</a>
         </header>
 
@@ -58,7 +44,7 @@
 
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
       
@@ -67,60 +53,53 @@
             $("#pre-licitacoes-inf-detalhes").on("pageshow", function()
                 {
                     
-                  // $("#usuario a").text(JSON.parse(sessionStorage.getItem("user-info")).name);
-
                     $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
                     });
  
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('lic-link')   }, function(data) 
+                    $.getJSON('https://elohimsystems.com.br/tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('lic-link')   }, function(data) 
                         {                             
                             
-                            if(data[0].keypass == "stop") 
-                            {
-                                alert("Aplicativo indisponível no momento..");
-                                navigator.app.exitApp();
-                                return true;
-                            }
-                          if(data[0].keypass != "1.9.0") 
-                            {
-                                alert("Atualize o app para continuar..");
-                                return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                            }
+                            $("#filter").html(data.municipio+' &#187 '+
+                                              ' Prefeitura &#187 '+
+                                              sessionStorage.getItem("opcao-menu")+' &#187 '+
+                                              sessionStorage.getItem("ano-municipio")+' &#187 '+
+                                              data.licitacao);    
 
-                            $("#filter").html(data[0]["municipio"]+' >> '+
-                                              data[0]["selecionado"]+' >> '+
-                                              sessionStorage.getItem("opcao-menu")+' >> '+
-                                              sessionStorage.getItem("ano-municipio")+' >> '+
-                                              data[0]["licitacao"]);    
-
-                            document.getElementById("value_dhrealizacao").innerHTML = data[0]["cab"][0];
-                            document.getElementById("value_dautuacao").innerHTML = data[0]["cab"][1];
-                            document.getElementById("value_modalidade").innerHTML = data[0]["cab"][2];
-                            document.getElementById("value_tipo").innerHTML = data[0]["cab"][3];
-                            document.getElementById("value_vlrestimado").innerHTML = data[0]["cab"][4];
-                            document.getElementById("value_vlrlimite").innerHTML = data[0]["cab"][5];
-                            document.getElementById("value_objeto").innerHTML = data[0]["cab"][6];
-                            document.getElementById("value_gestorcomissao").innerHTML = data[0]["cab"][7];
-                            
-                            document.getElementById("filter").style.display = "block";                                                                    
-
-
-                            var ul = $("#list_LicitacoesInfDetalhes"); 
-                            document.getElementById("list-info").style.display = "block";
-                            document.getElementById("info-licitacao").style.display = "block";
-                            ul.html(data[0]["dados"]);
-
-                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
-                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
+                            document.getElementById("value_dhrealizacao").innerHTML = data.cab[0];
+                            document.getElementById("value_dautuacao").innerHTML = data.cab[1];
+                            document.getElementById("value_modalidade").innerHTML = data.cab[2];
+                            document.getElementById("value_tipo").innerHTML = data.cab[3];
+                            document.getElementById("value_vlrestimado").innerHTML = data.cab[4];
+                            document.getElementById("value_vlrlimite").innerHTML = data.cab[5];
+                            document.getElementById("value_objeto").innerHTML = data.cab[6];
+                            document.getElementById("value_gestorcomissao").innerHTML = data.cab[7];
 
                             
+                            const json =  data.dados;
+                            let list ="";
+                            for(let i = 0, len = json.length; i < len; i++) 
+                              {
+                                list += '<li><a href="#">'+
+                                            '<h1>'+json[i]["negociante"]+'</h1>' +
+                                            '<p><strong>CPF/CNPJ :</strong> '+json[i]["cnpjcpf"]+'</p>' +
+                                            '<span class="ui-li-count">'+json[i]["total"]+'</span>' +
+                                            '</a>' +
+                                      '</li>';
+                              }
+
+                            const ul = $("#list_LicitacoesInfDetalhes"); 
+                            ul.html(list);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
+  
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block";
+                            document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                             $.mobile.loading("hide"); 
 

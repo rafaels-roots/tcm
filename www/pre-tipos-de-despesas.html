@@ -4,18 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
-
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src *; img-src 'self' data:; media-src 'self' data:; font-src *; connect-src *">
-    
-    
-    <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
-    <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
+   
     <title>Tribunal de Contas</title>
 </head>
 
@@ -43,7 +32,7 @@
 
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
       
@@ -52,45 +41,39 @@
             $("#pre-tipos-de-despesas").on("pageshow", function()
                 {
                     
-                    //document.getElementById("usuario").childNodes[0].innerHTML = JSON.parse(sessionStorage.getItem("user-info")).name;
-                    $.mobile.loading("show",{
+                  $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
-                    });
+                    }); 
 
-                    $.getJSON('http://www.elohimsystems.com.br/transmpe/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", param1 : sessionStorage.getItem("codigo-municipio"), param2 : sessionStorage.getItem("ano-municipio") , link : sessionStorage.getItem('despesas-link')  }, function(data) 
+                    $.getJSON('https://elohimsystems.com.br/tcm/php/pre-tipos-de-despesas.php?callback=?', {action: "f_select_tipos_despesas", link : sessionStorage.getItem('despesa-link')  }, function(data) 
                         { 
-                            
-                            if(data[0].keypass == "stop") 
-                            {
-                                alert("Aplicativo indisponível no momento..");
-                                navigator.app.exitApp();
-                                return true;
-                            }
-                          if(data[0].keypass != "1.9.0") 
-                            {
-                                alert("Atualize o app para continuar..");
-                                return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                            }
+                        
+                            const total = data.total == null ? "Não foi encontrado Registro para o exercicio de "+sessionStorage.getItem("ano-municipio") : data.total;     
+                           $("#filter").html(sessionStorage.getItem("text-municipio")+' &#187 '+
+                                              'Prefeitura &#187 ' +
+                                              sessionStorage.getItem('opcao-menu') + ' &#187 ' +
+                                              sessionStorage.getItem('despesa-text') + ' &#187 ' + 
+                                              sessionStorage.getItem('ano-municipio') + ' &#187 ' + total);
 
-                            $("#filter").html(sessionStorage.getItem("text-municipio")+' >> '+
-                                            data[0]["selecionado"]+' >> '+
-                                            sessionStorage.getItem('opcao-menu') + ' >> ' +
-                                            sessionStorage.getItem('despesas-text') + ' >> ' +  
-                                            sessionStorage.getItem('ano-municipio') +  ' >> '+data[0]["total"]);
+                           const json = data.dados; 
+                           let list = "";
+                           for(let i = 0, len = json.length; i < len; i++) 
+                               {
+                                    list += "<li><a href='pre-favorecidos.html' id='"+json[i]["link"]+"'><h1>"+json[i]["despesa"]+"</h1><span class='ui-li-count'>"+json[i]["valor"]+"</span></a></li>";
 
-                            document.getElementById("list-info").style.display = "block";
-                            document.getElementById("filter").style.display = "block"; 
-                            var ul = $("#list_TiposDespesas");
-                            ul.html(data[0]["dados"]);
+                               }
+                            const ul = $("#list_TiposDespesas");
+                            ul.append(list);
                             ul.listview("refresh");
                             ul.trigger("updatelayout");
 
+                            document.getElementById("list-info").style.display = "block";
+                            document.getElementById("filter").style.display = "block";
                             document.getElementById("atualizacao").innerHTML = sessionStorage.getItem("atualizacao");
-                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte");
+                            document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+sessionStorage.getItem("fonte"); 
 
                             $.mobile.loading("hide");
     
@@ -98,8 +81,8 @@
 
                     $("#list_TiposDespesas").on("click", ".ui-btn", function()
                         {
-                            sessionStorage.setItem("tipos-de-despesas-text", $(this).find('h1').text() );
-                            sessionStorage.setItem("tipos-de-despesas-link", this.id );
+                            sessionStorage.setItem("tdespesa-text", $(this).find('h1').text() );
+                            sessionStorage.setItem("tdespesa-link", this.id );
                         });         
                 }); 
         </script>

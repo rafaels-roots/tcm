@@ -71,7 +71,7 @@
        
 
         <div data-role="footer" data-position="fixed">
-            <h1>Fonte | Portal da Transparência</h1>
+            <h1>Maranguape Transparente</h1>
         </div>
 
       
@@ -82,14 +82,13 @@
                   $.mobile.loading("show",{
                         text : 'Carregando...',
                         textVisible : true,
-                        theme : 'a',
-                        textonly : false
+                        theme : 'b'
 
                     }); 
                    
-                   $.getJSON('http://www.elohimsystems.com.br/transmpe/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
+                   $.getJSON('https://elohimsystems.com.br/tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
-                          if(data[0].keypass == "stop") 
+                          /*if(data[0].keypass == "stop") 
                               {
                                   alert("Aplicativo indisponível no momento..");
                                   navigator.app.exitApp();
@@ -99,11 +98,12 @@
                               {
                                   alert("Atualize o app para continuar..");
                                   return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                              }
+                              }*/
 
 
                           sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);
                           sessionStorage.setItem("fonte", data[0]["fonte"].substring(7));
+
                           document.getElementById("mun").innerHTML = sessionStorage.getItem("text-municipio") + ' | ' + sessionStorage.getItem("ano-municipio");  
                           document.getElementById("contentt").style.display = "block";
                           document.getElementById("list-info").style.display = "block";
