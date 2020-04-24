@@ -11,16 +11,17 @@ img { width: 100% }
 .ui-mobile [data-role=footer],
 .ui-mobile [data-role=header] 
 {
-  	background-color: #4887cc!important;
-    color: #fff;
-    text-shadow: 1px 1px 12px #000;
-    z-index: 1001
+  	background-color: #7386a6!important;
+	color: beige;
+	text-shadow: 1px 1px 12px #000;
+	z-index: 1001;
+	
 }
 
-.ui-header .ui-title 
+.ui-header .ui-title , .ui-mobile [data-role=footer] .ui-title
 {
-    margin-right: 10%;
-    margin-left: 10%;
+    margin: 0 10%!important;
+	font-family:'Ubuntu', Tahoma!important;
     
     
 }
@@ -66,11 +67,37 @@ img { width: 100% }
 
 	
 }
+.ui-loader {
+
+	font-weight: normal!important;
+	font-family: Tahoma!important;
+	background:#f9f9f9!important;
+	color:#333!important;
+	text-shadow:none!important;
+}
+.ui-input-search {
+	font-family: Tahoma, sans-serif!important;
+	box-shadow: none!important;
+
+}
 label 
 {
 	font-weight:500!important; 
 }
-
+ul li a {
+	font-family:Tahoma!important;
+}
+#dados_null {
+    
+    width: 100%!important;
+    height: 35px!important;
+    color: #a6a6a6;
+    font-family: Tahoma!important;
+    font-size: 22.5px!important;
+    display: none;
+    padding-top: 50px!important;
+    text-align: center!important;
+}
 /*estilos personalizados á página*/
 #index .ui-input-btn {
     background-color: #4caf50!important;
@@ -80,7 +107,7 @@ label
 }
 .az-nodisc {
     /*só consigo por causa do ui-nodisc-icon az-nodisc e o ui=li-alt é preto e tem que deixar o backgrouno aqui transparent*/
-    background-color: #4887cc !important;
+    background-color: #7386a6!important;
     /*background-color: transparent !important;*/
     border: none;
     box-shadow: none;
@@ -127,17 +154,18 @@ label
 	
 }
 #filter {
-	font-family:Tahoma!important;
+	font-family: Tahoma!important;
 	font-weight: 500!important;
-	font-size:0.8em!important;
-	padding-left:0!important;
+	font-size:0.85em!important;
+	/*padding-left:0!important;*/
 	border:1px solid #ddd;
 	/*background-color: #faffbd;*/
 	background-color: #ddd;
 	/*color: #fff;*/
-	padding:0.6em 0.3em;
+	padding:0.6em 0.45em!important;
 	display:none;
-	border-radius:3px;
+	border-radius:2px;
+	box-shadow: 0.5x 0.5px #888!important;
 }
 #list-info {
 	display: none;
@@ -336,31 +364,4 @@ label
 .form-ano-div {
 	padding:6px!important;
 
-}/*
-#form-ano .ui-mobile [data-role=fieldcontain] {
-	margin-top: -20px!important;
-}
-.form-ano-title {
-	font-weight:500!important;
-}*/
-/*municipios.html*/
-
-
-/*
-#divarlindo 
-	{
-		width: 100%!important;
-		height: 100%!important;
-		position: relative!important;
-		background-color: #fbfbfb!important;
-		border: 1px solid #b8b8b8!important;
-	}
-
-#divarlindo img 
-	{
-		position: absolute!important;
-		top: 50%!important;
-		left: 50%!important;
-		margin-left: -16px!important;
-		margin-top: -18px!important;
-	} */
+}/*municipios.html*/
