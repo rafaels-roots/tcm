@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div data-role="page" id="municipios">
+    <div data-role="page" id="index">
         <header data-role="header" data-position="fixed">
             <h3>Ínicio</h3>
         </header>
@@ -47,8 +47,8 @@
 
         <div data-role="main" class="ui-content" id="content">
 
-            <div style="width: 100%; height: 100%; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;">
-                <img src="img/transparenciamaranguape.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px"/>
+            <div id="divIMG" style="">
+                <img src="img/logo2.PNG" alt="image" style="" />
             </div>
             
              <form id="form_municipios">
@@ -69,7 +69,7 @@
         </div>
 
         <div data-role="footer" data-position="fixed">
-            <h1>Maranguape Transparente</h1>
+            <h1>-</h1>
         </div>
 
       
@@ -77,7 +77,7 @@
         <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
         <script type="text/javascript">
-            $("#municipios").on("pageshow", function()
+            $("#index").on("pageshow", function()
                 {
                     //getJSON
                     $.mobile.allowCrossDomainPages = true;

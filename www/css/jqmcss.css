@@ -11,7 +11,7 @@ img { width: 100% }
 .ui-mobile [data-role=footer],
 .ui-mobile [data-role=header] 
 {
-  	background-color: #7386a6!important;
+  	background-color: #179942!important;
 	color: beige;
 	text-shadow: 1px 1px 12px #000;
 	z-index: 1001;
@@ -24,6 +24,19 @@ img { width: 100% }
 	font-family:'Ubuntu', Tahoma!important;
     
     
+}
+#index div[data-role=footer] {
+	color:#179942!important;
+}
+#index #divIMG {
+	/*border:1px solid red;*/
+	position: relative;
+	width:100%!important;
+
+}
+#index #divIMG img {
+	/*border:1px solid blue;position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px*/
+	width: 100%!important;
 }
 .ui-mobile [data-role=popup] .ui-li-divider 
 {
@@ -107,7 +120,7 @@ ul li a {
 }
 .az-nodisc {
     /*só consigo por causa do ui-nodisc-icon az-nodisc e o ui=li-alt é preto e tem que deixar o backgrouno aqui transparent*/
-    background-color: #7386a6!important;
+    background-color: #179942!important;
     /*background-color: transparent !important;*/
     border: none;
     box-shadow: none;
@@ -115,13 +128,14 @@ ul li a {
 
 .button1
 {
-	background-color: #54698d!important;
+	background-color: #179942!important;
 	/*background-color: #ffeb3b!important;*/	
 	/*background-color: #23569c!important;*/
 	color:#fff!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
+	font-family:Tahoma!important;
 	
 }
 .button2/*, #check-config */
