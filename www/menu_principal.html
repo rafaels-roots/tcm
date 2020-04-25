@@ -88,27 +88,27 @@
                    
                    $.getJSON('https://elohimsystems.com.br/tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
-                          /*if(data[0].keypass == "stop") 
+                          if(data.keypass == "stop") 
                               {
                                   alert("Aplicativo indisponível no momento..");
                                   navigator.app.exitApp();
                                   return true;
                               }
-                            if(data[0].keypass != "1.9.0") 
+                            if(data.keypass != "1.9.0") 
                               {
                                   alert("Atualize o app para continuar..");
                                   return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                              }*/
+                              }
 
 
-                          sessionStorage.setItem("atualizacao", data[0]["atualizacao"]);
-                          sessionStorage.setItem("fonte", data[0]["fonte"].substring(7));
+                          sessionStorage.setItem("atualizacao", data.atualizacao);
+                          sessionStorage.setItem("fonte", data.fonte.substring(7));
 
                           document.getElementById("mun").innerHTML = sessionStorage.getItem("text-municipio") + ' | ' + sessionStorage.getItem("ano-municipio");  
                           document.getElementById("contentt").style.display = "block";
                           document.getElementById("list-info").style.display = "block";
-                          document.getElementById("atualizacao").innerHTML = data[0]["atualizacao"];
-                          document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+data[0]["fonte"].substring(7);  
+                          document.getElementById("atualizacao").innerHTML = data.atualizacao;
+                          document.getElementById("fonte").innerHTML = "<strong>Fonte : </strong>"+data.fonte.substring(7);  
                          
 
                           $.mobile.loading("hide");
