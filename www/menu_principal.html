@@ -88,19 +88,7 @@
                    
                    $.getJSON('https://elohimsystems.com.br/tcm/php/menu-principal.php?callback=?', {action: "f_select_fonte", param1 : sessionStorage.getItem("codigo-municipio")  }, function(data) 
                       {   
-                          if(data.keypass == "stop") 
-                              {
-                                  alert("Aplicativo indisponível no momento..");
-                                  navigator.app.exitApp();
-                                  return true;
-                              }
-                            if(data.keypass != "1.9.0") 
-                              {
-                                  alert("Atualize o app para continuar..");
-                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
-                              }
-
-
+                         
                           sessionStorage.setItem("atualizacao", data.atualizacao);
                           sessionStorage.setItem("fonte", data.fonte.substring(7));
 

@@ -62,7 +62,7 @@
                         <option value="2017">2017</option>
                    </select>
                </div>
-               <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar">Avançar</a>
+               <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-a button1" id="avancar" style="display:none!important;">Avançar</a>
                 
             </form>
             
@@ -82,6 +82,19 @@
                     //getJSON
                     $.mobile.allowCrossDomainPages = true;
                     //getJSON
+
+                     $.getJSON('https://elohimsystems.com.br/tcm/php/version.php?callback=?', {action: "f_version"}, function(data) 
+                      {   
+                            if(data.keypass != "2.0.0") 
+                              {
+                                  alert("Atualize o app para continuar..");
+                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                              }
+                            $.mobile.loading("hide");
+                            $("#avancar").css("display", "block")
+
+                      }); 
+
                     document.getElementById("avancar").onclick = function()
                         {
                           $.mobile.loading("show", { text: "Carregando...", textVisible: true, theme : "b" });;
