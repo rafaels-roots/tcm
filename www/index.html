@@ -7,7 +7,6 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:;
                                                        script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval';
@@ -20,9 +19,14 @@
     
 
     <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs|Ubuntu:400,500,700,700i" rel="stylesheet">
-    
-
     <link rel="stylesheet" type="text/css" href="css/jqmcss.css" />
+
+
+    <!-- NATIVE ANDROID -->
+    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="vendor/wow/animate.css" />
+    <link rel="stylesheet" href="css/nativedroid2.css" />
+
     <title>Tribunal de Contas</title>
 
      <script type="text/javascript">
@@ -73,9 +77,19 @@
         </div>
 
       
-       <script type="text/javascript" src="cordova.js"></script>
+         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="js/jquerymobile.js"></script>
+
+
+         <!-- NATIVE ANDROID -->
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="vendor/waves/waves.min.js"></script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="js/nativedroid2.js"></script>
+        <!--<script src="/nd2settings.js"></script>-->
+
+
         <script type="text/javascript">
             $("#index").on("pageshow", function()
                 {
