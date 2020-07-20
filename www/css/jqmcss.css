@@ -28,7 +28,7 @@ img { width: 100% }
 }
 .ui-header .ui-title {
 	text-align: left!important;
-	font-size:1em!important;
+	font-size:1.05em!important;
 }
 
 .ui-mobile [data-role=popup] .ui-li-divider 
@@ -60,7 +60,7 @@ img { width: 100% }
 {
     color: #373737;
 }
-.ui-radio label span .ui-icon-radio-on {
+.ui-btn.ui-radio-on.ui-btn-a:after {
     background-color: #106653!important;
 }
 .ui-content .ui-btn-active 
@@ -120,7 +120,7 @@ ul li a {
     /*background-color: transparent !important;*/
     border: none;
     box-shadow: none;
-    padding:2px!important;
+    /*padding:2px!important;*/
 }
 
 .button1
@@ -333,7 +333,7 @@ ul li a {
 
 
 /*pre-licitacoes-informadas.html*/
-#info-licitacao {
+#info-licitacao, #detail-objects {
 	display:none;
 }
 #info-licitacao span{
@@ -348,7 +348,9 @@ ul li a {
 #info-licitacao #vlrestimado,
 #info-licitacao #vlrlimite,
 #info-licitacao #objeto,
-#info-licitacao #gestorcomissao {
+#info-licitacao #gestorcomissao,
+#info-licitacao #vencedor,
+#info-licitacao #empregado {
 	font-weight:700!important;
 }
 /*pre-licitacoes-informadas.html*/
