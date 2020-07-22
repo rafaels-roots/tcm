@@ -19,6 +19,7 @@
     <preference name="android-targetSdkVersion" value="28" />
     
     <preference name="orientation" value="portrait" />
+    <preference name="BackgroundColor" value="#106653" />
     
     <!--<preference name="SplashScreenDelay" value="10000" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
