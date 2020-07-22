@@ -60,9 +60,11 @@ img { width: 100% }
 {
     color: #373737;
 }
-.ui-btn.ui-radio-on.ui-btn-a:after {
-    background-color: #106653!important;
+
+.ui-btn-icon-notext:after, .ui-btn-icon-left:after, .ui-btn-icon-right:after {
+	top:55%!important;
 }
+
 .ui-content .ui-btn-active 
 {
 	box-shadow:none!important;
@@ -125,10 +127,12 @@ ul li a {
 
 .button1
 {
-	background-color: #106653!important;
+	/*background-color: #106653!important;*/
+	background-color: #f3c53c!important;
 	/*background-color: #ffeb3b!important;*/	
 	/*background-color: #23569c!important;*/
-	color:#fff!important;
+	color:#333!important;
+	border-color: #f3c53c!important;
 	text-shadow:none!important;
 	font-weight:500!important;
 	font-size:0.95em!important;
@@ -372,25 +376,30 @@ ul li a {
 }
 /*pre-licitacoes-publicadas.html*/
 
-
-/*municipios.html*/
-.form-ano-div {
-	padding:6px!important;
-
-}/*municipios.html*/
-
-
-
-#index div[data-role=footer] {
-	color:#179942!important;
+#index
+{
+	background-color: #106653!important;
 }
-#index #divIMG {
-	/*border:1px solid red;*/
+#index #divIMG 
+{
+
 	position: relative;
 	width:100%!important;
-
 }
-#index #divIMG img {
-	/*border:1px solid blue;position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px*/
+#index #divIMG img 
+{
 	width: 100%!important;
+}	
+#index .ui-select div	
+{
+	background-color: #106653!important;
+}
+#index .ui-select span {
+	color:#fff!important;
+	text-shadow: none!important;
+}
+#index label[for=ano] {
+	color:#fff!important;
+	text-shadow: none!important;
+	font-family:'Ubuntu', Tahoma!important;
 }

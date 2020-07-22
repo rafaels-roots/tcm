@@ -68,7 +68,7 @@
  
                     $.getJSON('https://elohimsystems.com.br/tcm/php/pre-licitacoes-inf-detalhes.php?callback=?', {action: "f_select_licitacoes_inf_detalhes",  link : sessionStorage.getItem('lic-link')   }, function(data) 
                         {                             
-                            alert(JSON.stringify(data.objetos));
+                            
                             $("#filter").html(data.municipio+' &#187 '+
                                               ' Prefeitura &#187 '+
                                               sessionStorage.getItem("opcao-menu")+' &#187 '+
