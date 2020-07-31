@@ -94,8 +94,9 @@
                             if(data.keypass != "2.2") 
                               {
                                   alert("Atualize o app para continuar..");
-                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
                                   navigator.app.exitApp();
+                                  return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                                  
                               }
                             $.mobile.loading("hide");
                             $("#avancar").css("display", "block")
