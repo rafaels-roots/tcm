@@ -90,10 +90,12 @@
 
                      $.getJSON('https://elohimsystems.com.br/tcm/php/version.php?callback=?', {action: "f_version"}, function(data) 
                       {   
-                            if(data.keypass != "2.2.0") 
+                            //operador é diferente porque é string
+                            if(data.keypass != "2.2") 
                               {
                                   alert("Atualize o app para continuar..");
                                   return openExternal("https://play.google.com/store/apps/details?id=tcm.com");
+                                  navigator.app.exitApp();
                               }
                             $.mobile.loading("hide");
                             $("#avancar").css("display", "block")
